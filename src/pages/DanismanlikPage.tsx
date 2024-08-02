@@ -2,7 +2,9 @@ import React from 'react'
 import Navbar from '../component/molecules/Navbar'
 
 function DanismanlikPage() {
+    //düzenlendi
     return (
+        
         <>
             <Navbar />
             <div className="background" style={{
