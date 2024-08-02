@@ -1,10 +1,11 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
-import { useNavigate } from 'react-router-dom'
 import DanismanlikPage from '../../pages/DanismanlikPage'
 import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
 
+
+import { useNavigate } from 'react-router-dom'
 
 
 function Navbar() {
@@ -20,7 +21,7 @@ function Navbar() {
 
     <> 
     
-    <div className="row sticky-top" style={{ backgroundColor: "white",}}>
+    <div className="row sticky-top" style={{ backgroundColor: "white",cursor: 'pointer'}}>
 
           <div className="col-2">
             <img onClick={backToHome} src="./image/logo.jpeg" style={{ height: 100, width: 100 }} className="float-end" alt="Logo" />
