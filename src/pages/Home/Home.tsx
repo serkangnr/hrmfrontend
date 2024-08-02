@@ -12,8 +12,10 @@ import Comment from '../../component/molecules/Comment';
 import Footer from '../../component/molecules/Footer';
 
 const Home: React.FC = () => {
+    //asd
     return (
         <>
+        
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <title>Bootstrap demo</title>
