@@ -9,6 +9,7 @@ import PermitCard from '../../component/molecules/PermitCard/PermitCard'
 import Holiday from '../../component/molecules/HolidayCards/Holiday'
 
 function Dashboard() {
+  //yenilendi
   const leaveData = {
     totalDays: 15,
     forwardDays: 3,
