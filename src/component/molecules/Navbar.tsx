@@ -1,4 +1,6 @@
 import React from 'react'
+import { Dropdown } from 'react-bootstrap'
+import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
 
 function Navbar() {
   return (
@@ -17,7 +19,7 @@ function Navbar() {
             <nav className="navbar p-3"  >
               <div className="container-fluid">
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
-                  UYGULAMALAR
+                  <DropdownUygulamalar />
                 </a>
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
                   DANIŞMANLIKLAR
