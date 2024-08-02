@@ -1,7 +1,13 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
+<<<<<<< HEAD
+import DanismanlikPage from '../../pages/DanismanlikPage'
+import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
+
+=======
 import { useNavigate } from 'react-router-dom'
+>>>>>>> f7af00d64dd5f1c3ff8140fcc4bf5cef204421c6
 
 function Navbar() {
   const navigate = useNavigate();
@@ -28,7 +34,7 @@ function Navbar() {
                   <DropdownUygulamalar />
                 </a>
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
-                  DANIŞMANLIKLAR
+                  <DropdownDanismanliklar/>
                 </a>
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
                   KULLANICI HİKAYELERİ
