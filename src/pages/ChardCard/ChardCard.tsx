@@ -6,15 +6,15 @@ import Footer from '../../component/molecules/Footer'
 
 function ChardCard() {
     return (
-       
+
         <>
-        
-        <Navbar />
-        
-            
-            
+
+            <Navbar />
+
+
+
             <div className="background">
-            
+
                 <div className="container">
 
 
@@ -73,15 +73,10 @@ function ChardCard() {
                                 <p className="lead">Tüm değerlendirme sonuçlarına tek tıkla ulaşın ve her şeyi detaylı olarak raporlayın. Raporları ihtiyacınız olan formatta kolayca indirin.</p>
                             </div>
                         </div>
+                        <div className="row mt-3 full-width justify-content-center align-items-center" >
+                            <Footer />
+                        </div>
                     </div>
-                    <Footer/>
-
-
-                    
-
-
-
-
 
                 </div>
             </div>
@@ -92,7 +87,7 @@ function ChardCard() {
 
 
 
-           
+
 
         </>
     )

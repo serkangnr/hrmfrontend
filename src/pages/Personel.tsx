@@ -135,7 +135,7 @@ function Personel() {
                                             <i className="fa-solid fa-square-check" style={{ color: '#0091ff' }}></i>
                                         </div>
                                         <div className="col-11">
-                                            <label 
+                                            <label
                                             >Çalışan geçmişi ve kariyer adımlarını görüntüleme
                                             </label>
                                         </div>
@@ -489,9 +489,13 @@ function Personel() {
                     <div className="col-2"></div>
 
                 </div>
-                <div className="row">
-                    <Footer />
+                <div className="container col-xxl-8 px-4 py-5">
+                    <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+                        <Footer />
+                    </div>
                 </div>
+
+
             </div>
 
         </>
