@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ChardCard from "./pages/ChardCard/ChardCard";
+import ShiftCard from "./pages/ShiftCard";
 function RouterPage() {
 
 
@@ -16,6 +17,7 @@ function RouterPage() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/ucretlendirme" element={<ChardCard />} />
+                <Route path="/vardiya" element={<ShiftCard />} />
             </Routes>
         </BrowserRouter>
     );

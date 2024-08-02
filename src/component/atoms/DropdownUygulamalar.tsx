@@ -6,6 +6,9 @@ function DropdownUygulamalar() {
   const ucretlendirme = () => {
     navigate('/ucretlendirme')
   }
+  const vardiya = () => {
+    navigate('/vardiya')
+  }
   return (
     <>
 
@@ -20,7 +23,7 @@ function DropdownUygulamalar() {
 
 <li><a className="dropdown-item" href="#">İşe Alım Ve Aday Takip</a></li>
 
-<li><a className="dropdown-item" href="#">Vardiya</a></li>
+<li><a className="dropdown-item" href="#" onClick={vardiya}>Vardiya</a></li>
 
 <li><a className="dropdown-item" href="#" onClick={ucretlendirme} >Ücret Değerlendirme </a> </li>
   </ul>
