@@ -12,7 +12,7 @@ import Comment from '../../component/molecules/Comment';
 import Footer from '../../component/molecules/Footer';
 
 const Home: React.FC = () => {
-    //asd
+    //asdaaaaaaaaaaaaaaaaaaaaaaaa
     return (
         <>
         
