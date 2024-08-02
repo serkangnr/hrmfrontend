@@ -1,6 +1,9 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
+import DanismanlikPage from '../../pages/DanismanlikPage'
+import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
+
 
 function Navbar() {
   return (
@@ -22,7 +25,7 @@ function Navbar() {
                   <DropdownUygulamalar />
                 </a>
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
-                  DANIŞMANLIKLAR
+                  <DropdownDanismanliklar/>
                 </a>
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
                   KULLANICI HİKAYELERİ
