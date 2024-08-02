@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../component/molecules/Navbar'
+import Footer from '../component/molecules/Footer'
 
 function ShiftCard() {
     return (
@@ -83,6 +84,7 @@ function ShiftCard() {
                         </div>
                     </div>
                 </div>
+                <Footer/>
                 </div>
 
 

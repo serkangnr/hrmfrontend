@@ -2,6 +2,7 @@ import React from 'react'
 
 import './ChardCard.css'
 import Navbar from '../../component/molecules/Navbar'
+import Footer from '../../component/molecules/Footer'
 
 function ChardCard() {
     return (
@@ -73,6 +74,7 @@ function ChardCard() {
                             </div>
                         </div>
                     </div>
+                    <Footer/>
 
 
                     

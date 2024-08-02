@@ -8,6 +8,10 @@ function DropdownUygulamalar() {
   }
   const vardiya = () => {
     navigate('/vardiya')
+ 
+  }
+  const personel = () => {
+    navigate('/personel')
   }
   return (
     <>
@@ -17,7 +21,7 @@ function DropdownUygulamalar() {
     UYGULAMAR
   </button>
   <ul className="dropdown-menu dropdown-menu-dark">
-  <li><a className="dropdown-item" href="#">Personel </a></li>
+  <li><a className="dropdown-item" href="#" onClick={personel}>Personel </a></li>
 
 <li><a className="dropdown-item" href="#">Performans</a></li>
 
