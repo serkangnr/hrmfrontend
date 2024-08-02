@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ChardCard from "./pages/ChardCard/ChardCard";
 import ShiftCard from "./pages/ShiftCard";
+import DanismanlikPage from "./pages/DanismanlikPage";
 function RouterPage() {
 
 
@@ -18,6 +19,7 @@ function RouterPage() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/ucretlendirme" element={<ChardCard />} />
                 <Route path="/vardiya" element={<ShiftCard />} />
+                <Route path="/danismanlik" element={<DanismanlikPage />} />
             </Routes>
         </BrowserRouter>
     );
