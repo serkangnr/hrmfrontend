@@ -22,7 +22,7 @@ function Navbar() {
 
     <> 
     
-    <div className="row sticky-top" style={{ backgroundColor: "white",}}>
+    <div className="row sticky-top" style={{ backgroundColor: "white",cursor: 'pointer'}}>
 
           <div className="col-2">
             <img onClick={backToHome} src="./image/logo.jpeg" style={{ height: 100, width: 100 }} className="float-end" alt="Logo" />
