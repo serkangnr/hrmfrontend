@@ -1,0 +1,56 @@
+.leave-card {
+  width: 100%;
+  margin: 20px auto; /* Daha uyumlu margin değerleri */
+  padding: 15px; /* İç boşluk eklemek, daha rahat bir görünüm sağlar */
+  border-radius: 8px; /* Kart köşelerini yuvarlatmak */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+.card-header {
+  font-weight: bold;
+  background-color: #f8f9fa;
+  padding: 12px; /* Başlık için yeterli boşluk */
+  border-bottom: 1px solid #dee2e6;
+  font-size: 1.1rem; /* Başlık boyutunu artırmak */
+}
+
+.card-title {
+  font-size: 1.5rem; /* Kart başlığı için font büyüklüğünü artırmak */
+  margin-bottom: 10px; /* Kart başlığı ile içerik arasında boşluk */
+}
+
+.progress-bar {
+  margin-bottom: 10px; /* Progress bar ile diğer öğeler arasında boşluk */
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between; /* Öğeler arasındaki boşluk daha düzenli */
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.list-group-item span {
+  color: #333; /* Genel metin rengi */
+}
+
+.list-group-item span.approved {
+  color: green; /* Onaylı izin türü için renk */
+}
+
+.list-group-item span.not-approved {
+  color: red; /* Onaylanmamış izin türü için renk */
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff; /* Link rengi */
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline; /* Üzerine gelindiğinde altı çizili */
+}
+

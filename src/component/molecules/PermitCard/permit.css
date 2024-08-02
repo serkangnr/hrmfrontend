@@ -1,0 +1,46 @@
+.leave-card {
+  width: 100%;
+  margin: 20px auto; /* Daha uyumlu margin değerleri */
+  padding: 15px; /* İç boşluk eklemek, daha rahat bir görünüm sağlar */
+  border-radius: 8px; /* Kart köşelerini yuvarlatmak */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+.card-header {
+  font-weight: bold;
+  background-color: #f8f9fa;
+  padding: 12px; /* Başlık için yeterli boşluk */
+  border-bottom: 1px solid #dee2e6;
+  font-size: 1.1rem; /* Başlık boyutunu artırmak */
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 0.9rem; /* Yazı boyutunu biraz küçültmek */
+}
+
+.list-group-item img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.list-group-item a {
+  text-decoration: none;
+  color: #007bff; /* Link rengi */
+  font-weight: bold;
+  flex-grow: 1;
+  margin-right: 10px; /* Link ile tarih arasına boşluk eklemek */
+}
+
+.list-group-item a:hover {
+  text-decoration: underline; /* Üzerine gelindiğinde altı çizili */
+}
+
+.list-group-item span {
+  color: #555; /* Tarih rengi */
+}
