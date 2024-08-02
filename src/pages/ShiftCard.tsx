@@ -4,16 +4,16 @@ import Footer from '../component/molecules/Footer'
 
 function ShiftCard() {
     return (
-    <>
-            <Navbar/>
+        <>
+            <Navbar />
 
-            
-                <div className="background" style={{
-                    backgroundImage: 'url("https://st2.depositphotos.com/2124221/46809/i/450/depositphotos_468095768-stock-photo-abstract-multicolored-background-poly-pattern.jpg")',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    height: '100%'
-                }}>
+
+            <div className="background" style={{
+                backgroundImage: 'url("https://st2.depositphotos.com/2124221/46809/i/450/depositphotos_468095768-stock-photo-abstract-multicolored-background-poly-pattern.jpg")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                height: '100%'
+            }}>
 
 
 
@@ -83,9 +83,15 @@ function ShiftCard() {
                             </div>
                         </div>
                     </div>
+                    <div className="container col-xxl-8 px-4 py-5">
+                        <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+                            <Footer />
+                        </div>
+                    </div>
+
                 </div>
-                <Footer/>
-                </div>
+
+            </div>
 
 
 
@@ -93,8 +99,8 @@ function ShiftCard() {
 
 
 
-            </>
-            )
+        </>
+    )
 }
 
-            export default ShiftCard
+export default ShiftCard

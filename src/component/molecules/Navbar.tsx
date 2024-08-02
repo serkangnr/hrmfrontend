@@ -1,7 +1,7 @@
 import React from 'react'
-import { Dropdown } from 'react-bootstrap'
+
 import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
-import DanismanlikPage from '../../pages/DanismanlikPage'
+
 import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
 
 

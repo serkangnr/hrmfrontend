@@ -18,7 +18,7 @@ function DropdownUygulamalar() {
 
 <div className="dropdown">
   <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    UYGULAMAR
+    UYGULAMALAR
   </button>
   <ul className="dropdown-menu dropdown-menu-dark">
   <li><a className="dropdown-item" href="#" onClick={personel}>Personel </a></li>

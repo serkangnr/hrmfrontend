@@ -41,7 +41,7 @@ const Home: React.FC = () => {
         `
                 }}
             />
-            <div className="background">
+            <div className=" background">
                 <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
                 <Navbar />
                 <div className="row p-5 mb-3" style={{ textAlign: "center", height: 850 }}>
@@ -61,9 +61,12 @@ const Home: React.FC = () => {
                 <div className="row">
                     <Comment/>
                 </div>
-                <div className="row mt-3  full-widt justify-content-center align-items-centerh" style={{height: '150px '}}>
-                    <Footer/>
+                <div className="container col-xxl-8 px-4 py-5">
+                    <div className="row flex-lg-row-reverse align-items-center g-2 py-5">
+                        <Footer />
+                    </div>
                 </div>
+
 
                 <div className="row" style={{ backgroundColor: "white" }}>
                     <div className="col" style={{ textAlign: "center" }}>
