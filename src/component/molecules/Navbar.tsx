@@ -1,13 +1,11 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
-<<<<<<< HEAD
+import { useNavigate } from 'react-router-dom'
 import DanismanlikPage from '../../pages/DanismanlikPage'
 import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
 
-=======
-import { useNavigate } from 'react-router-dom'
->>>>>>> f7af00d64dd5f1c3ff8140fcc4bf5cef204421c6
+
 
 function Navbar() {
   const navigate = useNavigate();
