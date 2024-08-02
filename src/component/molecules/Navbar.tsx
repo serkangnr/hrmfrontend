@@ -1,8 +1,14 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import DropdownUygulamalar from '../atoms/DropdownUygulamalar'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const backToHome = () => {
+    navigate('/');
+  }
   return (
     
 
@@ -13,7 +19,7 @@ function Navbar() {
     <div className="row sticky-top" style={{ backgroundColor: "white",}}>
 
           <div className="col-2">
-            <img src="./image/logo.jpeg" style={{ height: 100, width: 100 }} className="float-end" alt="Logo" />
+            <img onClick={backToHome} src="./image/logo.jpeg" style={{ height: 100, width: 100 }} className="float-end" alt="Logo" />
           </div>
           <div className="col-8 p-3">
             <nav className="navbar p-3"  >
