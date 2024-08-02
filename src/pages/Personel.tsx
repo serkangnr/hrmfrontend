@@ -49,7 +49,7 @@ function Personel() {
                         <div className="col-2"></div>
                         <div className="col-8">
                             <img
-                                src="images/61604fc8e2a4399ad198a8e7_personel-illustration.svg"
+                                src="./image/61604fc8e2a4399ad198a8e7_personel-illustration.svg"
                                 alt=""
                             />
                         </div>
@@ -83,7 +83,7 @@ function Personel() {
                             <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                                 <div className="col-10 col-sm-8 col-lg-6">
                                     <img
-                                        src="images/61605478db55597d39190c4b_1-1.svg"
+                                        src="./image/61605478db55597d39190c4b_1-1.svg"
                                         className="d-block mx-lg-auto img-fluid"
                                         alt="Bootstrap Themes"
                                         width="700"
@@ -240,7 +240,7 @@ function Personel() {
                                 </div>
                                 <div className="col-10 col-sm-8 col-lg-6">
                                     <img
-                                        src="images/660180638862c69404131801_mazaret izni türkçe.svg"
+                                        src="./image/660180638862c69404131801_mazaret izni türkçe.svg"
                                         className="d-block mx-lg-auto img-fluid"
                                         alt="Bootstrap Themes"
                                         width="700"
@@ -256,7 +256,7 @@ function Personel() {
                             <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                                 <div className="col-10 col-sm-8 col-lg-6">
                                     <img
-                                        src="images/img4.svg"
+                                        src="./image/img4.svg"
                                         className="d-block mx-lg-auto img-fluid"
                                         alt="Bootstrap Themes"
                                         width="700"
@@ -406,7 +406,7 @@ function Personel() {
                             </div>
                             <div className="col-10 col-sm-8 col-lg-6">
                                 <img
-                                    src="images/img5.svg"
+                                    src="./image/img5.svg"
                                     className="d-block mx-lg-auto img-fluid"
                                     alt="Bootstrap Themes"
                                     width="700"
@@ -429,12 +429,12 @@ function Personel() {
                         <div className="row">
                             <div className="col-4"></div>
                             <div className="col-8">
-                                <div className="row"> <img style={{ width: '120px' }} src="images/img6.svg" /></div>
+                                <div className="row"> <img style={{ width: '120px' }} src="./image/img6.svg" /></div>
                                 <div className="row mt-2"><label style={{ fontWeight: 'bolder', fontSize: 'x-large' }}>Yüksek Veri Güvenliği</label></div>
                                 <div className="row">
                                     <p>Kolay İK ile kullanıcılar arasındaki tüm veriler banka standartlarında SSL sertifikaları ile şifrelenir.</p>
                                 </div>
-                                <div className="row mt-5"> <img style={{ width: '120px' }} src="images/img8.svg" /></div>
+                                <div className="row mt-5"> <img style={{ width: '120px' }} src="./image/img8.svg" /></div>
                                 <div className="row mt-3"><label style={{ fontWeight: 'bolder', fontSize: 'x-large' }} >Uygun Fiyat</label></div>
                                 <div className="row mt-4">
                                     <p>Kolay İK ile kullanıcılar arasındaki tüm veriler banka standartlarında SSL sertifikaları ile şifrelenirÇalışan sayınıza göre şirketinize uygun paketleri seçin, beğenirseniz kullanın, kullandığınız kadar ödeyin..</p>
@@ -447,12 +447,12 @@ function Personel() {
                         <div className="row">
                             <div className="col-2"></div>
                             <div className="col-8">
-                                <div className="row"> <img style={{ width: '120px' }} src="images/img7.svg" /></div>
+                                <div className="row"> <img style={{ width: '120px' }} src="./image/img7.svg" /></div>
                                 <div className="row mt-2"><label style={{ fontWeight: 'bolder', fontSize: 'x-large' }} >Ücretsiz Uygulamalar</label></div>
                                 <div className="row mt-3">
                                     <p>Yemek kartı, banka entegrasyonu, fazla mesai, puantaj gibi ücretsiz uygulamaları hemen kullanın.</p>
                                 </div>
-                                <div className="row mt-5"> <img style={{ width: '120px' }} src="images/img9.svg" /></div>
+                                <div className="row mt-5"> <img style={{ width: '120px' }} src="./image/img9.svg" /></div>
                                 <div className="row mt-2"><label style={{ fontWeight: 'bolder', fontSize: 'x-large' }}  >Ücretsiz Uygulamalar</label></div>
                                 <div className="row mt-3">
                                     <p>Yemek kartı, banka entegrasyonu, fazla mesai, puantaj gibi ücretsiz uygulamaları hemen kullanın.</p>
