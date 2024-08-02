@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Register() {
+  //düzenlenecek
   return (
     <main>
       <div className="container">
