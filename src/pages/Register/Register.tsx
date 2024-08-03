@@ -8,7 +8,7 @@ import swal from 'sweetalert2';
 function Register() {
   const dispatch: HrmDispatch = useDispatch();
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState(true);
+ 
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [personalEmail, setPersonalEmail] = useState('');
@@ -23,7 +23,7 @@ function Register() {
     })).then(data => {
       if (data.payload.code === 200) {
         swal.fire("Başarılı!", "Kullanıcı kayıt edilmiştir!", "success")
-          .then(() => setIsActive(true))
+          
       }
     })
   }
@@ -55,7 +55,7 @@ function Register() {
                       </div>
                       <div className="col-12 input-group ">
                         <input type="text" onChange={(e) => setPersonalEmail(e.target.value)} className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" />
-                        <span className="input-group-text" id="basic-addon2">@gmail.com</span>
+                        {/* <span className="input-group-text" id="basic-addon2">@gmail.com</span> */}
                         <div className="invalid-feedback">Lütfen geçerli mail adresi giriniz!</div>
                       </div>
                       <div className="col-12">
