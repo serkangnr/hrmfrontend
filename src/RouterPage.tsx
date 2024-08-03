@@ -7,7 +7,7 @@ import ChardCard from "./pages/ChardCard/ChardCard";
 import ShiftCard from "./pages/ShiftCard";
 import DanismanlikPage from "./pages/DanismanlikPage";
 import Personel from "./pages/Personel";
-import UserStoryPage from "./pages/UsersStroyPage";
+import UserStoryPage from "./pages/UserStoryPage";
 function RouterPage() {
 
 
