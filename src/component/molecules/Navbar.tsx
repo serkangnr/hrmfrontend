@@ -6,7 +6,7 @@ import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
 
 
 import { useNavigate } from 'react-router-dom'
-import UserStoryPage from '../../pages/UsersStroyPage';
+import UserStoryPage from '../../pages/UserStoryPage';
 
 
 function Navbar() {
@@ -31,7 +31,7 @@ function Navbar() {
           <div className="col-2">
             <img onClick={backToHome} src="./image/logo.jpeg" style={{ height: 100, width: 100 }} className="float-end" alt="Logo" />
           </div>
-          <div className="col-8 p-3">
+          <div className="col-8 p-2">
             <nav className="navbar p-3"  >
               <div className="container-fluid">
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
@@ -41,22 +41,22 @@ function Navbar() {
                   <DropdownDanismanliklar/>
                 </a>
                 <a className="navbar-brand" onClick={goToUserStory} style={{ fontSize: "0.75rem" }}>
-                   <UserStoryPage/> 
+                
+             <button type="button" className="btn btn-light">KULLANICI HİKAYELERİ</button>
+ 
                 </a>
-                <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
-                  KAYNAKLAR
-                </a>
-                <button type="button" className="btn btn-light" style={{ fontSize: "0.75rem" }}>
+               
+                <button type="button" className="btn btn-light" >
                   TEKLİF ALIN
                 </button>
-                <button type="button" className="btn btn-warning" style={{ fontSize: "0.75rem" }}>
+                <button type="button" className="btn btn-warning">
                   GİRİŞ YAP
                 </button>
                 
               </div>
             </nav>
           </div>
-          <div className="col-2" />
+
         </div>
     
       
