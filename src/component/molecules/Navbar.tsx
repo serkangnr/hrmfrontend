@@ -6,6 +6,7 @@ import DropdownDanismanliklar from '../atoms/DropdownDanismanliklar'
 
 
 import { useNavigate } from 'react-router-dom'
+import UserStoryPage from '../../pages/UsersStroyPage';
 
 
 function Navbar() {
@@ -13,6 +14,10 @@ function Navbar() {
 
   const backToHome = () => {
     navigate('/');
+  }
+
+  const goToUserStory = () => {
+    navigate('/userstory');
   }
   return (
     
@@ -35,8 +40,8 @@ function Navbar() {
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
                   <DropdownDanismanliklar/>
                 </a>
-                <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
-                  KULLANICI HİKAYELERİ
+                <a className="navbar-brand" onClick={goToUserStory} style={{ fontSize: "0.75rem" }}>
+                   <UserStoryPage/> 
                 </a>
                 <a className="navbar-brand" style={{ fontSize: "0.75rem" }}>
                   KAYNAKLAR
