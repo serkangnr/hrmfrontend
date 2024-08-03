@@ -49,54 +49,54 @@ function Register() {
                     </div>
                     <form className="row g-3 needs-validation" noValidate>
                       <div className="col-12 input-group">
-                        <input type="text" className="form-control" placeholder="Ad" aria-label="Ad"/>
-                          
-                          <input type="text" className="form-control" placeholder="Soyad" aria-label="Soyad"/>
-                            <div className="invalid-feedback">Lütfen adınızı ve soyadınızı giriniz!</div>
-                          </div>
-                          <div className="col-12 input-group ">
-                          <input type="text" className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2"/>
-                          <span className="input-group-text" id="basic-addon2">@gmail.com</span>
-                          </div>
-                          <div className="col-12">
-                            
-                            <input type="tel" name="tel" className="form-control" id="tel" required  placeholder='Telefon'/>
-                            <div className="invalid-feedback">Lütfen geçerli telefon numarası giriniz!</div>
-                          </div>
-                          <div className="col-12">
-                            <input type="adres" name="adres" className="form-control" id="adres" required  placeholder='Adres'/>
-                            <div className="invalid-feedback">Lütfen yaşadığınız şehri giriniz!</div>
-                          </div>
-                          <div className="col-12 ">
-                            <input type="sirket" name="adres" className="form-control" id="sirket" required  placeholder='Şirket Adı'/>
-                            <div className="invalid-feedback">Lütfen şirket adını giriniz!</div>
-                          </div>
-                          <div className="col-12 ">
-                            <input type="vergiNo" name="vergiNo" className="form-control" id="vergiNo" required  placeholder='Vergi Numarası'/>
-                            <div className="invalid-feedback">Lütfen yaşadığınız şehri giriniz!</div>
-                          </div>
-                          <div className="col-12">
-                            <div className="form-check">
-                              <input className="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required />
-                              <label className="form-check-label" htmlFor="acceptTerms">
-                              <a className='text-secondary small'> Aydınlatma Metni uyarınca kişisel verilerimin ASSİM İK tarafından işlenmesine rıza veriyorum.</a>
-                              </label>
-                              <div className="invalid-feedback">You must agree before submitting.</div>
-                            </div>
-                          </div>
-                          <div className="col-12">
-                            <button className="btn btn-primary w-100" type="submit">Hesap Oluştur</button>
-                          </div>
-                          <div className="col-12">
-                            <p className="small mb-0">Zaten hesabın var mı? <a href="pages-login.html">Giriş Yap</a></p>
-                          </div>
-                        </form>
+                        <input type="text" onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Ad" aria-label="Ad" />
+                        <input type="text" onChange={(e) => setSurname(e.target.value)} className="form-control" placeholder="Soyad" aria-label="Soyad" />
+                        <div className="invalid-feedback">Lütfen adınızı ve soyadınızı giriniz!</div>
                       </div>
-                  </div>
+                      <div className="col-12 input-group ">
+                        <input type="text" onChange={(e) => setPersonalEmail(e.target.value)} className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" />
+                        <span className="input-group-text" id="basic-addon2">@gmail.com</span>
+                        <div className="invalid-feedback">Lütfen geçerli mail adresi giriniz!</div>
+                      </div>
+                      <div className="col-12">
 
+                        <input type="tel" onChange={(e) => setPhone(e.target.value)} name="tel" className="form-control" id="tel" required placeholder='Telefon' />
+                        <div className="invalid-feedback">Lütfen geçerli telefon numarası giriniz!</div>
+                      </div>
+                      <div className="col-12">
+                        <input type="adres" onChange={(e) => setAddress(e.target.value)} name="adres" className="form-control" id="adres" required placeholder='Adres' />
+                        <div className="invalid-feedback">Lütfen yaşadığınız şehri giriniz!</div>
+                      </div>
+                      <div className="col-12 ">
+                        <input type="sirket" onChange={(e) => setCompany(e.target.value)} name="adres" className="form-control" id="sirket" required placeholder='Şirket Adı' />
+                        <div className="invalid-feedback">Lütfen şirket adını giriniz!</div>
+                      </div>
+                      <div className="col-12 ">
+                        <input type="vergiNo" onChange={(e) => setTaxNumber(e.target.value)} name="vergiNo" className="form-control" id="vergiNo" required placeholder='Vergi Numarası' />
+                        <div className="invalid-feedback">Lütfen yaşadığınız şehri giriniz!</div>
+                      </div>
+                      <div className="col-12">
+                        <div className="form-check">
+                          <input className="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required />
+                          <label className="form-check-label" htmlFor="acceptTerms">
+                            <a className='text-secondary small'> Aydınlatma Metni uyarınca kişisel verilerimin ASSİM İK tarafından işlenmesine rıza veriyorum.</a>
+                          </label>
+                          <div className="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <button onClick={register} className="btn btn-primary w-100" type="submit">Hesap Oluştur</button>
+                      </div>
+                      <div className="col-12">
+                        <p className="small mb-0">Zaten hesabın var mı? <a href="pages-login.html">Giriş Yap</a></p>
+                      </div>
+                    </form>
+                  </div>
                 </div>
+
               </div>
             </div>
+          </div>
         </section>
       </div>
     </main>
