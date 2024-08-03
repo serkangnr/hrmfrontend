@@ -8,9 +8,10 @@ import ShiftCard from "./pages/ShiftCard";
 import DanismanlikPage from "./pages/DanismanlikPage";
 import Personel from "./pages/Personel";
 import UserStoryPage from "./pages/UserStoryPage";
+import { useAppSelector } from "./store";
 function RouterPage() {
 
-
+    const isLogin = useAppSelector((state) => state.auth.isAuth);
 
     return (
         <BrowserRouter>

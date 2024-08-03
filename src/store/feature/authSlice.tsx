@@ -3,6 +3,7 @@ import { IRegisterAdmin } from "../../models/IRegisterAdmin";
 import { ILoginAdmin } from "../../models/ILoginAdmin";
 import { IResponse } from "../../models/IResponse";
 import Swal from "sweetalert2";
+import { IRegisterManager } from "../../models/IRegisterManager";
 
 
 
@@ -15,8 +16,30 @@ const initialAuthState={
     isAuth: false
 }
 
-export const fetchRegister = createAsyncThunk(
-    'auth/fetchRegister',
+export const fetchRegisterManager = createAsyncThunk(
+    'auth/fetchRegisterManager',
+    async(payload: IRegisterManager)=>{
+        const response =  await fetch('http://localhost:9090/dev/v1/auth/register-manager',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'name': payload.name,
+                'surname': payload.surname,
+                'personalEmail': payload.personalEmail,
+                'phone': payload.phone,
+                'address':payload.address,
+                'company': payload.company,
+                'taxNumber':payload.taxNumber
+            })
+        }).then(data => data.json())
+        return response;
+    }
+);
+
+export const fetchRegisterAdmin = createAsyncThunk(
+    'auth/fetchRegisterAdmin',
     async(payload: IRegisterAdmin)=>{
         const response =  await fetch('http://localhost:9090/dev/v1/auth/register-admin',{
             method: 'POST',
@@ -25,7 +48,7 @@ export const fetchRegister = createAsyncThunk(
             },
             body: JSON.stringify({
                 'name': payload.name,
-                'surname': payload.password,
+                'surname': payload.surname,
                 'personalEmail': payload.personalEmail,
                 'password': payload.password
             })
@@ -33,6 +56,9 @@ export const fetchRegister = createAsyncThunk(
         return response;
     }
 );
+
+
+
 export const fetchLogin = createAsyncThunk(
     'auth/fetchLogin',
     async(payload: ILoginAdmin)=>{
@@ -70,12 +96,19 @@ const authSlice = createSlice({
         }
     },
     extraReducers: (build)=>{
-        build.addCase(fetchRegister.pending,(state)=>{
+        build.addCase(fetchRegisterAdmin.pending,(state)=>{
             state.isLoadingRegister = true;
         });
-        build.addCase(fetchRegister.fulfilled,(state)=>{
+        build.addCase(fetchRegisterAdmin.fulfilled,(state)=>{
             state.isLoadingRegister = false;
         });
+        build.addCase(fetchRegisterManager.pending,(state)=>{
+            state.isLoadingRegister = true;
+        });
+        build.addCase(fetchRegisterManager.fulfilled,(state)=>{
+            state.isLoadingRegister = false;
+        });
+
         build.addCase(fetchLogin.pending,(state)=>{
             state.isLoadingLogin = true;
         })
