@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IRegisterAdmin } from "../../models/IRegisterAdmin";
-import { ILoginAdmin } from "../../models/ILoginAdmin";
 import { IResponse } from "../../models/IResponse";
 import Swal from "sweetalert2";
 import { IRegisterManager } from "../../models/IRegisterManager";
+import { ILogin } from "../../models/ILogin";
 
 
 
@@ -61,7 +61,7 @@ export const fetchRegisterAdmin = createAsyncThunk(
 
 export const fetchLogin = createAsyncThunk(
     'auth/fetchLogin',
-    async(payload: ILoginAdmin)=>{
+    async(payload: ILogin)=>{
         try{
         const response =  await fetch('http://localhost:9090/dev/v1/auth/login',{
                     method: 'POST',

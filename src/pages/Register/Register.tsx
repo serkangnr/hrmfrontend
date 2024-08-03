@@ -28,9 +28,18 @@ function Register() {
     })
   }
 
+  const goToLogin = () => {
+    navigate('/login');
+  }
+
   return (
-    <main>
-      <div className="container">
+    <div className="background" style={{
+      backgroundImage: 'url("https://st2.depositphotos.com/2124221/46809/i/450/depositphotos_468095768-stock-photo-abstract-multicolored-background-poly-pattern.jpg")',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100%'
+  }}>
+     <div className="container">
         <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
           <div className="container">
             <div className="row justify-content-center">
@@ -41,7 +50,7 @@ function Register() {
 
                 </div>
                 {/* End Logo */}
-                <div className="card mb-3">
+                <div className="card mb-3" style={{backgroundColor: 'rgba(255, 255, 255,0.3)'}}>
                   <div className="card-body">
                     <div className="pt-4 pb-2">
                       <h5 className="card-title text-center pb-0 fs-4">Hesap Oluştur</h5>
@@ -88,7 +97,7 @@ function Register() {
                         <button onClick={register} className="btn btn-primary w-100" type="submit">Hesap Oluştur</button>
                       </div>
                       <div className="col-12">
-                        <p className="small mb-0">Zaten hesabın var mı? <a href="pages-login.html">Giriş Yap</a></p>
+                        <p className="small mb-0">Zaten hesabın var mı? <a onClick={goToLogin} href="#">Giriş Yap</a></p>
                       </div>
                     </form>
                   </div>
@@ -99,7 +108,9 @@ function Register() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
+     
+    
   );
 }
 

@@ -19,6 +19,15 @@ function Navbar() {
   const goToUserStory = () => {
     navigate('/userstory');
   }
+  const goToLogin = () => {
+    navigate('/login');
+  }
+  const goToRegister = () => {
+    navigate('/register');
+  }
+
+
+
   return (
     
 
@@ -46,10 +55,10 @@ function Navbar() {
  
                 </a>
                
-                <button type="button" className="btn btn-light" >
+                <button onClick={goToRegister} type="button" className="btn btn-light" >
                   TEKLİF ALIN
                 </button>
-                <button type="button" className="btn btn-warning">
+                <button onClick={goToLogin} type="button" className="btn btn-warning">
                   GİRİŞ YAP
                 </button>
                 
