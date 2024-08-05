@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { HrmDispatch } from '../../store';
+import { HrmDispatch } from '../store';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchRegisterManager } from '../../store/feature/authSlice';
+import { fetchRegisterManager } from '../store/feature/authSlice';
 import swal from 'sweetalert2';
 
 function Register() {
