@@ -4,6 +4,7 @@ import { IResponse } from "../../models/IResponse";
 import Swal from "sweetalert2";
 import { IRegisterManager } from "../../models/IRegisterManager";
 import { ILogin } from "../../models/ILogin";
+import { IVerifyEmail } from "../../models/IVerifyEmail";
 
 
 
@@ -13,13 +14,15 @@ const initialAuthState={
     user: [],
     isLoadingLogin: false,
     isLoadingRegister: false,
-    isAuth: false
+    isAuth: false,
+    email: '',
+    password: ''
 }
 
 export const fetchRegisterManager = createAsyncThunk(
     'auth/fetchRegisterManager',
     async(payload: IRegisterManager)=>{
-        const response =  await fetch('http://localhost:9090/dev/v1/auth/register-manager',{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/register-manager',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +30,7 @@ export const fetchRegisterManager = createAsyncThunk(
             body: JSON.stringify({
                 'name': payload.name,
                 'surname': payload.surname,
-                'personalEmail': payload.personalEmail,
+                'email': payload.email,
                 'phone': payload.phone,
                 'address':payload.address,
                 'company': payload.company,
@@ -41,7 +44,7 @@ export const fetchRegisterManager = createAsyncThunk(
 export const fetchRegisterAdmin = createAsyncThunk(
     'auth/fetchRegisterAdmin',
     async(payload: IRegisterAdmin)=>{
-        const response =  await fetch('http://localhost:9090/dev/v1/auth/register-admin',{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/register-admin',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +52,7 @@ export const fetchRegisterAdmin = createAsyncThunk(
             body: JSON.stringify({
                 'name': payload.name,
                 'surname': payload.surname,
-                'personalEmail': payload.personalEmail,
+                'email': payload.email,
                 'password': payload.password
             })
         }).then(data => data.json())
@@ -63,13 +66,13 @@ export const fetchLogin = createAsyncThunk(
     'auth/fetchLogin',
     async(payload: ILogin)=>{
         try{
-        const response =  await fetch('http://localhost:9090/dev/v1/auth/login',{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/login',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        'businessEmail': payload.businessEmail,
+                        'businessEmail': payload.email,
                         'password': payload.password
                     })
                 }).then(data=> data.json())
@@ -81,6 +84,23 @@ export const fetchLogin = createAsyncThunk(
       
     }
 );
+
+export const fetchVerifyEmail = createAsyncThunk(
+    'auth/fetchVerifyEmail',
+    async(payload: IVerifyEmail)=>{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/verifyEmail',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'email': payload.email,
+                'password' : payload.password
+            })
+        }).then(data => data.json())
+        return response;
+    }
+)
 
 const authSlice = createSlice({
     name: 'auth',
@@ -126,6 +146,12 @@ const authSlice = createSlice({
         build.addCase(fetchLogin.rejected,(state,action)=>{
             console.log(action.payload);
         });
+        build.addCase(fetchVerifyEmail.fulfilled,(state,action : PayloadAction<IResponse>)=>{
+            state.isAuth = true;
+            state.email = action.payload.data;
+            state.password = action.payload.data
+            Swal.fire('Başarılı!', 'Email adresiniz onaylanmıştır', 'success');
+        })
     }
 
 

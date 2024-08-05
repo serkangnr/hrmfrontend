@@ -11,12 +11,12 @@ function Login() {
     const dispatch: HrmDispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [businessEmail, setBusinessEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
 
     const login = () => {
-        dispatch(fetchLogin({ businessEmail, password })).then(data => {
+        dispatch(fetchLogin({ email, password })).then(data => {
             if (data.payload.code === 200) {
 
                 if (data.payload.data.role === 'MANAGER') {
@@ -77,7 +77,7 @@ function Login() {
                                                 <div className="col-12">
 
                                                     <div className="input-group has-validation">
-                                                        <input onChange={(e) => setBusinessEmail(e.target.value)}
+                                                        <input onChange={(e) => setEmail(e.target.value)}
                                                             type="text"
                                                             name="email"
                                                             className="form-control"

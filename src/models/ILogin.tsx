@@ -1,6 +1,6 @@
 
 
 export interface ILogin{
-    businessEmail: string,
+    email: string,
     password: string
 }
