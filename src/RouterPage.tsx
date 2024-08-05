@@ -1,14 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import ChardCard from "./pages/ChardCard/ChardCard";
 import ShiftCard from "./pages/ShiftCard";
 import DanismanlikPage from "./pages/DanismanlikPage";
 import Personel from "./pages/Personel";
 import UserStoryPage from "./pages/UserStoryPage";
 import { useAppSelector } from "./store";
+import ManagerDashboard from "./pages/ManagerDashboard";
 function RouterPage() {
 
     const isLogin = useAppSelector((state) => state.auth.isAuth);
@@ -25,6 +26,7 @@ function RouterPage() {
                 <Route path="/danismanlik" element={<DanismanlikPage />} />
                 <Route path="/personel" element={<Personel />} />
                 <Route path="/userstory" element={<UserStoryPage />} />
+                <Route path="/mdashboard" element={<ManagerDashboard />} />
 
             </Routes>
         </BrowserRouter>

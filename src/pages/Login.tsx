@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { HrmDispatch } from '../../store';
-import { fetchLogin } from '../../store/feature/authSlice';
+import { HrmDispatch } from '../store';
+import { fetchLogin } from '../store/feature/authSlice';
+import Swal from 'sweetalert2';
 
 
 
@@ -17,8 +18,21 @@ function Login() {
     const login = () => {
         dispatch(fetchLogin({ businessEmail, password })).then(data => {
             if (data.payload.code === 200) {
-                navigate('/dashboard');
-                console.log(data);
+
+                if (data.payload.data.role === 'MANAGER') {
+                    navigate('/mdashboard'); 
+                    console.log(data);
+                }
+                else if (data.payload.data.role === 'ADMIN') {
+                    navigate('/dashboard');
+                    console.log(data);
+                }
+                else if (data.payload.data.role === 'EMPLOYEE') {
+                    navigate('/dashboard');
+                    console.log(data);
+                }
+            }else{
+                Swal.fire('Hata!',data.payload.message,'error');
             }
 
         })
@@ -49,7 +63,7 @@ function Login() {
                                         <img src="./image/logo.png" style={{ width: "200px", height: "200px" }} />
                                     </div>
                                     {/* End Logo */}
-                                    <div className="card mb-3" style={{backgroundColor: 'rgba(255, 255, 255,0.3)'}}>
+                                    <div className="card mb-3" style={{ backgroundColor: 'rgba(255, 255, 255,0.3)' }}>
                                         <div className="card-body">
                                             <div className="pt-4 pb-2">
                                                 <h5 className="card-title text-center pb-0 fs-4">
