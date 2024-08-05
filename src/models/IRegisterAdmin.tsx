@@ -1,7 +1,7 @@
 export interface IRegisterAdmin{
     name: string;
     surname: string;
-    personalEmail: string
+    email: string
     password: string;
 
     

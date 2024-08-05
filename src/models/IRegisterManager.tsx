@@ -1,7 +1,7 @@
 export interface IRegisterManager{
     name: string;
     surname: string;
-    personalEmail: string
+    email: string
     phone: string,
     address: string,
     company: string,

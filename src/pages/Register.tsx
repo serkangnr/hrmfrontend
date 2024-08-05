@@ -11,7 +11,7 @@ function Register() {
  
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
-  const [personalEmail, setPersonalEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [company, setCompany] = useState('');
@@ -19,7 +19,7 @@ function Register() {
 
   const register = () => {
     dispatch(fetchRegisterManager({
-      name, surname, personalEmail, phone, address, company, taxNumber
+      name, surname, email, phone, address, company, taxNumber
     })).then(data => {
       if (data.payload.code === 200) {
         swal.fire("Başarılı!", "Kullanıcı kayıt edilmiştir!", "success")
@@ -56,14 +56,14 @@ function Register() {
                       <h5 className="card-title text-center pb-0 fs-4">Hesap Oluştur</h5>
                       <p className="text-center small">Kişisel bilgilerinizi girerek hesabınızı oluşturun</p>
                     </div>
-                    <form className="row g-3 needs-validation" noValidate>
+                    <div className="row g-3 needs-validation" >
                       <div className="col-12 input-group">
                         <input type="text" onChange={(e) => setName(e.target.value)} className="form-control" placeholder="Ad" aria-label="Ad" />
                         <input type="text" onChange={(e) => setSurname(e.target.value)} className="form-control" placeholder="Soyad" aria-label="Soyad" />
                         <div className="invalid-feedback">Lütfen adınızı ve soyadınızı giriniz!</div>
                       </div>
                       <div className="col-12 input-group ">
-                        <input type="text" onChange={(e) => setPersonalEmail(e.target.value)} className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" />
+                        <input type="text" onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" />
                         {/* <span className="input-group-text" id="basic-addon2">@gmail.com</span> */}
                         <div className="invalid-feedback">Lütfen geçerli mail adresi giriniz!</div>
                       </div>
@@ -99,7 +99,7 @@ function Register() {
                       <div className="col-12">
                         <p className="small mb-0">Zaten hesabın var mı? <a onClick={goToLogin} href="#">Giriş Yap</a></p>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
 
