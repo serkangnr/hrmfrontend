@@ -95,7 +95,7 @@ export const fetchVerifyEmail = createAsyncThunk(
             },
             body: JSON.stringify({
                 'email': payload.email,
-                'password' : payload.password
+              
             })
         }).then(data => data.json())
         return response;
@@ -160,5 +160,3 @@ export const {
     setToken,clearToken
 } = authSlice.actions;
 export default authSlice.reducer;
-
-
