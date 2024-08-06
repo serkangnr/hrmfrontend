@@ -11,6 +11,7 @@ import UserStoryPage from "./pages/UserStoryPage";
 import { useAppSelector } from "./store";
 import ManagerDashboard from "./pages/ManagerDashboard";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
+import AdminDashboard from "./pages/AdminDashboard";
 function RouterPage() {
 
     const isLogin = useAppSelector((state) => state.auth.isAuth);
@@ -29,6 +30,7 @@ function RouterPage() {
                 <Route path="/userstory" element={<UserStoryPage />} />
                 <Route path="/mdashboard" element={<ManagerDashboard />} />
                 <Route path="/api/v1/auth/verifyEmail" element={<VerifyEmailPage />} />
+                <Route path="/adashboard" element={<AdminDashboard />} />
 
 
             </Routes>
