@@ -12,6 +12,7 @@ import { useAppSelector } from "./store";
 import ManagerDashboard from "./pages/ManagerDashboard";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import AdminDashboard from "./pages/AdminDashboard";
+import OnayBekleyenler from "./pages/OnayBekleyenler";
 function RouterPage() {
 
     const isLogin = useAppSelector((state) => state.auth.isAuth);
@@ -31,6 +32,7 @@ function RouterPage() {
                 <Route path="/mdashboard" element={<ManagerDashboard />} />
                 <Route path="/api/v1/auth/verifyEmail" element={<VerifyEmailPage />} />
                 <Route path="/adashboard" element={<AdminDashboard />} />
+                <Route path="/onaybekleyenler" element={<OnayBekleyenler />} />
 
 
             </Routes>
