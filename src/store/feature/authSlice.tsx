@@ -16,7 +16,8 @@ const initialAuthState={
     isLoadingRegister: false,
     isAuth: false,
     email: '',
-    password: ''
+    password: '',
+    notificationCount: 0
 }
 
 export const fetchRegisterManager = createAsyncThunk(
@@ -102,6 +103,22 @@ export const fetchVerifyEmail = createAsyncThunk(
     }
 )
 
+export const fetchNotificationCount = createAsyncThunk(
+    'auth/fetchNotificationCount',
+    async()=>{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/pendingNotificationCount',{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        
+        
+        .then(data => data.json())
+        return response;
+    }
+)
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: initialAuthState,
@@ -152,6 +169,9 @@ const authSlice = createSlice({
             state.password = action.payload.data
             Swal.fire('Başarılı!', 'Email adresiniz onaylanmıştır', 'success');
         })
+        .addCase(fetchNotificationCount.fulfilled, (state, action: PayloadAction<number>) => {
+            state.notificationCount = action.payload;
+        });
     }
 
 

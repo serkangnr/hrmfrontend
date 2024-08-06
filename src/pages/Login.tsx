@@ -24,7 +24,7 @@ function Login() {
                     console.log(data);
                 }
                 else if (data.payload.data.role === 'ADMIN') {
-                    navigate('/dashboard');
+                    navigate('/adashboard');
                     console.log(data);
                 }
                 else if (data.payload.data.role === 'EMPLOYEE') {
