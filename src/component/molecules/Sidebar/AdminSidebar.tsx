@@ -4,16 +4,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { HrmDispatch, RootState, useAppSelector } from '../../../store';
 import { fetchNotificationCount } from '../../../store/feature/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
 
     const dispatch: HrmDispatch = useDispatch();
     const notificationCount = useAppSelector(state => state.auth.notificationCount);
-
+    const navigate = useNavigate();
+    const goToOnayBekleyenler = () => {
+        navigate('/onaybekleyenler');
+    }
     useEffect(() => {
         dispatch(fetchNotificationCount() as any); 
     }, [dispatch]);
-
+   
     return (
         <>
             <aside id="sidebar" className="sidebar">
@@ -33,8 +37,8 @@ function Sidebar() {
                         </a>
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                                <a href="components-alerts.html">
-                                    <i className="bi bi-circle"></i><span><button type="button" className="btn btn-secondary">
+                                <a href="#">
+                                    <i className="bi bi-circle"></i><span>< button onClick={goToOnayBekleyenler} type="button" className="btn btn-secondary">
                                         Onay Bekleyenler 
                                         {notificationCount > 0 && (
                                             <span className="badge text-bg-danger">
