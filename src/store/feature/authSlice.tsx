@@ -5,19 +5,28 @@ import Swal from "sweetalert2";
 import { IRegisterManager } from "../../models/IRegisterManager";
 import { ILogin } from "../../models/ILogin";
 import { IVerifyEmail } from "../../models/IVerifyEmail";
+import { IVerifyList } from "../../models/IVerifyList";
+
 
 
 
 
 const initialAuthState={
     token: '',
+    id: 0,
     user: [],
     isLoadingLogin: false,
     isLoadingRegister: false,
     isAuth: false,
     email: '',
     password: '',
-    notificationCount: 0
+    notificationCount: 0,
+    verifyManagerList: [] as IVerifyList[],
+    isLoadingConfirm: false,
+    isLoadingDisConfirm: false,
+    
+    
+
 }
 
 export const fetchRegisterManager = createAsyncThunk(
@@ -119,6 +128,56 @@ export const fetchNotificationCount = createAsyncThunk(
     }
 )
 
+export const fetchPendingManagers = createAsyncThunk(
+    'auth/fetchPendingManagers',
+    async () => {
+        const response = await fetch('http://localhost:9090/api/v1/auth/pendingManagers', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log('API Response:', data); // API yanıtını kontrol et
+        return data;
+    }
+);
+
+export const fetchConfirmManager = createAsyncThunk(
+    'auth/fetchConfirmManager',
+    async(id:number)=>{
+        const response =  await fetch(`http://localhost:9090/api/v1/auth/confirmManager/${id}`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'id': id,
+              
+            })
+        }).then(data => data.json())
+        return response;
+    }
+)
+
+export const fetchDisConfirmManager = createAsyncThunk(
+    'auth/fetchDisConfirmManager',
+    async (id: number) => {
+        const response = await fetch(`http://localhost:9090/api/v1/auth/disconfirmManager/${id}` , {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'id': id,
+            })
+        });
+
+        const data = await response.json();
+        return data;
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: initialAuthState,
@@ -171,6 +230,47 @@ const authSlice = createSlice({
         })
         .addCase(fetchNotificationCount.fulfilled, (state, action: PayloadAction<number>) => {
             state.notificationCount = action.payload;
+        })
+        .addCase(fetchPendingManagers.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.verifyManagerList = action.payload.data; // verifyManagerList'e veri atama
+        })
+
+
+        .addCase(fetchConfirmManager.pending, (state) => {
+            // İşlem başlatıldığında yapılacaklar (isteğe bağlı)
+            state.isLoadingConfirm = true; // Eğer bir loading state'iniz varsa kullanın
+        })
+        .addCase(fetchConfirmManager.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.isLoadingConfirm = false;
+            if (action.payload.code === 200) {
+                // Başarılı yanıt durumunda yapılacak işlemler
+                Swal.fire('Başarı!', 'Yönetici başarıyla onaylandı.', 'success');
+                // İsteğe bağlı: Onaylanan yöneticiyi veya ilgili veriyi state'e ekleyebilirsiniz
+            } else {
+                Swal.fire('Hata!', action.payload.message, 'error');
+            }
+        })
+        .addCase(fetchConfirmManager.rejected, (state, action) => {
+            state.isLoadingConfirm = false;
+            // Hata durumunda yapılacak işlemler
+            console.error('Yönetici onaylama işlemi başarısız:', action.error.message);
+            Swal.fire('Hata!', 'Yönetici onaylama işlemi başarısız.', 'error');
+        })
+        .addCase(fetchDisConfirmManager.pending, (state) => {
+            state.isLoadingDisConfirm = true; // İşlem başlatıldığında yapılacaklar (isteğe bağlı)
+        })
+        .addCase(fetchDisConfirmManager.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.isLoadingDisConfirm = false;
+            if (action.payload.code === 200) {
+                Swal.fire('Başarı!', 'Yönetici başarıyla reddedildi.', 'success');
+            } else {
+                Swal.fire('Hata!', action.payload.message, 'error');
+            }
+        })
+        .addCase(fetchDisConfirmManager.rejected, (state, action) => {
+            state.isLoadingDisConfirm = false;
+            console.error('Yönetici reddetme işlemi başarısız:', action.error.message);
+            Swal.fire('Hata!', 'Yönetici reddetme işlemi başarısız.', 'error');
         });
     }
 
