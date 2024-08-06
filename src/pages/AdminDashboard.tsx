@@ -8,9 +8,10 @@ import BirtdayCard from '../component/molecules/birthdayCard/BirtdayCard'
 import PermitCard from '../component/molecules/PermitCard/PermitCard'
 import Holiday from '../component/molecules/HolidayCards/Holiday'
 import AdminSidebar from '../component/molecules/Sidebar/AdminSidebar'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
-  //yenilendi
+ 
   const leaveData = {
     totalDays: 15,
     forwardDays: 3,
