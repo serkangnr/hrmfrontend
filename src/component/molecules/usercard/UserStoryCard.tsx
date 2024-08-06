@@ -18,7 +18,7 @@ function UserStoryCard(props:IUserStoryCard) {
                                     
                                     <div className="card shadow-sm justify-content-center align-items-center">
 
-                                        <img style={{ width: '400px', height: '500px' }} src={props.imageUrl} className="card-img-top"  />
+                                        <img style={{ width: '200px', height: '200px' }} src={props.imageUrl} className="card-img-top"  />
                                         <div className="card-body">
 
                                             <h3>{props.name}</h3>

@@ -31,86 +31,25 @@ function UserStoryPage() {
                     <div className="row py-5 bg-body-tertiary">
                         <div className="container">
                             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                                <UserStoryCard name="MERVE KORKMAZ" imageUrl="img/664c6bbdb5c284ea44a59fcc_MERVE KORKMAZ ÖZDEM FOTO - MERVE KORKMAZ-p-500.jpeg" position="İnsan Kaynakları Sorumlusu" company="VENİ VİDİ GÖZ" />
+                                <UserStoryCard name="MERVE KORKMAZ" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwiPmMw80hhFHL9gdTFQ3geolNL8Zv26bRHsG9iswvN_66LG0blB-CGB7iMvHb52JSJFc&usqp=CAU}" position="İnsan Kaynakları Sorumlusu" company="VENİ VİDİ GÖZ" />
 
-                                {/* <div className="col">
-                                    <div className="card shadow-sm justify-content-center align-items-center">
+                                
 
-                                        <img style={{ width: '400px', height: '500px' }} src="img/664c6bbdb5c284ea44a59fcc_MERVE KORKMAZ ÖZDEM FOTO - MERVE KORKMAZ-p-500.jpeg" className="card-img-top" alt="MERVE KORKMAZ" />
-                                        <div className="card-body">
-                                            <p className="card-text">İnsan Kaynakları Sorumlusu</p>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <small className="text-body-secondary">VENİ VİDİ GÖZ</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+                                <UserStoryCard name="GİZEM GÖKOĞLAN" imageUrl="https://st3.depositphotos.com/13193658/16918/i/450/depositphotos_169181706-stock-photo-pregnant-businesswoman-talking-by-phone.jpg" position="Bilgisayar Mühendisi" company="VS BİLİŞİM" />
 
-                                <UserStoryCard name="GİZEM GÖKOĞLAN" imageUrl="img/664c6d1d1b5bb725fb4078e0_IMG_5464 - Gizem Gökoğlan-p-500.jpeg" position="Bilgisayar Mühendisi" company="VS BİLİŞİM" />
+                                
 
-                                {/* <div className="col">
-                                    <div className="card shadow-sm justify-content-center align-items-center">
-                                        <img style={{ width: '400px', height: '500px' }} src="img/664c6d1d1b5bb725fb4078e0_IMG_5464 - Gizem Gökoğlan-p-500.jpeg" className="card-img-top" alt="GİZEM GÖKOĞLAN" />
-                                        <div className="card-body">
-                                            <p className="card-text">Bilgisayar Mühendisi</p>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <small className="text-body-secondary">VS BİLİŞİM</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+                                     <UserStoryCard name="ALPTEKİN BALABAN" imageUrl="https://media.istockphoto.com/id/1399565382/tr/foto%C4%9Fraf/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an.jpg?s=612x612&w=0&k=20&c=vFIwaBIZN9V-chgJyeRv3b-lcSvKuG9BoumRbCHR8nU=" position="CEO" company="NAZ TEKNİK" />
+                               
 
-                                     <UserStoryCard name="ALPTEKİN BALABAN" imageUrl="img/666320da821ff5243a5cba1e_Alptekin Profil-p-500.jpeg" position="CEO" company="NAZ TEKNİK" />
-                                {/* <div className="col">
-                                    <div className="card shadow-sm justify-content-center align-items-center">
-                                        <img style={{ width: '400px', height: '500px' }} src="img/666320da821ff5243a5cba1e_Alptekin Profil-p-500.jpeg" className="card-img-top" alt="ALPTEKİN BALABAN" />
-                                        <div className="card-body">
-                                            <p className="card-text">CEO</p>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <small className="text-body-secondary">NAZ TEKNİK</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+                               <UserStoryCard name="DÜNDAR KOÇYİĞİT" imageUrl="https://www.shutterstock.com/image-photo/young-successful-business-man-office-260nw-81356803.jpg" position="İnsan Kaynakları Yöneticisi" company="DAMSEY" />
+                              
+                                 <UserStoryCard name="İLKİZ ALP" imageUrl="https://st2.depositphotos.com/5260901/7884/i/450/depositphotos_78844016-stock-photo-attractive-female-at-coffee-shop.jpg" position="İnsan Kaynakları Müdürü" company="CADEM GRUP" />
+                                
 
-                               <UserStoryCard name="DÜNDAR KOÇYİĞİT" imageUrl="img/6667f216adccd4464ded0f91_Dündar Koçyiğit-p-500.jpg" position="İnsan Kaynakları Yöneticisi" company="DAMSEY" />
-                                {/* <div className="col">
-                                    <div className="card shadow-sm justify-content-center align-items-center">
-                                        <img style={{ width: '400px', height: '500px' }} src="img/6667f216adccd4464ded0f91_Dündar Koçyiğit-p-500.jpg" className="card-img-top" alt="DÜNDAR KOÇYİĞİT" />
-                                        <div className="card-body">
-                                            <p className="card-text">İnsan Kaynakları Yöneticisi</p>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <small className="text-body-secondary">DAMSEY</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
-                                 <UserStoryCard name="İLKİZ ALP" imageUrl="img/667bf03e84f0cb50547a84eb_ilkizalp-999x1024-p-500.jpeg" position="İnsan Kaynakları Müdürü" company="CADEM GRUP" />
-                                {/* <div className="col">
-                                    <div className="card shadow-sm justify-content-center align-items-center">
-                                        <img style={{ width: '400px', height: '500px' }} src="img/664dab374e4716cb44ad3b55_Nilay Korkmaz-p-500.jpg" className="card-img-top" alt="NİLAY KORKMAZ" />
-                                        <div className="card-body">
-                                            <p className="card-text">İnsan Kaynakları Müdürü</p>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <small className="text-body-secondary">CADEM GRUP</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+                                <UserStoryCard name="NİLAY KORKMAZ" imageUrl="https://img.cdn.haber365.com.tr/uploads/images/gallery/calisankadin1.png" position="Türkiye Operasyonlar Müdürü" company="MEDSİEN" />
 
-                                <UserStoryCard name="NİLAY KORKMAZ" imageUrl="img/664dab374e4716cb44ad3b55_Nilay Korkmaz-p-500.jpg" position="Türkiye Operasyonlar Müdürü" company="MEDSİEN" />
-
-                                {/* <div className="col">
-                                    <div className="card shadow-sm justify-content-center align-items-center">
-                                        <img style={{ width: '400px', height: '500px' }} src="img/667bf03e84f0cb50547a84eb_ilkizalp-999x1024-p-500.jpeg" className="card-img-top" alt="İLKİZ ALP" />
-                                        <div className="card-body">
-                                            <p className="card-text">Türkiye Operasyonlar Müdürü</p>
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <small className="text-body-secondary">MEDSİEN</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> */}
+                              
                             </div>
 
                         </div>
