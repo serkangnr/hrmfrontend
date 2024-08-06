@@ -5,23 +5,33 @@ import { fetchVerifyEmail } from '../store/feature/authSlice';
 import Swal from 'sweetalert2';
 import { useEffect } from 'react';
 import { useAppSelector } from '../store';
+import { useLocation, } from 'react-router-dom';
 
 function VerifyEmailPage() {
     const dispatch = useDispatch<HrmDispatch>();
-    const email = useAppSelector(state => state.auth.email)
-    const password = useAppSelector(state => state.auth.password)
-    
-
+    const location = useLocation();
+  
     useEffect(() => {
-        dispatch(fetchVerifyEmail({ email,password })).then(data => {
-            if (data.payload.code === 200) {
-                Swal.fire("Basarili!", "Mail adresiniz onaylandi.", "success")
-            }
-        })
-     
-    }, []);
-    
-    
+        const queryParams = new URLSearchParams(location.search);
+        const email = queryParams.get('email');
+
+        console.log("Email from URL: ", email);
+
+
+        if (email) {
+            dispatch(fetchVerifyEmail({ email })).then(data => {
+                console.log("Response from fetchVerifyEmail: ", data);
+                if (data.payload.code === 200) {
+                    Swal.fire("Başarılı!", "Mail adresiniz onaylandı.", "success");
+                } else {
+                    Swal.fire("Hata!", "Mail adresi doğrulanamadı.", "error");
+                }
+            });
+        }
+    }, [dispatch, location.search,]);
+
+
+
     return (
 
         <>
@@ -35,7 +45,7 @@ function VerifyEmailPage() {
                     </div>
                 </div>
 
-                
+
                 <div className="row justify-content-center align-items-center align-content-center ">
                     <div className="col-4">
 

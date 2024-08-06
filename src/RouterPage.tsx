@@ -28,7 +28,7 @@ function RouterPage() {
                 <Route path="/personel" element={<Personel />} />
                 <Route path="/userstory" element={<UserStoryPage />} />
                 <Route path="/mdashboard" element={<ManagerDashboard />} />
-                <Route path="/api/v1/auth/verifyemail" element={<VerifyEmailPage />} />
+                <Route path="/api/v1/auth/verifyEmail" element={<VerifyEmailPage />} />
 
 
             </Routes>
