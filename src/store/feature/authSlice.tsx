@@ -82,7 +82,7 @@ export const fetchLogin = createAsyncThunk(
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        'businessEmail': payload.email,
+                        'email': payload.email,
                         'password': payload.password
                     })
                 }).then(data=> data.json())
@@ -242,13 +242,7 @@ const authSlice = createSlice({
         })
         .addCase(fetchConfirmManager.fulfilled, (state, action: PayloadAction<IResponse>) => {
             state.isLoadingConfirm = false;
-            if (action.payload.code === 200) {
-                // Başarılı yanıt durumunda yapılacak işlemler
-                Swal.fire('Başarı!', 'Yönetici başarıyla onaylandı.', 'success');
-                // İsteğe bağlı: Onaylanan yöneticiyi veya ilgili veriyi state'e ekleyebilirsiniz
-            } else {
-                Swal.fire('Hata!', action.payload.message, 'error');
-            }
+            
         })
         .addCase(fetchConfirmManager.rejected, (state, action) => {
             state.isLoadingConfirm = false;
@@ -261,11 +255,7 @@ const authSlice = createSlice({
         })
         .addCase(fetchDisConfirmManager.fulfilled, (state, action: PayloadAction<IResponse>) => {
             state.isLoadingDisConfirm = false;
-            if (action.payload.code === 200) {
-                Swal.fire('Başarı!', 'Yönetici başarıyla reddedildi.', 'success');
-            } else {
-                Swal.fire('Hata!', action.payload.message, 'error');
-            }
+           
         })
         .addCase(fetchDisConfirmManager.rejected, (state, action) => {
             state.isLoadingDisConfirm = false;

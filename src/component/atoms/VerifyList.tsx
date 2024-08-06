@@ -1,18 +1,56 @@
 import React, { useEffect } from 'react'
 import { HrmDispatch, useAppSelector } from '../../store'
 import { useDispatch } from 'react-redux';
-import { fetchConfirmManager, fetchDisConfirmManager, fetchPendingManagers } from '../../store/feature/authSlice';
+import { fetchConfirmManager, fetchDisConfirmManager, fetchNotificationCount, fetchPendingManagers } from '../../store/feature/authSlice';
 import { IVerifyList } from '../../models/IVerifyList';
+import Swal from 'sweetalert2';
 
 function VerifyList(props: IVerifyList) {
     const dispatch = useDispatch<HrmDispatch>();
    
     const confirm = () => {
         dispatch(fetchConfirmManager(props.id))
+        .then((data)=>{
+            if (data.payload.code === 200) {
+                // Başarılı yanıt durumunda yapılacak işlemler
+                Swal.fire('Başarı!', 'Yönetici başarıyla onaylandı.', 'success');
+                // İsteğe bağlı: Onaylanan yöneticiyi veya ilgili veriyi state'e ekleyebilirsiniz
+            } else {
+                Swal.fire('Hata!', data.payload.message, 'error');
+            }
+        }).then(
+            ()=>{
+                dispatch(fetchPendingManagers())
+            }
+        ).then(
+            ()=>{
+                dispatch(fetchNotificationCount())
+            }
+        )
+        
     }
     const disconfirm = () => {
-        dispatch(fetchDisConfirmManager(props.id));
+        dispatch(fetchDisConfirmManager(props.id))
+        .then((data)=>{
+            if (data.payload.code === 200) {
+                Swal.fire('Başarı!', 'Yönetici başarıyla reddedildi.', 'success');
+            } else {
+                Swal.fire('Hata!', data.payload.message, 'error');
+            }
+          
+        }).then(
+            ()=>{
+                dispatch(fetchPendingManagers())
+            }
+        ).then(
+            ()=>{
+                dispatch(fetchNotificationCount())
+            }
+        )
+        
     }
+   
+  
 
     
 

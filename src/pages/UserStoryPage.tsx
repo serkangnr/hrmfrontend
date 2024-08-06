@@ -18,17 +18,15 @@ function UserStoryPage() {
                 <div className="container">
 
                     <div className="row">
-                        <div className="col-12 bg-primary text-white py-3">
+                        <div className="col-12  text-black py-3">
                             <h2>KULLANICI HİKAYELERİ</h2>
                             <p>1000'lerce insan kaynakları profesyoneli ile beraber İK'yı kolaylaştırıyoruz.</p>
-                            <div className="input-group flex-nowrap">
-                                <input type="text" className="form-control" placeholder="Kullanıcı Hikayelerinde Ara" aria-label="Search" />
-                            </div>
+                            
                         </div>
                     </div>
 
 
-                    <div className="row py-5 bg-body-tertiary">
+                    <div className="row py-5 ">
                         <div className="container">
                             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                                 <UserStoryCard name="MERVE KORKMAZ" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwiPmMw80hhFHL9gdTFQ3geolNL8Zv26bRHsG9iswvN_66LG0blB-CGB7iMvHb52JSJFc&usqp=CAU}" position="İnsan Kaynakları Sorumlusu" company="VENİ VİDİ GÖZ" />
