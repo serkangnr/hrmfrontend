@@ -6,6 +6,7 @@ import { HrmDispatch } from '../store';
 import { useDispatch } from 'react-redux';
 import { fetchRegisterAdmin } from '../store/feature/authSlice';
 import Swal from 'sweetalert2';
+import ContactCard from '../component/molecules/ContactCard';
 
 
 function AdminEkle() {
@@ -30,9 +31,9 @@ function AdminEkle() {
   return (
     <>
 
-      <div className="contaniner" >
-        <div className="row" style={{ height: '50px', backgroundColor: 'black' }}>
-
+      <div className="contaniner" style={{ backgroundColor: '#EEEEEE' }} >
+      <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
+        <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
         </div>
         <div className="row">
           <div className="col-2">
