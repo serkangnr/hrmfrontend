@@ -28,7 +28,7 @@ const holidays: Holiday[] = [
 function Holiday() {
   return (
     <>
-      <div className="card holiday-card">
+      <div className="card holiday-card shadow">
       <div className="card-header">
         <i className='bx bxs-plane-alt bx-flashing'></i> Resmi Tatiller
       </div>

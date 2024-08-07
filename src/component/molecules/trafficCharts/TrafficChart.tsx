@@ -13,7 +13,7 @@ const TrafficChart: React.FC = () => {
         trigger: 'item',
       },
       legend: {
-        top: '5%',
+        top: '1%',
         left: 'center',
       },
       series: [
@@ -29,7 +29,7 @@ const TrafficChart: React.FC = () => {
           emphasis: {
             label: {
               show: true,
-              fontSize: '18',
+              fontSize: '15',
               fontWeight: 'bold',
             },
           },

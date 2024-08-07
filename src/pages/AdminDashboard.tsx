@@ -41,7 +41,7 @@ function Dashboard() {
               <div className="col-4 p-4">
                 <div className="row">
                   <UserCard name="Elif" imageUrl="https://media.licdn.com/dms/image/D4D12AQFGymRSxZDcxQ/article-cover_image-shrink_600_2000/0/1700413524614?e=2147483647&v=beta&t=KTR5NLBDWYJjw_-_Mtq3Yqu322M5BXQVBL0TJ9sjvXU"
-                    manager="Ahmet" startDate="01.01.2023" position="Yonetici" cardLink1="https://picsum.photos/200/300"
+                    birthDate='01.01.2000' startDate="01.01.2023" position="Yonetici" cardLink1="https://picsum.photos/200/300"
                     cardLink2="https://picsum.photos/200/300" />
                 </div>
                 <div className="row">

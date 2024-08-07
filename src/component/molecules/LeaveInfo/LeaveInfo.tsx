@@ -19,7 +19,7 @@ function LeaveInfo(props: LeaveInfoProps) {
   const { totalDays, forwardDays, usedDays, leaves } = props;
 
   return (
-    <Card className='leave-card' >
+    <Card className='leave-card shadow'  >
     <i className="fa-solid fa-plane"></i>  <Card.Header>İzin Bilgilerim  </Card.Header>
       
       <Card.Body>
