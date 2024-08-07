@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { fetchAdminList } from '../store/feature/adminSlice';
 import AdminListTablo from '../component/atoms/AdminListTablo';
+import ContactCard from '../component/molecules/ContactCard';
 
 function AdminList() {
 
@@ -27,9 +28,9 @@ function AdminList() {
         <>
 
             <div className="contaniner">
-                <div className="row" style={{ height: '50px', backgroundColor: 'black' }}>
-
-                </div>
+            <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
+        <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
+        </div>
                 <div className="row">
                     <div className="col-2">
 
@@ -39,21 +40,24 @@ function AdminList() {
                         <div className="row">
                             <table className="table table-dark table-striped mt-5">
                                 <thead>
+                                    <tr>
+                                    <th colSpan={8} className="table-active  "><h1 className='text-center' >Admin Listesi</h1></th>
+                                    </tr>
 
-
-                                    <th colSpan={7} className="table-active  "><h1 className='text-center' >Admin Listesi</h1></th>
+                                    
 
 
                                 </thead>
                                 <thead>
                                     <tr>
-                                         
+                                       
                                         <th scope="col">İsim</th>
                                         <th scope="col">Soyisim</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Adres</th>
                                         <th scope="col">Telefon</th>
                                         <th scope="col">Avatar</th>
+                                        <th scope="col"></th>
                                         
                                     </tr>
                                 </thead>
@@ -64,6 +68,7 @@ function AdminList() {
                                           
                                             <AdminListTablo
                                                 key={index}
+                                                id={admin.id}
                                                 name={admin.name}
                                                 surname={admin.surname}
                                                 email={admin.email}

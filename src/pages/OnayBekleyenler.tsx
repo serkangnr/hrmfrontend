@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { fetchConfirmManager, fetchPendingManagers } from '../store/feature/authSlice';
 import { IVerifyList } from '../models/IVerifyList';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ContactCard from '../component/molecules/ContactCard';
 
 function OnayBekleyenler() {
 
@@ -36,9 +37,9 @@ function OnayBekleyenler() {
             <>
 
                 <div className="contaniner ">
-                    <div className="row" style={{ height: '50px', backgroundColor: 'black' }}>
-
-                    </div>
+                <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
+        <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
+        </div>
                     <div className="row">
                         <div className="col-2">
 

@@ -9,6 +9,7 @@ import PermitCard from '../component/molecules/PermitCard/PermitCard'
 import Holiday from '../component/molecules/HolidayCards/Holiday'
 import AdminSidebar from '../component/molecules/Sidebar/AdminSidebar'
 import { useNavigate } from 'react-router-dom'
+import ContactCard from '../component/molecules/ContactCard'
 
 function Dashboard() {
  
@@ -28,8 +29,8 @@ function Dashboard() {
     <>
 
       <div className="contaniner">
-        <div className="row" style={{ height: '50px', backgroundColor: 'black' }}>
-          
+      <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
+        <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
         </div>
         <div className="row">
           <div className="col-2">

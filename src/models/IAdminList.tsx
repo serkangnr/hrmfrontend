@@ -1,8 +1,8 @@
 export interface IAdminList{
 
     
-    // id:string,
-    // authId:number,
+    id?:string,
+    authId?:number,
     name:string,
     surname:string,
     email:string,

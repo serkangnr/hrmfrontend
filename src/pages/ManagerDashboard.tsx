@@ -31,7 +31,7 @@ function Dashboard() {
     <>
 
       <div className="contaniner " style={{ backgroundColor: '#EEEEEE' }}>
-        <div className="row shadow" style={{ height: '50px', backgroundColor: 'EEEEEE' }}>
+        <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
         <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
         </div>
         <div className="row shadow">
