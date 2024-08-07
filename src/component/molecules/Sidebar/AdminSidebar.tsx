@@ -14,6 +14,12 @@ function Sidebar() {
     const goToOnayBekleyenler = () => {
         navigate('/onaybekleyenler');
     }
+    const goToAdminList = () => {
+        navigate('/adminlist');
+    }
+    const goToAdminEkle = () => {
+        navigate('/adminekle');
+    }
     useEffect(() => {
         dispatch(fetchNotificationCount() as any); 
     }, [dispatch]);
@@ -36,9 +42,9 @@ function Sidebar() {
                             <i className="bi bi-menu-button-wide"></i><span><i className="fa-solid fa-users"></i>Şirketler</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
+                            
                                 <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button onClick={goToOnayBekleyenler} type="button" className="btn btn-secondary">
+                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} onClick={goToOnayBekleyenler} type="button" className="btn btn-secondary mt-2">
                                         Onay Bekleyenler 
                                         {notificationCount > 0 && (
                                             <span className="badge text-bg-danger">
@@ -47,22 +53,13 @@ function Sidebar() {
                                         )}
                                     </button></span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="components-accordion.html">
-                                    <i className="bi bi-circle"></i><span>Accordion</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components-badges.html">
-                                    <i className="bi bi-circle"></i><span>Badges</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components-breadcrumbs.html">
-                                    <i className="bi bi-circle"></i><span>Breadcrumbs</span>
-                                </a>
-                            </li>
+                                <a href="#">
+                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                    Şirket Listesi
+                                    </button></span>
+                                </a>  
+                            
+                           
                             
                         </ul>
                     </li>
@@ -138,24 +135,31 @@ function Sidebar() {
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-gem"></i><span><i className="fa-solid fa-ellipsis"></i>Admin İşlemleri</span><i className="bi bi-chevron-down ms-auto"></i>
+                            <i className="bi bi-gem"></i><span><i className="fa-solid fa-user-gear"></i>Admin İşlemleri</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="icons-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
-                                <a href="icons-bootstrap.html">
-                                    <i className="bi bi-circle"></i><span>Admin Ekle</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="icons-remix.html">
-                                    <i className="bi bi-circle"></i><span>Admin Sil</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="icons-boxicons.html">
-                                    <i className="bi bi-circle"></i><span>Admin Düzenle</span>
-                                </a>
-                            </li>
+                            
+                            <a href="#">
+                                    <i className="bi bi-circle"></i><span>< button onClick={goToAdminEkle}  style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                    Admin Ekle
+                                    </button></span>
+                                </a>                               
+                           
+                            
+                            <a href="#">
+                                    <i className="bi bi-circle"></i><span>< button onClick={goToAdminList} style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                    Admin Listesi
+                                    </button></span>
+                                </a>                               
+                           
+                            
+                            <a href="#">
+                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                    Admin Düzenle
+                                    </button></span>
+                                </a>                               
+                            
+                          
                         </ul>
                     </li>
 
