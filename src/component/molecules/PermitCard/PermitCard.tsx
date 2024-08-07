@@ -27,7 +27,7 @@ const users: User[] = [
 
 function PermitCard() {
   return (
-    <div className="card leave-card">
+    <div className="card leave-card shadow">
       <div className="card-header">
       <i className="fa-solid fa-plane"></i> Yaklaşan İzinler
       </div>

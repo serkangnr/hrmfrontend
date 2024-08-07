@@ -29,7 +29,7 @@ const users: User[] = [
 function BirtdayCard() {
   return (
     <>
-      <div className="card birthday-card">
+      <div className="card birthday-card shadow">
         <div className="card-header">
         <i className="fa-solid fa-cake-candles"></i>   Yaklaşan Doğum Günleri
         </div>
