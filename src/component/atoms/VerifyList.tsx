@@ -56,7 +56,7 @@ function VerifyList(props: IVerifyList) {
 
     
     
-    console.log(props.id);
+  
     return (
         <>
 

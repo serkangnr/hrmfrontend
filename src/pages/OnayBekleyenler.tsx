@@ -5,6 +5,7 @@ import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
 import { fetchConfirmManager, fetchPendingManagers } from '../store/feature/authSlice';
 import { IVerifyList } from '../models/IVerifyList';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function OnayBekleyenler() {
 
@@ -34,7 +35,7 @@ function OnayBekleyenler() {
         return (
             <>
 
-                <div className="contaniner">
+                <div className="contaniner ">
                     <div className="row" style={{ height: '50px', backgroundColor: 'black' }}>
 
                     </div>
@@ -42,10 +43,20 @@ function OnayBekleyenler() {
                         <div className="col-2">
 
                             <AdminSidebar /> </div>
-                        <div className="col-9">
+                        <div className="col-9 ">
+                            
+                            
+                            
+                           
+                                
+                                <table className="table table-dark table-striped  mt-5" >
+                                   <thead>
+                                        
 
-                            <div className="row">
-                                <table className="table table-dark table-striped mt-5">
+                                            <th colSpan={7} className="table-active  "><h1 className='text-center' >Onay Bekleyen Şirketler</h1></th>
+                                           
+                                        
+                                    </thead>
                                     <thead>
                                         <tr>
 
@@ -77,6 +88,8 @@ function OnayBekleyenler() {
                                     </tbody>
                                 </table>
                             </div>
+                                
+                              
 
 
 
@@ -84,7 +97,7 @@ function OnayBekleyenler() {
                     </div>
 
 
-                </div>
+                
 
 
 
