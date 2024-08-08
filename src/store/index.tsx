@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import React from 'react'
-import authSlice from './feature/authSlice'
+
 import { useSelector } from 'react-redux';
-import { adminSlice } from './feature';
+import { adminSlice,authSlice,companySlice } from './feature';
 
 const store = configureStore({
   reducer:{
     auth:authSlice,
-    admin:adminSlice
+    admin:adminSlice,
+    company:companySlice
   }
 });
 

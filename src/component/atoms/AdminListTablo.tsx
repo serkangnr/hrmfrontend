@@ -4,6 +4,7 @@ import { HrmDispatch } from "../../store";
 import { fetchAdminList, fetchDeleteAdmin } from "../../store/feature/adminSlice";
 import { IAdminList } from "../../models/IAdminList";
 import Swal from "sweetalert2";
+import EditAdminPopup from "../molecules/EditAdminPopup";
 
 function AdminListTablo(props: IAdminList) {
     const dispatch = useDispatch<HrmDispatch>();
@@ -31,6 +32,10 @@ function AdminListTablo(props: IAdminList) {
             Swal.fire('Hata!', 'Admin ID mevcut değil.', 'error');
         }
     };
+    const editAdmin = () => {
+        <EditAdminPopup/>
+    }
+
 
 
     return (
@@ -47,7 +52,12 @@ function AdminListTablo(props: IAdminList) {
                 <td>{props.avatar}</td>
                 <td>
                 <button type="button" className="btn btn-danger" onClick={deleteAdmin}>Sil</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {/* <button type="button" className="btn btn-warning" onClick={editAdmin}>Duzenle</button> */}
+                {/* <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" onClick={editAdmin}>Duzenle</button> */}
+                <EditAdminPopup/>
                 </td>
+             
              
             </tr>
             
