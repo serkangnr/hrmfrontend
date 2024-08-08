@@ -15,13 +15,10 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OnayBekleyenler from "./pages/OnayBekleyenler";
 import AdminList from "./pages/AdminList";
 import AdminEkle from "./pages/AdminEkle";
-<<<<<<< HEAD
-import UpdateManager from "./pages/UpdateManager";
 
-=======
 import CompanyListPage from "./pages/CompanyList";
 import EditAdminPage from "./pages/EditAdminPage";
->>>>>>> master
+
 function RouterPage() {
 
     const isLogin = useAppSelector((state) => state.auth.isAuth);
@@ -44,12 +41,10 @@ function RouterPage() {
                 <Route path="/onaybekleyenler" element={<OnayBekleyenler />} />
                 <Route path="/adminlist" element={<AdminList />} />
                 <Route path="/adminekle" element={<AdminEkle />} />
-<<<<<<< HEAD
-                <Route path="/updatemanager" element={<UpdateManager />} />
-=======
+
                 <Route path="/sirketlistesi" element={<CompanyListPage />} />
                 <Route path="/edit-admin" element={<EditAdminPage />} />
->>>>>>> master
+
 
 
             </Routes>
