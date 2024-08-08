@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IUpdateManager } from '../models/IUpdateManager'
 import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
@@ -13,8 +13,16 @@ function UpdateManager() {
     const token = useAppSelector(state => state.auth.token);
     const [editManager, setEditManager] = useState(manager);
 
-    console.log('aaaaa', token);
+    console.log('manager bilgileri', editManager);
+    console.log('token', token);
 
+    useEffect(() => {
+        dispatch(fetchgetManager(token)).then((res) => {
+            setEditManager(res.payload.data)
+        })
+
+    }, [])
+    
     const updateManager = async () => {
         
             dispatch(fetchUpdateManager({
