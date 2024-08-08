@@ -15,9 +15,10 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OnayBekleyenler from "./pages/OnayBekleyenler";
 import AdminList from "./pages/AdminList";
 import AdminEkle from "./pages/AdminEkle";
-
 import CompanyListPage from "./pages/CompanyList";
 import EditAdminPage from "./pages/EditAdminPage";
+import UpdateManager from "./pages/UpdateManager";
+
 
 function RouterPage() {
 
@@ -41,10 +42,9 @@ function RouterPage() {
                 <Route path="/onaybekleyenler" element={<OnayBekleyenler />} />
                 <Route path="/adminlist" element={<AdminList />} />
                 <Route path="/adminekle" element={<AdminEkle />} />
-
+                <Route path="/updatemanager" element={<UpdateManager />} />
                 <Route path="/sirketlistesi" element={<CompanyListPage />} />
                 <Route path="/edit-admin" element={<EditAdminPage />} />
-
 
 
             </Routes>
