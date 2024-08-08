@@ -20,6 +20,15 @@ function Sidebar() {
     const goToAdminEkle = () => {
         navigate('/adminekle');
     }
+    const goToCompanyList = () => {
+        navigate('/sirketlistesi');
+    }
+    const goToHome = () => {
+        navigate('/adashboard');
+    }
+    const goToEditPage = () => {
+        navigate('/edit-admin');
+    }
     useEffect(() => {
         dispatch(fetchNotificationCount() as any); 
     }, [dispatch]);
@@ -31,7 +40,7 @@ function Sidebar() {
                 <ul className="sidebar-nav" id="sidebar-nav">
 
                     <li className="nav-item">
-                        <a className="nav-link " href="index.html">
+                        <a className="nav-link " onClick={goToHome} href="#">
                             <i className="bi bi-grid"></i>
                             <span><i className="fa-solid fa-house"></i>Anasayfa</span>
                         </a>
@@ -53,8 +62,8 @@ function Sidebar() {
                                         )}
                                     </button></span>
                                 </a>
-                                <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                <a >
+                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" onClick={goToCompanyList} className="btn btn-secondary mt-2">
                                     Şirket Listesi
                                     </button></span>
                                 </a>  
@@ -154,7 +163,7 @@ function Sidebar() {
                            
                             
                             <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" onClick={goToEditPage} className="btn btn-secondary mt-2">
                                     Admin Düzenle
                                     </button></span>
                                 </a>                               

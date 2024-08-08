@@ -27,10 +27,15 @@ function Login() {
                     navigate('/adashboard');
                     console.log(data);
                 }
+                else if (data.payload.data.role === 'SUPER_ADMIN') {
+                    navigate('/adashboard');
+                    console.log(data);
+                }
                 else if (data.payload.data.role === 'EMPLOYEE') {
                     navigate('/dashboard');
                     console.log(data);
                 }
+                
             }else{
                 Swal.fire('Hata!',data.payload.message,'error');
             }

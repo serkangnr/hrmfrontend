@@ -211,9 +211,9 @@ const authSlice = createSlice({
         build.addCase(fetchLogin.fulfilled,(state,action: PayloadAction<IResponse>)=>{            
             state.isLoadingLogin = false;
             if(action.payload.code === 200){
-                state.token = action.payload.data;
+                state.token = action.payload.data.token;
                 state.isAuth = true;
-                localStorage.setItem('token',action.payload.data);
+                localStorage.setItem('token',action.payload.data.token);
             }else
             
                 Swal.fire('Hata!',action.payload.message,'error');

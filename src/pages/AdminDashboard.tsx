@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Sidebar from '../component/molecules/Sidebar/Sidebar'
 import UserCard from '../component/molecules/usercard/UserCard'
@@ -10,9 +10,24 @@ import Holiday from '../component/molecules/HolidayCards/Holiday'
 import AdminSidebar from '../component/molecules/Sidebar/AdminSidebar'
 import { useNavigate } from 'react-router-dom'
 import ContactCard from '../component/molecules/ContactCard'
+import { useDispatch } from 'react-redux'
+import { HrmDispatch, RootState, useAppSelector } from '../store'
+import { fetchgetAdmin } from '../store/feature/adminSlice'
+import { IAdminIdentity } from '../store/feature/adminSlice'
 
 function Dashboard() {
- 
+  const dispatch = useDispatch<HrmDispatch>();
+  const token = useAppSelector(state => state.auth.token)
+  const admin: IAdminIdentity | null = useAppSelector(state => state.admin.admin)
+
+  // const token = localStorage.getItem('token')
+  // console.log(token)
+
+  // useEffect(() => {
+  //   getAdmin()
+  // }, [])
+
+
   const leaveData = {
     totalDays: 15,
     forwardDays: 3,
@@ -25,12 +40,14 @@ function Dashboard() {
     ]
 
   };
+
+
   return (
     <>
 
       <div className="contaniner">
-      <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
-        <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
+        <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
+          <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
         </div>
         <div className="row">
           <div className="col-2">
@@ -77,6 +94,7 @@ function Dashboard() {
                 </div>
                 <div className="row">
                   <BirtdayCard />
+                  getAdmin();
 
 
                 </div>
