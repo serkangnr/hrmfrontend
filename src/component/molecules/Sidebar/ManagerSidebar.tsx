@@ -1,8 +1,19 @@
 import React from 'react'
 import './Sidebar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
+    const navigate = useNavigate();
+
+const goToUpdateManager = () => {
+    navigate('/updatemanager');
+}
+
+const goToHome = () => {
+    navigate('/mdashboard');
+}
+
     return (
         <>
             <aside id="sidebar" className="sidebar">
@@ -10,7 +21,7 @@ function Sidebar() {
                 <ul className="sidebar-nav" id="sidebar-nav">
 
                     <li className="nav-item">
-                        <a className="nav-link " href="index.html">
+                        <a className="nav-link " href="#" onClick={goToHome}>
                             <i className="bi bi-grid"></i>
                             <span><i className="fa-solid fa-house"></i>Anasayfa</span>
                         </a>
@@ -155,7 +166,7 @@ function Sidebar() {
                     
 
                     <li className="nav-item">
-                        <a className="nav-link collapsed" href="users-profile.html">
+                        <a className="nav-link collapsed" href="#" onClick={goToUpdateManager}>
                             <i className="bi bi-person"></i>
                             <span><i className="fa-solid fa-gear"></i>Ayarlar</span>
                         </a>
