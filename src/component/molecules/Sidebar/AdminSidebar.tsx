@@ -162,11 +162,7 @@ function Sidebar() {
                                 </a>                               
                            
                             
-                            <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" onClick={goToEditPage} className="btn btn-secondary mt-2">
-                                    Admin Düzenle
-                                    </button></span>
-                                </a>                               
+                                                        
                             
                           
                         </ul>

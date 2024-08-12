@@ -3,12 +3,14 @@ import { IResponse } from "../../models/IResponse";
 import { IAdminList } from "../../models/IAdminList";
 
 export interface IAdminIdentity {
+    id:string
     name: string;
     surname: string;
     email: string;
     address: string;
     phone: string;
     avatar: string;
+    
 
 
 }
@@ -30,23 +32,28 @@ const initialAdminState: IAdminState = {
 
 
 }
+
+
+
 export const fetchgetAdmin = createAsyncThunk(
     'admin/fetchgetAdmin',
-    async (token: string) => {
-        const result = await fetch('http://localhost:9091/api/v1/admin/get-admin-bytoken?token=' + token)
+    async (payload: string) => {
+        const BASE_URL = process.env.BACKEND_URL
+        const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-bytoken?id=${payload}`)
             .then(data => data.json());
         return result;
 
 
     })
 interface IFetchUpdateAdmin {
+    id: string
     name: string;
     surname: string;
     email: string;
     address: string;
     phone: string;
     avatar: string;
-    token: string;
+    
 }
 
 export const fetchUpdateAdmin = createAsyncThunk(
@@ -58,13 +65,14 @@ export const fetchUpdateAdmin = createAsyncThunk(
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                id: payload.id,
                 name: payload.name,
                 surname: payload.surname,
                 email: payload.email,
                 address: payload.address,
                 phone: payload.phone,
                 avatar: payload.avatar,
-                token: payload.token
+                
             })
         }).then(data => data.json());
         return res;
@@ -122,9 +130,7 @@ const adminSlice = createSlice({
             .addCase(fetchDeleteAdmin.fulfilled, (state, action: PayloadAction<string>) => {
 
             })
-        build.addCase(fetchgetAdmin.pending, (state) => {
-            state.isLoadingLogin = true;
-        })
+
         build.addCase(fetchgetAdmin.fulfilled, (state, action: PayloadAction<IResponse>) => {
             if (action.payload.code === 200) {
                 state.admin = action.payload.data;
