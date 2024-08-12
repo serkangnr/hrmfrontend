@@ -18,6 +18,7 @@ import AdminEkle from "./pages/AdminEkle";
 import CompanyListPage from "./pages/CompanyList";
 import EditAdminPage from "./pages/EditAdminPage";
 import UpdateManager from "./pages/UpdateManager";
+import CalisanEkle from "./pages/CalisanEkle";
 
 
 function RouterPage() {
@@ -45,6 +46,7 @@ function RouterPage() {
                 <Route path="/updatemanager" element={<UpdateManager />} />
                 <Route path="/sirketlistesi" element={<CompanyListPage />} />
                 <Route path="/edit-admin" element={<EditAdminPage />} />
+                <Route path="/calisanekle" element={<CalisanEkle />} />
 
 
             </Routes>
