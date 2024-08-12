@@ -64,21 +64,9 @@ function AdminList() {
                                 
                                 <tbody>
                                     {
-                                        adminList.map((admin, index) => (
-                                          
-                                            <AdminListTablo
-                                                key={index}
-                                                id={admin.id}
-                                                name={admin.name}
-                                                surname={admin.surname}
-                                                email={admin.email}
-                                                address={admin.address}
-                                                phone={admin.phone}
-                                                avatar={admin.avatar}
-                                            />
-
-                                        ))
+                                        <AdminListTablo admins={adminList} />
                                     }
+                                  
 
 
                                 </tbody>

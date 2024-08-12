@@ -67,7 +67,7 @@ function Dashboard() {
 
                     <div className="card-body pb-0">
                       <h5 className="card-title">
-                        <i className='bx bxs-user-account bx-tada bx-rotate-180' ></i>  Çalışan Dağılımı <span>| Today</span>
+                        <i className='bx bxs-user-account bx-tada bx-rotate-180' ></i>  Şirket Sektörel Dağılımı 
                       </h5>
                       <div id="trafficChart" style={{ minHeight: 300 }} className="echart" />
 
@@ -85,19 +85,15 @@ function Dashboard() {
                   />
                 </div>
                 <div className="row">
-                  <Holiday />
-                </div>
-              </div>
-              <div className="col-4 p-4">
-                <div className="row">
                   <PermitCard />
                 </div>
-                <div className="row">
-                  <BirtdayCard />
-                  getAdmin();
-
-
+                
+              </div>
+              <div className="col-4 p-4">
+              <div className="row">
+                  <Holiday />
                 </div>
+              
               </div>
             </div>
 
@@ -110,35 +106,6 @@ function Dashboard() {
 
 
     </>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

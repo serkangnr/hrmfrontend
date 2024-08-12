@@ -212,6 +212,7 @@ const authSlice = createSlice({
             state.isLoadingLogin = false;
             if(action.payload.code === 200){
                 state.token = action.payload.data.token;
+                
                 state.isAuth = true;
                 localStorage.setItem('token',action.payload.data.token);
             }else
