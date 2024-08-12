@@ -13,6 +13,9 @@ const goToUpdateManager = () => {
 const goToHome = () => {
     navigate('/mdashboard');
 }
+const goToCalisanEkle = () => {
+    navigate('/calisanekle');
+}
 
     return (
         <>
@@ -34,30 +37,24 @@ const goToHome = () => {
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             
                             
-                                <a href="components-accordion.html">
+                                <a  href="#" onClick={goToCalisanEkle}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start"  style={{width: '90%',marginBottom: '5px', marginTop: '5px'}}>Çalışan Ekle</button></span>
                                 </a>
                             
                             
                             
                                 <a href="components-badges.html">
-                                <i className="bi bi-circle"></i> <span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Güncelle</button></span>
+                                <i className="bi bi-circle"></i> <span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Listesi</button></span>
                                 </a> 
                             
-                            
-                                <a href="components-breadcrumbs.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Sil</button></span>
-                                </a>
                             
                             
                                 <a href="components-buttons.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışanı Aktif Et</button></span>
+                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Durum Yönetimi</button></span>
                                 </a> 
                             
                             
-                                <a href="components-cards.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışanı Pasif Et</button></span>
-                                </a> 
+                    
                             
                             
                         </ul>

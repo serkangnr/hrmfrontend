@@ -6,6 +6,7 @@ import { IRegisterManager } from "../../models/IRegisterManager";
 import { ILogin } from "../../models/ILogin";
 import { IVerifyEmail } from "../../models/IVerifyEmail";
 import { IVerifyList } from "../../models/IVerifyList";
+import { IRegisterEmployee } from "../../models/IRegisterEmployee";
 
 
 
@@ -64,6 +65,33 @@ export const fetchRegisterAdmin = createAsyncThunk(
                 'surname': payload.surname,
                 'email': payload.email,
                 'password': payload.password
+            })
+        }).then(data => data.json())
+        return response;
+    }
+);
+
+export const fetchRegisterEmployee = createAsyncThunk(
+    'auth/fetchRegisterEmployee',
+    async(payload: IRegisterEmployee)=>{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/register-employee',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'managerToken': payload.managerToken,
+                'name': payload.name,
+                'surname': payload.surname,
+                'identityNumber': payload.identityNumber,
+                'email': payload.email,
+                'phoneNumber': payload.phoneNumber,
+                'address': payload.address,
+                'position': payload.position,
+                'department': payload.department,
+                'occupation': payload.occupation,
+                'companyName': payload.companyName,
+                'jobStartDate': payload.jobStartDate,
             })
         }).then(data => data.json())
         return response;
@@ -204,6 +232,13 @@ const authSlice = createSlice({
         build.addCase(fetchRegisterManager.fulfilled,(state)=>{
             state.isLoadingRegister = false;
         });
+        build.addCase(fetchRegisterEmployee.pending,(state)=>{
+            state.isLoadingRegister = true;
+        });
+        build.addCase(fetchRegisterEmployee.fulfilled,(state)=>{
+            state.isLoadingRegister = false;
+        });
+
 
         build.addCase(fetchLogin.pending,(state)=>{
             state.isLoadingLogin = true;
