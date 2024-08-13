@@ -1,0 +1,13 @@
+.calendar-card {
+  width: 100%; /* Card'ın tüm genişliği kaplamasını sağlar */
+  max-width: 500px; /* Maksimum genişliği 400px olarak ayarlar */
+  margin-top: 30px;
+}
+
+.calendar-container {
+  margin-top: 16px;
+  margin: 0 auto;
+}
+.card-title {
+  margin: 0 auto;
+}

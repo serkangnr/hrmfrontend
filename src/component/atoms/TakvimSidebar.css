@@ -1,0 +1,13 @@
+.transparent-button {
+    background-color: transparent;
+    border: none; /* Kenar çizgisi yok */
+    
+}
+
+/* Modal başlığının rengini beyaz yapar */
+.custom-modal .modal-title {
+    color: #ffffff;
+}
+.react-calendar{
+    margin: 0 auto;
+}
