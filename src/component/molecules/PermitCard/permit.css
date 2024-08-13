@@ -1,6 +1,6 @@
 .leave-card {
-  width: 100%;
-  margin: 20px auto; /* Daha uyumlu margin değerleri */
+  
+ 
   padding: 15px; /* İç boşluk eklemek, daha rahat bir görünüm sağlar */
   border-radius: 8px; /* Kart köşelerini yuvarlatmak */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */

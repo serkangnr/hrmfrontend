@@ -63,37 +63,38 @@ function Dashboard() {
                     cardLink2="https://picsum.photos/200/300" />
                 </div>
                 <div className="row">
-                  <div className="card">
+                 
+                    <LeaveInfo
+                      totalDays={leaveData.totalDays} forwardDays={leaveData.forwardDays} usedDays={leaveData.usedDays} leaves={leaveData.leaves}
+                    />
+                  
+                </div>
+              </div>
+              <div className="col-4 p-4">
+                <div className="card " >
 
-                    <div className="card-body pb-0">
-                      <h5 className="card-title">
-                        <i className='bx bxs-user-account bx-tada bx-rotate-180' ></i>  Şirket Sektörel Dağılımı 
-                      </h5>
-                      <div id="trafficChart" style={{ minHeight: 300 }} className="echart" />
+                  <div className="card-body pb-0">
+                    <h5 className="card-title ">
+                      <i className='bx bxs-user-account bx-tada bx-rotate-180 ' ></i>  Şirket Sektörel Dağılımı
+                    </h5>
 
-                      <TrafficChart />
 
-                    </div>
+                    <TrafficChart />
 
                   </div>
+
                 </div>
-              </div>
-              <div className="col-4 p-4">
-                <div className="row">
-                  <LeaveInfo
-                    totalDays={leaveData.totalDays} forwardDays={leaveData.forwardDays} usedDays={leaveData.usedDays} leaves={leaveData.leaves}
-                  />
-                </div>
-                <div className="row">
+
+                <div className="row  " style={{width:'100%'}}>
                   <PermitCard />
                 </div>
-                
+
               </div>
               <div className="col-4 p-4">
-              <div className="row">
+                <div className="row">
                   <Holiday />
                 </div>
-              
+
               </div>
             </div>
 
