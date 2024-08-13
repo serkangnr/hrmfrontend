@@ -27,10 +27,26 @@ export interface IEmployeeIdentity {
     shiftId: string;
 }
 
+export interface IEditEmployee{
+    token: string;
+    id: string;
+    name: string;
+    surname: string;
+    identityNumber: string;
+    birthDate: string;
+    email: string;
+    phoneNumber: string;
+    address: string;  
+    driverLicense: string;
+    avatar: string;
+  
+}
+
 interface IEmployeeState {
     employee: IEmployeeIdentity | null;
     isLoading: boolean;
     employeeList: IEmployeeIdentity[];
+    editEmployee: IEditEmployee | null;
 }
 
 
@@ -38,12 +54,13 @@ const initialEmployeeState:IEmployeeState={
     employee: null,
     isLoading: false,
     employeeList : [] ,
+    editEmployee: null
 }
 
 export const fetchEmployeeList = createAsyncThunk(
     'employee/fetchEmployeeList',
-    async () => {
-        const response = await fetch('http://localhost:9094/api/v1/employee/employee-list', {
+    async (managerToken:string) => {
+        const response = await fetch(`http://localhost:9094/api/v1/employee/employee-list?managerToken=${managerToken}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -92,6 +109,34 @@ export const fetchUpdateEmployee = createAsyncThunk(
     }
 )
 
+export const fetchEditEmployee = createAsyncThunk(
+    'employee/fetchEditEmployee',
+    async (payload: IEditEmployee ) => {
+        const res = await fetch('http://localhost:9094/api/v1/employee/edit-employee', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: payload.token,
+                id: payload.id,
+                name: payload.name,
+                surname: payload.surname,
+                identityNumber: payload.identityNumber,
+                birthDate: payload.birthDate,
+                email: payload.email,
+                phoneNumber: payload.phoneNumber,
+                address: payload.address,
+                driverLicense: payload.driverLicense,
+                avatar: payload.avatar,
+
+                
+            })
+        }).then(data => data.json());
+        return res;
+    }
+)
+
 export const fetchgetEmployee = createAsyncThunk(
     'employee/fetchgetEmployee',
     async (id: string) => {
@@ -101,6 +146,16 @@ export const fetchgetEmployee = createAsyncThunk(
 
 
     })
+
+    export const fetchgetEmployeeByToken = createAsyncThunk(
+        'employee/fetchgetEmployeeByToken',
+        async (token: string) => {
+            const result = await fetch('http://localhost:9094/api/v1/employee/get-employee-by-token?token=' + token)
+                .then(data => data.json());
+            return result;
+    
+    
+        })
 
 export const fetchDeleteEmployee = createAsyncThunk(
     'employee/fetchDeleteEmployee',
@@ -135,6 +190,13 @@ const employeeSlice = createSlice({
         build.addCase(fetchgetEmployee.fulfilled, (state, action: PayloadAction<IResponse>) => {
             if (action.payload.code === 200) {
                 state.employee = action.payload.data;
+            } else {
+
+            }
+        })
+        build.addCase(fetchgetEmployeeByToken.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            if (action.payload.code === 200) {
+                state.editEmployee = action.payload.data;
             } else {
 
             }

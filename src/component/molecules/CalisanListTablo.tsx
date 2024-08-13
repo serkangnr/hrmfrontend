@@ -17,7 +17,7 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
             .then((response) => {
                 if (response.payload.code === 200) {
                     Swal.fire('Başarı!', 'Admin silindi', 'success');
-                    dispatch(fetchEmployeeList());
+                    dispatch(fetchEmployeeList(token));
                 } else {
                     Swal.fire('Hata!', response.payload.message, 'error');
                     throw new Error(response.payload.message);
@@ -44,7 +44,7 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
                     
                     if (response.payload.code === 200) {
                         Swal.fire('Güncelleme', 'Kullanıcı bilgileri başarı ile güncellendi.', 'success');
-                        dispatch(fetchEmployeeList());
+                        dispatch(fetchEmployeeList(token));
                     } else {
                         Swal.fire('Hata!', response.payload.message, 'error');
                     }
@@ -61,6 +61,7 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
     <>
 
 {employees.map((employee) => (
+   
     
                         <tr key={employee.id} >
                             
