@@ -49,7 +49,7 @@ export const fetchgetAdmin = createAsyncThunk(
         'admin/fetchgetAdminToken',
         async (payload: string) => {
            
-            const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-by-token?id=${payload}`)
+            const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-by-token?token=${payload}`)
                 .then(data => data.json());
             return result;
     

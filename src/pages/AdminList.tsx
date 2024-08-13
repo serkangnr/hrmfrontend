@@ -50,13 +50,12 @@ function AdminList() {
                                 </thead>
                                 <thead>
                                     <tr>
-                                       
+                                        <th scope="col">Avatar</th>
                                         <th scope="col">İsim</th>
                                         <th scope="col">Soyisim</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Adres</th>
-                                        <th scope="col">Telefon</th>
-                                        <th scope="col">Avatar</th>
+                                        <th scope="col">Telefon</th>                                       
                                         <th scope="col"></th>
                                         
                                     </tr>

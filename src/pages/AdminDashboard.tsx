@@ -14,6 +14,8 @@ import { useDispatch } from 'react-redux'
 import { HrmDispatch, RootState, useAppSelector } from '../store'
 import { fetchgetAdmin } from '../store/feature/adminSlice'
 import { IAdminIdentity } from '../store/feature/adminSlice'
+import AdminCard from '../component/molecules/AdminCard'
+import Takvim from '../component/atoms/Takvim'
 
 function Dashboard() {
   const dispatch = useDispatch<HrmDispatch>();
@@ -58,9 +60,7 @@ function Dashboard() {
             <div className="row">
               <div className="col-4 p-4">
                 <div className="row">
-                  <UserCard name="Elif" imageUrl="https://media.licdn.com/dms/image/D4D12AQFGymRSxZDcxQ/article-cover_image-shrink_600_2000/0/1700413524614?e=2147483647&v=beta&t=KTR5NLBDWYJjw_-_Mtq3Yqu322M5BXQVBL0TJ9sjvXU"
-                    birthDate='01.01.2000' startDate="01.01.2023" position="Yonetici" cardLink1="https://picsum.photos/200/300"
-                    cardLink2="https://picsum.photos/200/300" />
+                 <AdminCard/>
                 </div>
                 <div className="row">
                  
@@ -91,11 +91,14 @@ function Dashboard() {
 
               </div>
               <div className="col-4 p-4">
-                <div className="row">
+                <div className="row ">
                   <Holiday />
                 </div>
-
+                <div className="row">
+              <Takvim title="Takvim" />
               </div>
+              </div>
+             
             </div>
 
           </div>

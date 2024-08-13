@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { HrmDispatch, RootState, useAppSelector } from '../../../store';
 import { fetchNotificationCount } from '../../../store/feature/authSlice';
 import { useNavigate } from 'react-router-dom';
+import TakvimSidebar from '../../atoms/TakvimSidebar';
 
 function Sidebar() {
 
@@ -30,9 +31,9 @@ function Sidebar() {
         navigate('/edit-admin');
     }
     useEffect(() => {
-        dispatch(fetchNotificationCount() as any); 
+        dispatch(fetchNotificationCount() as any);
     }, [dispatch]);
-   
+
     return (
         <>
             <aside id="sidebar" className="sidebar">
@@ -51,31 +52,31 @@ function Sidebar() {
                             <i className="bi bi-menu-button-wide"></i><span><i className="fa-solid fa-users"></i>Şirketler</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            
-                                <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} onClick={goToOnayBekleyenler} type="button" className="btn btn-secondary mt-2">
-                                        Onay Bekleyenler 
-                                        {notificationCount > 0 && (
-                                            <span className="badge text-bg-danger">
-                                                {notificationCount}
-                                            </span>
-                                        )}
-                                    </button></span>
-                                </a>
-                                <a >
-                                    <i className="bi bi-circle"></i><span>< button style={{width: '200px'}} type="button" onClick={goToCompanyList} className="btn btn-secondary mt-2">
+
+                            <a href="#">
+                                <i className="bi bi-circle"></i><span>< button style={{ width: '200px' }} onClick={goToOnayBekleyenler} type="button" className="btn btn-secondary mt-2">
+                                    Onay Bekleyenler
+                                    {notificationCount > 0 && (
+                                        <span className="badge text-bg-danger">
+                                            {notificationCount}
+                                        </span>
+                                    )}
+                                </button></span>
+                            </a>
+                            <a >
+                                <i className="bi bi-circle"></i><span>< button style={{ width: '200px' }} type="button" onClick={goToCompanyList} className="btn btn-secondary mt-2">
                                     Şirket Listesi
-                                    </button></span>
-                                </a>  
-                            
-                           
-                            
+                                </button></span>
+                            </a>
+
+
+
                         </ul>
                     </li>
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-journal-text"></i><span><i className="fa-solid fa-plane"></i>İzinler</span><i className="bi bi-chevron-down ms-auto"></i>
+                            <i className="bi bi-journal-text"></i><span><i className="fa-solid fa-user-group"></i>Şirket Yöneticileri</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
@@ -119,53 +120,38 @@ function Sidebar() {
                         </ul>
                     </li>
 
-                    <li className="nav-item">
-                        <a className="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-bar-chart"></i><span><i className="fa-regular fa-calendar-days"></i>Takvim</span><i className="bi bi-chevron-down ms-auto"></i>
-                        </a>
-                        <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
-                                <a href="charts-chartjs.html">
-                                    <i className="bi bi-circle"></i><span>Chart.js</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="charts-apexcharts.html">
-                                    <i className="bi bi-circle"></i><span>ApexCharts</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="charts-echarts.html">
-                                    <i className="bi bi-circle"></i><span>ECharts</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                             <i className="bi bi-gem"></i><span><i className="fa-solid fa-user-gear"></i>Admin İşlemleri</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="icons-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            
+
                             <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button onClick={goToAdminEkle}  style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                <i className="bi bi-circle"></i><span>< button onClick={goToAdminEkle} style={{ width: '200px' }} type="button" className="btn btn-secondary mt-2">
                                     Admin Ekle
-                                    </button></span>
-                                </a>                               
-                           
-                            
+                                </button></span>
+                            </a>
+
+
                             <a href="#">
-                                    <i className="bi bi-circle"></i><span>< button onClick={goToAdminList} style={{width: '200px'}} type="button" className="btn btn-secondary mt-2">
+                                <i className="bi bi-circle"></i><span>< button onClick={goToAdminList} style={{ width: '200px' }} type="button" className="btn btn-secondary mt-2">
                                     Admin Listesi
-                                    </button></span>
-                                </a>                               
-                           
-                            
-                                                        
-                            
-                          
+                                </button></span>
+                            </a>
+
+
+
+
+
                         </ul>
+                    </li>
+                    <li className="nav-item">
+                        <div style={{ marginLeft: '15px' }}>
+                            <TakvimSidebar />
+                        </div>
+
                     </li>
 
 
@@ -185,6 +171,8 @@ function Sidebar() {
 
 
                 </ul>
+
+
 
             </aside>
         </>

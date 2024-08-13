@@ -50,13 +50,12 @@ function AdminListTablo({ admins }: { admins: IAdminList[] }) {
                 
                     {admins.map((admin) => (
                         <tr key={admin.id}>
-                            
+                            <td><img src={admin.avatar} style={{width:'75px',height:'75px',borderRadius:'20px'}} /></td>
                             <td>{admin.name}</td>
                             <td>{admin.surname}</td>
                             <td>{admin.email}</td>
                             <td>{admin.address}</td>
                             <td>{admin.phone}</td>
-                            <td>{admin.avatar}</td>
                             <td style={{width:'300px'}}>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button type="button" className="btn btn-danger" onClick={() => deleteAdmin(admin.id)}>Sil</button>
