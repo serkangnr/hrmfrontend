@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/EmployeeDashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ChardCard from "./pages/ChardCard/ChardCard";
@@ -21,6 +21,8 @@ import UpdateManager from "./pages/UpdateManager";
 import CalisanEkle from "./pages/CalisanEkle";
 import CalisanList from "./pages/Home/CalisanList";
 import ChangePassword from "./pages/ChangePassword";
+import EmployeeDashboard from "./pages/EmployeeDashboard";
+import UpdateEmployee from "./pages/UpdateEmployee";
 
 
 function RouterPage() {
@@ -51,6 +53,8 @@ function RouterPage() {
                 <Route path="/calisanekle" element={<CalisanEkle />} />
                 <Route path="/calisanlist" element={<CalisanList />} />
                 <Route path="/changepassword" element={<ChangePassword />} />
+                <Route path="/edashboard" element={<EmployeeDashboard />} />
+                <Route path="/updateemployee" element={<UpdateEmployee />} />
 
                 
 

@@ -10,9 +10,10 @@ function CalisanList() {
 
     const employeeList = useAppSelector(state => state.employee.employeeList);
     const dispatch = useDispatch<HrmDispatch>();
+    const token = useAppSelector(state => state.auth.token);
 
     useEffect(() => {
-        dispatch(fetchEmployeeList());
+        dispatch(fetchEmployeeList(token));
 
     }, [])
 

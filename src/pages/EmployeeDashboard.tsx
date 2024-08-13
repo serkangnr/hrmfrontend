@@ -7,13 +7,12 @@ import LeaveInfo from '../component/molecules/LeaveInfo/LeaveInfo'
 import BirtdayCard from '../component/molecules/birthdayCard/BirtdayCard'
 import PermitCard from '../component/molecules/PermitCard/PermitCard'
 import Holiday from '../component/molecules/HolidayCards/Holiday'
-import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
-
 import LineChart from '../component/molecules/LineChart'
 import SubscriptionChart from '../component/molecules/SubscriptionChart'
 import ContactCard from '../component/molecules/ContactCard'
+import EmployeeSidebar from '../component/molecules/Sidebar/EmployeeSidebar'
 
-function ManagerDashboard() {
+function EmployeeDashboard() {
   //yenilendi
   const leaveData = {
     totalDays: 15,
@@ -37,7 +36,7 @@ function ManagerDashboard() {
         <div className="row shadow">
           <div className="col-2 ">
 
-            <ManagerSidebar /> </div>
+            <EmployeeSidebar /> </div>
           <div className="col-9">
 
             <div className="row">
@@ -117,5 +116,6 @@ function ManagerDashboard() {
 
   )
 
+
 }
-export default ManagerDashboard;
+export default EmployeeDashboard;
