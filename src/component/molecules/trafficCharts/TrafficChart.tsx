@@ -1,60 +1,69 @@
-import React, { useEffect } from 'react';
-import * as echarts from 'echarts'
-import './permit.css'
+import React, { useEffect, useState } from 'react';
+import ReactECharts from 'echarts-for-react';
 
-// piebar script
+interface SectorDTO {
+  sektorName: string;
+  count: number;
+}
+
 const TrafficChart: React.FC = () => {
-  useEffect(() => {
-    const chartDom = document.getElementById('trafficChart')!;
-    const myChart = echarts.init(chartDom);
+  const [data, setData] = useState<SectorDTO[]>([]);
 
-    const option = {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:9093/api/v1/company/sectors');
+        const result: SectorDTO[] = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getOption = () => {
+    return {
+      title: {
+        
+        left: 'center'
+      },
       tooltip: {
         trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)'
       },
       legend: {
-        top: '1%',
-        left: 'center',
+        orient: 'vertical',
+        left: 'left',
+        data: data.map((item) => item.sektorName)
       },
       series: [
         {
-          name: 'Access From',
+          name: 'Sectors',
           type: 'pie',
-          radius: ['40%', '70%'],
-          avoidLabelOverlap: false,
-          label: {
-            show: false,
-            position: 'center',
-          },
+          radius: '50%',
+          data: data.map((item) => ({
+            value: item.count,
+            name: item.sektorName
+          })),
           emphasis: {
-            label: {
-              show: true,
-              fontSize: '15',
-              fontWeight: 'bold',
-            },
-          },
-          labelLine: {
-            show: false,
-          },
-          data: [
-            { value: 1048, name: 'IT' },
-            { value: 735, name: 'YONETIM' },
-            { value: 580, name: 'ARGE' },
-            { value: 484, name: 'LOJISTIK' },
-            { value: 300, name: 'URETIM' },
-          ],
-        },
-      ],
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
     };
+  };
 
-    myChart.setOption(option);
-
-    return () => {
-      myChart.dispose();
-    };
-  }, []);
-
-  return <div id="trafficChart" style={{ width: '100%' }} />;
+  return (
+    <div>
+      <ReactECharts option={getOption()} style={{ height: '450px' }} />
+    </div>
+  );
 };
 
 export default TrafficChart;

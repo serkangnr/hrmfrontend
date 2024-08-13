@@ -38,13 +38,23 @@ const initialAdminState: IAdminState = {
 export const fetchgetAdmin = createAsyncThunk(
     'admin/fetchgetAdmin',
     async (payload: string) => {
-        const BASE_URL = process.env.BACKEND_URL
-        const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-bytoken?id=${payload}`)
+       
+        const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-by-id?id=${payload}`)
             .then(data => data.json());
         return result;
 
 
     })
+    export const fetchgetAdminToken = createAsyncThunk(
+        'admin/fetchgetAdminToken',
+        async (payload: string) => {
+           
+            const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-by-token?id=${payload}`)
+                .then(data => data.json());
+            return result;
+    
+    
+        })
 interface IFetchUpdateAdmin {
     id: string
     name: string;
@@ -132,6 +142,13 @@ const adminSlice = createSlice({
             })
 
         build.addCase(fetchgetAdmin.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            if (action.payload.code === 200) {
+                state.admin = action.payload.data;
+            } else {
+
+            }
+        })
+        build.addCase(fetchgetAdminToken.fulfilled, (state, action: PayloadAction<IResponse>) => {
             if (action.payload.code === 200) {
                 state.admin = action.payload.data;
             } else {
