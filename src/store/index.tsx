@@ -3,6 +3,7 @@ import React from 'react'
 
 import { useSelector } from 'react-redux';
 import { adminSlice,authSlice,managerSlice,companySlice } from './feature';
+import employeeSlice from './feature/employeeSlice';
 
 
 const store = configureStore({
@@ -11,7 +12,8 @@ const store = configureStore({
     admin:adminSlice,
     manager:managerSlice,
 
-    company:companySlice
+    company:companySlice,
+    employee:employeeSlice
   }
 });
 

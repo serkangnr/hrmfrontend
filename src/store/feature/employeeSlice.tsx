@@ -1,19 +1,30 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IResponse } from "../../models/IResponse";
+import { IUpdateEmployee } from "../../models/IUpdateEmployee";
 
 export interface IEmployeeIdentity {
-    managerToken:string;
+    managerToken: string;
+    id: string;
     name: string;
     surname: string;
+    managerId?: string;
+    companyId?: string;
     identityNumber: string;
+    birthDate?: string;
     email: string;
     phoneNumber: string;
     address: string;
+    jobStartDate: string;
+    jobEndDate?: string;
     position: string;
+    salary?: number;
     department: string;
     occupation: string;
-    companyName: string;
-    jobStartDate: string;
+    gender?: string;
+    militaryService?: boolean;
+    driverLicense?: string;
+    avatar: string;
+    shiftId: string;
 }
 
 interface IEmployeeState {
@@ -43,6 +54,43 @@ export const fetchEmployeeList = createAsyncThunk(
         return data;
     }
 );
+export const fetchUpdateEmployee = createAsyncThunk(
+    'employee/fetchUpdateEmployee',
+    async (payload: IUpdateEmployee) => {
+        const res = await fetch('http://localhost:9094/api/v1/employee/update-employee', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                managerToken: payload.managerToken,
+                id: payload.id,
+                name: payload.name,
+                surname: payload.surname,
+                managerId: payload.managerId,
+                companyId: payload.companyId,
+                identityNumber: payload.identityNumber,
+                birthDate: payload.birthDate,
+                email: payload.email,
+                phoneNumber: payload.phoneNumber,
+                address: payload.address,
+                jobStartDate: payload.jobStartDate,
+                jobEndDate: payload.jobEndDate,
+                position: payload.position,
+                salary: payload.salary,
+                department: payload.department,
+                occupation: payload.occupation,
+                gender: payload.gender,
+                militaryService: payload.militaryService,
+                driverLicense: payload.driverLicense,
+                avatar: payload.avatar,
+                shiftId: payload.shiftId
+                
+            })
+        }).then(data => data.json());
+        return res;
+    }
+)
 
 export const fetchgetEmployee = createAsyncThunk(
     'employee/fetchgetEmployee',

@@ -19,6 +19,7 @@ import CompanyListPage from "./pages/CompanyList";
 import EditAdminPage from "./pages/EditAdminPage";
 import UpdateManager from "./pages/UpdateManager";
 import CalisanEkle from "./pages/CalisanEkle";
+import CalisanList from "./pages/Home/CalisanList";
 
 
 function RouterPage() {
@@ -47,6 +48,8 @@ function RouterPage() {
                 <Route path="/sirketlistesi" element={<CompanyListPage />} />
                 <Route path="/edit-admin" element={<EditAdminPage />} />
                 <Route path="/calisanekle" element={<CalisanEkle />} />
+                <Route path="/calisanlist" element={<CalisanList />} />
+                
 
 
             </Routes>

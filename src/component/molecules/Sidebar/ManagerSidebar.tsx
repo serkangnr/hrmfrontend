@@ -16,6 +16,9 @@ const goToHome = () => {
 const goToCalisanEkle = () => {
     navigate('/calisanekle');
 }
+const goToCalisanList = () => {
+    navigate('/calisanlist');
+}
 
     return (
         <>
@@ -43,7 +46,7 @@ const goToCalisanEkle = () => {
                             
                             
                             
-                                <a href="components-badges.html">
+                                <a href="#" onClick={goToCalisanList}>
                                 <i className="bi bi-circle"></i> <span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Listesi</button></span>
                                 </a> 
                             
