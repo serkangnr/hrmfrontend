@@ -7,6 +7,7 @@ import { ILogin } from "../../models/ILogin";
 import { IVerifyEmail } from "../../models/IVerifyEmail";
 import { IVerifyList } from "../../models/IVerifyList";
 import { IRegisterEmployee } from "../../models/IRegisterEmployee";
+import { IChangePassword } from "../../models/IChangePassword";
 
 
 
@@ -25,6 +26,7 @@ const initialAuthState={
     verifyManagerList: [] as IVerifyList[],
     isLoadingConfirm: false,
     isLoadingDisConfirm: false,
+    
     
     
 
@@ -133,6 +135,24 @@ export const fetchVerifyEmail = createAsyncThunk(
             },
             body: JSON.stringify({
                 'email': payload.email,
+              
+            })
+        }).then(data => data.json())
+        return response;
+    }
+)
+export const fetchChangePassword = createAsyncThunk(
+    'auth/fetchChangePassword',
+    async(payload: IChangePassword)=>{
+        const response =  await fetch('http://localhost:9090/api/v1/auth/change-password',{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'token': payload.token,
+                'oldPassword': payload.oldPassword,
+                'newPassword': payload.newPassword
               
             })
         }).then(data => data.json())
@@ -297,7 +317,12 @@ const authSlice = createSlice({
             state.isLoadingDisConfirm = false;
             console.error('Yönetici reddetme işlemi başarısız:', action.error.message);
             Swal.fire('Hata!', 'Yönetici reddetme işlemi başarısız.', 'error');
-        });
+        })
+        .addCase(fetchChangePassword.fulfilled, (state, action: PayloadAction<IResponse>) => {
+           
+           
+        })
+       
     }
 
 

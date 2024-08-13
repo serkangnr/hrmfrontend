@@ -20,6 +20,7 @@ import EditAdminPage from "./pages/EditAdminPage";
 import UpdateManager from "./pages/UpdateManager";
 import CalisanEkle from "./pages/CalisanEkle";
 import CalisanList from "./pages/Home/CalisanList";
+import ChangePassword from "./pages/ChangePassword";
 
 
 function RouterPage() {
@@ -49,6 +50,8 @@ function RouterPage() {
                 <Route path="/edit-admin" element={<EditAdminPage />} />
                 <Route path="/calisanekle" element={<CalisanEkle />} />
                 <Route path="/calisanlist" element={<CalisanList />} />
+                <Route path="/changepassword" element={<ChangePassword />} />
+
                 
 
 
