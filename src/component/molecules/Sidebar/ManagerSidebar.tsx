@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Sidebar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import { HrmDispatch, useAppSelector } from '../../../store';
+import { useDispatch } from 'react-redux';
+import {  fetchGetPendingLeaveCount } from '../../../store/feature/leaveSlice';
+
 
 function Sidebar() {
+
+    const dispatch: HrmDispatch = useDispatch();
+    const token = useAppSelector(state => state.auth.token)
+    const PendingLeaveCount = useAppSelector(state => state.leave.count);
     const navigate = useNavigate();
+    console.log('aaaaaaaaaaaaaaaaaaaa'+PendingLeaveCount)
 
 const goToUpdateManager = () => {
     navigate('/updatemanager');
@@ -25,7 +34,11 @@ const goToIzinYonetimi = () => {
 const goToIzinListesi = () => {
     navigate('/pendingleave');
 }
-
+   useEffect(() => {
+        
+            dispatch(fetchGetPendingLeaveCount(token));
+       
+    }, [])
     return (
         <>
             <aside id="sidebar" className="sidebar">
@@ -78,9 +91,17 @@ const goToIzinListesi = () => {
                                 <a href="#" onClick={goToIzinYonetimi}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>İzinleri Düzenle</button></span>
                                 </a>  
-                                <a href="#" onClick={goToIzinListesi}>
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>İzinleri Talepleri</button></span>
-                                </a>  
+                                 
+                                <a href="#">
+                                <i className="bi bi-circle"></i><span>< button style={{ width: '200px' }} onClick={goToIzinListesi} type="button" className="btn btn-secondary mt-2">
+                                    İzin Talepleri
+                                    {PendingLeaveCount > 0 && (
+                                        <span className="badge text-bg-danger">
+                                            {PendingLeaveCount}
+                                        </span>
+                                    )}
+                                </button></span>
+                            </a>
                              
                              
                            

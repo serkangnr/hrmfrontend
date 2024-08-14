@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react'
 
-import Sidebar from '../component/molecules/Sidebar/Sidebar'
-import UserCard from '../component/molecules/usercard/UserCard'
+
 import TrafficChart from '../component/molecules/trafficCharts/TrafficChart'
 import LeaveInfo from '../component/molecules/LeaveInfo/LeaveInfo'
-import BirtdayCard from '../component/molecules/birthdayCard/BirtdayCard'
+
 import PermitCard from '../component/molecules/PermitCard/PermitCard'
 import Holiday from '../component/molecules/HolidayCards/Holiday'
 import AdminSidebar from '../component/molecules/Sidebar/AdminSidebar'
-import { useNavigate } from 'react-router-dom'
+
 import ContactCard from '../component/molecules/ContactCard'
 import { useDispatch } from 'react-redux'
-import { HrmDispatch, RootState, useAppSelector } from '../store'
-import { fetchgetAdmin } from '../store/feature/adminSlice'
+import { HrmDispatch, useAppSelector } from '../store'
+
 import { IAdminIdentity } from '../store/feature/adminSlice'
 import AdminCard from '../component/molecules/AdminCard'
 import Takvim from '../component/atoms/Takvim'
@@ -22,12 +21,7 @@ function Dashboard() {
   const token = useAppSelector(state => state.auth.token)
   const admin: IAdminIdentity | null = useAppSelector(state => state.admin.admin)
 
-  // const token = localStorage.getItem('token')
-  // console.log(token)
-
-  // useEffect(() => {
-  //   getAdmin()
-  // }, [])
+ 
 
 
   const leaveData = {

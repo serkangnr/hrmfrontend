@@ -4,12 +4,55 @@ import { fetchAdminList, fetchDeleteAdmin, fetchgetAdmin, fetchUpdateAdmin } fro
 import { IAdminList } from "../../models/IAdminList";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import { ILeaveIdentity } from "../../store/feature/leaveSlice";
+import { fetchApproveLeave, fetchDisapproveLeave, fetchGetPendingLeave, fetchGetPendingLeaveCount, ILeaveIdentity } from "../../store/feature/leaveSlice";
 
 function PendingLeaveList({ leaves }: { leaves: ILeaveIdentity[] }) {
     
+    const dispatch = useDispatch<HrmDispatch>();
+    const token = useAppSelector(state => state.auth.token)
 
-
+    const confirm = (id:number) => {
+        dispatch(fetchApproveLeave(id))
+        .then((data)=>{
+            if (data.payload.code === 200) {
+                // Başarılı yanıt durumunda yapılacak işlemler
+                Swal.fire('Başarı!', 'İzin başarıyla onaylandı.', 'success');
+                // İsteğe bağlı: Onaylanan yöneticiyi veya ilgili veriyi state'e ekleyebilirsiniz
+            } else {
+                Swal.fire('Hata!', data.payload.message, 'error');
+            }
+        }).then(
+            ()=>{
+                dispatch(fetchGetPendingLeave(token))
+            }
+        ).then(
+            ()=>{
+                dispatch(fetchGetPendingLeaveCount(token))
+            }
+        )
+        
+    }
+    const disconfirm = (id:number) => {
+        dispatch(fetchDisapproveLeave(id))
+        .then((data)=>{
+            if (data.payload.code === 200) {
+                // Başarılı yanıt durumunda yapılacak işlemler
+                Swal.fire('Başarı!', 'İzin başarıyla reddedildi.', 'success');
+                // İsteğe bağlı: Onaylanan yöneticiyi veya ilgili veriyi state'e ekleyebilirsiniz
+            } else {
+                Swal.fire('Hata!', data.payload.message, 'error');
+            }
+        }).then(
+            ()=>{
+                dispatch(fetchGetPendingLeave(token))
+            }
+        ).then(
+            ()=>{
+                dispatch(fetchGetPendingLeaveCount(token))
+            }
+        )
+        
+    }
 
    
 
@@ -30,17 +73,9 @@ function PendingLeaveList({ leaves }: { leaves: ILeaveIdentity[] }) {
                             <td>{leave.description}</td>
                             <td style={{width:'300px'}}>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" className="btn btn-primary">ONAYLA</button>
+                                <button onClick={() => confirm(leave.id)}  type="button" className="btn btn-primary">ONAYLA</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button
-                                    type="button"
-                                    className="btn btn-danger"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"
-                                    
-                                >
-                                    REDDET
-                                </button>
+                                <button onClick={() => disconfirm(leave.id)}  type="button" className="btn btn-danger">REDDET</button>
                             </td>
                         </tr>
                     ))}
