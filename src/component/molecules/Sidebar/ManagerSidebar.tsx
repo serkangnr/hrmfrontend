@@ -19,6 +19,9 @@ const goToCalisanEkle = () => {
 const goToCalisanList = () => {
     navigate('/calisanlist');
 }
+const goToIzinYonetimi = () => {
+    navigate('/izinyonetimi');
+}
 
     return (
         <>
@@ -69,7 +72,7 @@ const goToCalisanList = () => {
                         </a>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             
-                                <a href="forms-elements.html">
+                                <a href="#" onClick={goToIzinYonetimi}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>İzinleri Düzenle</button></span>
                                 </a>  
                              
