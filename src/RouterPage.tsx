@@ -24,6 +24,8 @@ import ChangePassword from "./pages/ChangePassword";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import UpdateEmployee from "./pages/UpdateEmployee";
 import IzinYonetimi from "./pages/IzinYonetimi";
+import IzinTalepSayfası from "./pages/IzinTalepSayfası";
+import PendingLeave from "./pages/PendingLeave";
 
 
 function RouterPage() {
@@ -57,6 +59,10 @@ function RouterPage() {
                 <Route path="/edashboard" element={<EmployeeDashboard />} />
                 <Route path="/updateemployee" element={<UpdateEmployee />} />
                 <Route path="/izinyonetimi" element={<IzinYonetimi />} />
+                <Route path="/izintalepsayfası" element={<IzinTalepSayfası />} />
+                <Route path="/pendingleave" element={<PendingLeave />} />
+
+
 
                 
 

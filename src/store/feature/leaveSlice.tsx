@@ -1,4 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { IResponse } from "../../models/IResponse";
 
 export enum ELeaveType {
     YILLIK_IZIN = "Yıllık İzin",
@@ -22,11 +23,21 @@ export interface IFetchSaveLeave{
     description: string;
     token: string;
 }
+export interface IFetchRequestLeave{
+   
+  
+    startDate: string;
+    endDate: string;
+    leaveType: ELeaveType;
+    description: string;
+    token: string;
+}
+
+
 
 export interface ILeaveIdentity{
     id: number;
     employeeId: string;
-    authId: number;
     managerId: string;
     name: string;
     surname: string;
@@ -74,19 +85,44 @@ export const fetchSaveLeave = createAsyncThunk(
     }
 );
 
+export const fetchRequestLeave = createAsyncThunk(
+    'leave/fetchRequestLeave',
+    async(payload: IFetchRequestLeave)=>{
+        const response =  await fetch('http://localhost:9098/api/v1/leave/leave-request',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                startDate: payload.startDate,
+                endDate: payload.endDate,
+                leaveType: payload.leaveType,
+                description: payload.description,
+                token: payload.token
+            })
+        }).then(data => data.json())
+        return response;
+    }
+);
 
+
+export const fetchGetPendingLeave = createAsyncThunk(
+    'leave/fetchGetPendingLeave',
+    async (token:string) => {
+        const response = await fetch(`http://localhost:9098/api/v1/leave/get-pending-leave?token=${token}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log('API Response:', data);
+        return data;
+    }
+);
 
 const leaveSlice =createSlice({
     name:'leave',
-    initialState: initialLeaveState,
-    reducers:{},
-    extraReducers: (build)=>{
-
-    }
-})
-
-const shiftSlice =createSlice({
-    name:'shift',
     initialState: initialLeaveState,
     reducers:{},
     extraReducers: (build)=>{
@@ -96,6 +132,15 @@ const shiftSlice =createSlice({
         build.addCase(fetchSaveLeave.fulfilled,(state)=>{
             state.isLoading= false;
         });
+        build.addCase(fetchRequestLeave.pending,(state)=>{
+            state.isLoading= true;
+        });
+        build.addCase(fetchRequestLeave.fulfilled,(state)=>{
+            state.isLoading= false;
+        });
+        build.addCase(fetchGetPendingLeave.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.leaveList = action.payload.data;
+        })
     }
 })
 
