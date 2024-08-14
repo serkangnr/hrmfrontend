@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Sidebar from '../component/molecules/Sidebar/Sidebar'
+
 import UserCard from '../component/molecules/usercard/UserCard'
 import TrafficChart from '../component/molecules/trafficCharts/TrafficChart'
 import LeaveInfo from '../component/molecules/LeaveInfo/LeaveInfo'

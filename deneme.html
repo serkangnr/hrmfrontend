@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Bildirimli Buton</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .badge-notification {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 0.25em 0.4em;
+            border-radius: 50%;
+            background-color: #dc3545;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-wrapper">
+        <button class="btn btn-primary">Buton</button>
+        <span class="badge badge-notification">3</span>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

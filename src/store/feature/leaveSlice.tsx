@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IResponse } from "../../models/IResponse";
+import Swal from "sweetalert2";
 
 export enum ELeaveType {
     YILLIK_IZIN = "Yıllık İzin",
@@ -54,12 +55,14 @@ interface ILeaveState{
 leave:  ILeaveIdentity | null,
 leaveList: ILeaveIdentity[],
 isLoading: boolean
+count: number
 }
 
 const initialLeaveState:ILeaveState= {
     leave:null,
     leaveList: [],
-    isLoading: false
+    isLoading: false,
+    count:0,
 }
 
 export const fetchSaveLeave = createAsyncThunk(
@@ -120,6 +123,59 @@ export const fetchGetPendingLeave = createAsyncThunk(
         return data;
     }
 );
+export const fetchGetPendingLeaveCount = createAsyncThunk(
+    'leave/fetchGetPendingLeaveCount',
+    async (token: string) => {
+        const response = await fetch(`http://localhost:9098/api/v1/leave/pending-leave-count?token=${token}`);
+        const result = await response.json();
+        console.log('API Result:', result); // API yanıtını konsola yazdırın
+        return result;
+    }
+);
+export const fetchApproveLeave = createAsyncThunk(
+    'leave/fetchApproveLeave',
+    async (id: number) => {
+        
+            const response = await fetch(`http://localhost:9098/api/v1/leave/approve-leave/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                return data; // Başarıyla dönen yanıtı döndürün
+            } else {
+                return Promise.reject(data.message || 'API çağrısında bir hata oluştu.');
+            }
+        
+    }
+);
+
+export const fetchDisapproveLeave = createAsyncThunk(
+    'leave/fetchDisapproveLeave',
+    async (id: number) => {
+        
+            const response = await fetch(`http://localhost:9098/api/v1/leave/disapprove-leave/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                return data; // Başarıyla dönen yanıtı döndürün
+            } else {
+                return Promise.reject(data.message || 'API çağrısında bir hata oluştu.');
+            }
+       
+    }
+);
+
 
 const leaveSlice =createSlice({
     name:'leave',
@@ -140,6 +196,37 @@ const leaveSlice =createSlice({
         });
         build.addCase(fetchGetPendingLeave.fulfilled, (state, action: PayloadAction<IResponse>) => {
             state.leaveList = action.payload.data;
+        })
+        .addCase(fetchGetPendingLeaveCount.fulfilled, (state, action: PayloadAction<number>) => {
+            state.count = action.payload;
+        })
+       
+       
+        .addCase(fetchApproveLeave.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(fetchApproveLeave.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.isLoading = false;
+            Swal.fire('Başarı!', 'İzin başarıyla onaylandı.', 'success');
+            // İzin onaylandıktan sonra yapılacak işlemler
+            // Örneğin: state.leaveList güncellenebilir
+        })
+        .addCase(fetchApproveLeave.rejected, (state, action) => {
+            state.isLoading = false;
+            Swal.fire('Hata!', action.error.message || 'Bilinmeyen hata', 'error');
+        })
+        .addCase(fetchDisapproveLeave.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(fetchDisapproveLeave.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.isLoading = false;
+            Swal.fire('Başarı!', 'İzin başarıyla reddedildi.', 'success');
+            // İzin reddedildikten sonra yapılacak işlemler
+            // Örneğin: state.leaveList güncellenebilir
+        })
+        .addCase(fetchDisapproveLeave.rejected, (state, action) => {
+            state.isLoading = false;
+            Swal.fire('Hata!', action.error.message || 'Bilinmeyen hata', 'error');
         })
     }
 })
