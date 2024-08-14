@@ -22,6 +22,9 @@ const goToCalisanList = () => {
 const goToIzinYonetimi = () => {
     navigate('/izinyonetimi');
 }
+const goToIzinListesi = () => {
+    navigate('/pendingleave');
+}
 
     return (
         <>
@@ -75,6 +78,10 @@ const goToIzinYonetimi = () => {
                                 <a href="#" onClick={goToIzinYonetimi}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>İzinleri Düzenle</button></span>
                                 </a>  
+                                <a href="#" onClick={goToIzinListesi}>
+                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>İzinleri Talepleri</button></span>
+                                </a>  
+                             
                              
                            
                         </ul>

@@ -9,6 +9,9 @@ function Sidebar() {
     const goToUpdateEmployee = () => {
         navigate('/updateemployee')
     }
+    const goToIzınTalepSayfası = () => {
+        navigate('/izinTalepSayfası')
+    }
 
 
 
@@ -32,8 +35,8 @@ function Sidebar() {
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             
                             
-                                <a  href="#" >
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start"  style={{width: '90%',marginBottom: '5px', marginTop: '5px'}}>Çalışan Ekle</button></span>
+                                <a  href="#" onClick={goToIzınTalepSayfası} >
+                                <i className="bi bi-circle"></i><span>< button   type="button" className="btn btn-secondary text-start"  style={{width: '90%',marginBottom: '5px', marginTop: '5px'}}>İzin Oluştur</button></span>
                                 </a>
                             
                             
