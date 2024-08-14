@@ -19,10 +19,11 @@ import CompanyListPage from "./pages/CompanyList";
 import EditAdminPage from "./pages/EditAdminPage";
 import UpdateManager from "./pages/UpdateManager";
 import CalisanEkle from "./pages/CalisanEkle";
-import CalisanList from "./pages/Home/CalisanList";
+import CalisanList from "./pages/CalisanList";
 import ChangePassword from "./pages/ChangePassword";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import UpdateEmployee from "./pages/UpdateEmployee";
+import IzinYonetimi from "./pages/IzinYonetimi";
 
 
 function RouterPage() {
@@ -55,6 +56,7 @@ function RouterPage() {
                 <Route path="/changepassword" element={<ChangePassword />} />
                 <Route path="/edashboard" element={<EmployeeDashboard />} />
                 <Route path="/updateemployee" element={<UpdateEmployee />} />
+                <Route path="/izinyonetimi" element={<IzinYonetimi />} />
 
                 
 

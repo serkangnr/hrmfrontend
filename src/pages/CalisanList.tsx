@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import ContactCard from '../../component/molecules/ContactCard'
-import ManagerSidebar from '../../component/molecules/Sidebar/ManagerSidebar'
-import CalisanListTablo from '../../component/molecules/CalisanListTablo'
-import { HrmDispatch, useAppSelector } from '../../store';
+import ContactCard from '../component/molecules/ContactCard'
+import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
+import CalisanListTablo from '../component/molecules/CalisanListTablo'
+import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
-import { fetchEmployeeList } from '../../store/feature/employeeSlice';
+import { fetchEmployeeList } from '../store/feature/employeeSlice';
 
 function CalisanList() {
 
