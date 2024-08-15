@@ -10,6 +10,7 @@ import UpCarosel from '../../component/molecules/UpCarosel';
 import DownCarosel from '../../component/molecules/DownCarosel';
 import Comment from '../../component/molecules/Comment';
 import Footer from '../../component/molecules/Footer';
+import ContactCardHome from '../../component/molecules/ContactCardHome';
 
 const Home: React.FC = () => {
     //asdaaaaaaaaaaaaaaaaaaaaaaaa
@@ -42,7 +43,7 @@ const Home: React.FC = () => {
                 }}
             />
             <div className=" background">
-                <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
+                <ContactCardHome companyPhone="5555555555" companyEmail="assim@gmail.com" />
                 <Navbar />
                 <div className="row p-5 mb-3" style={{ textAlign: "center", height: 850 }}>
                     <AdvertCard/>

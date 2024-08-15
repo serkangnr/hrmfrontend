@@ -5,18 +5,25 @@ import CalisanListTablo from '../component/molecules/CalisanListTablo'
 import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
 import { fetchEmployeeList } from '../store/feature/employeeSlice';
+import { setToken } from '../store/feature/authSlice';
 
 function CalisanList() {
 
     const employeeList = useAppSelector(state => state.employee.employeeList);
     const dispatch = useDispatch<HrmDispatch>();
     const token = useAppSelector(state => state.auth.token);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
+        }
+    }, [dispatch]);
 
     useEffect(() => {
-        dispatch(fetchEmployeeList(token));
-
-    }, [])
-
+        if (token) {
+            dispatch(fetchEmployeeList(token));
+        }
+    }, [dispatch, token]);
 
   return (
     <>
