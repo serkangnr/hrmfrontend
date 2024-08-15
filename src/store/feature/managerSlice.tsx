@@ -17,13 +17,15 @@ export interface IManagerIdentity {
 interface IManagerState {
     manager: IUpdateManager| null;
     isLoading: boolean;
-    managerList : IManagerIdentity[]
+    managerList : IManagerIdentity[];
+    registrationEndDate: boolean ;
 }
 
 const initialManagerState: IManagerState = {
     manager: null,
     isLoading: false,
     managerList : [] ,
+    registrationEndDate:  false,
    
 
 };
@@ -100,7 +102,33 @@ export const fetchUpdateManager = createAsyncThunk(
         }).then(data => data.json())
         return response;
     }
-)
+);
+
+
+
+export const fetchRegistrationEndDate = createAsyncThunk(
+    'manager/fetchRegistrationEndDate',
+    async ({ days, mail }: { days: number; mail: string }, { rejectWithValue }) => {
+        try {
+            const response = await fetch(`http://localhost:9092/api/v1/manager/get-registration-end-date?days=${days}&mail=${mail}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error: any) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
 
 
 
@@ -122,6 +150,15 @@ const managerSlice = createSlice({
                 state.manager=action.payload.data;
             }
         })
+        .addCase(fetchRegistrationEndDate.pending, (state) => {
+            state.isLoading = true;
+            
+        })
+        .addCase(fetchRegistrationEndDate.fulfilled, (state, action: PayloadAction<Boolean>) => {
+            state.isLoading = false;
+            
+        })
+       
         
     }
 });
