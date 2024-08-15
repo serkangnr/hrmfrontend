@@ -3,7 +3,7 @@ import ContactCard from '../component/molecules/ContactCard'
 import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
 import { useDispatch } from 'react-redux';
 import { HrmDispatch, useAppSelector } from '../store';
-import { fetchChangePassword } from '../store/feature/authSlice';
+import { fetchChangePassword, setToken } from '../store/feature/authSlice';
 import Swal from 'sweetalert2';
 
 function ChangePassword() {
@@ -12,14 +12,23 @@ function ChangePassword() {
    const [oldPassword, setOldPassword] = useState("")
    const [newPassword, setNewPassword] = useState("")
    const token = useAppSelector(state => state.auth.token);
+  //  useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //       dispatch(setToken(token));
+  //   }
+// }, [dispatch]);
+   
 
    const changePassword = () => {
        dispatch(fetchChangePassword({  token: token, oldPassword: oldPassword, newPassword: newPassword})).then((res) => {
           if (res.payload.code === 200) {
               Swal.fire('Başarı!', 'Şifre değiştirildi', 'success');
           } else {
+            console.log('token    :'+token)
               Swal.fire('Hata!', res.payload.message, 'error');
               throw new Error(res.payload.message);
+              
           }
        })
    }

@@ -4,6 +4,7 @@ import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
 import { fetchDeleteManager, fetchgetManager, fetchUpdateManager } from '../store/feature/managerSlice';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,6 +14,11 @@ function UpdateManager() {
     const token = useAppSelector(state => state.auth.token);
     const [editManager, setEditManager] = useState(manager);
     const id = useAppSelector(state => state.manager.manager?.id);
+    const navigate = useNavigate();
+
+    const goToChangePassword=()=>{
+      navigate("/changepassword")
+    }
 
     const deleteAccount = () => {
         if (editManager?.id) {
@@ -135,11 +141,13 @@ function UpdateManager() {
                   setEditManager({ ...editManager, birthdate: evt.target.value })
               }} />
             </div>
+            <a href=""onClick={goToChangePassword}>Şifre değiştir</a>
       
             <button onClick={updateManager} type="button" className="btn btn-secondary w-100">Hesabımı Güncelle</button>
            <br />
           <br />
             <button onClick={deleteAccount} type="button" className="btn btn-danger w-100">Hesabımı Sil</button>
+            
          
           </form>
         </div>

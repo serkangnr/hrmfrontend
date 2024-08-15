@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { HrmDispatch, useAppSelector } from '../../../store';
 import { useDispatch } from 'react-redux';
 import {  fetchGetPendingLeaveCount } from '../../../store/feature/leaveSlice';
+import { setToken } from '../../../store/feature/authSlice';
 
 
 function Sidebar() {
@@ -13,7 +14,12 @@ function Sidebar() {
     const token = useAppSelector(state => state.auth.token)
     const PendingLeaveCount = useAppSelector(state => state.leave.count);
     const navigate = useNavigate();
-    console.log('aaaaaaaaaaaaaaaaaaaa'+PendingLeaveCount)
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
+        }
+    }, [dispatch]);
 
 const goToUpdateManager = () => {
     navigate('/updatemanager');

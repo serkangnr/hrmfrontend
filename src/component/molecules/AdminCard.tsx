@@ -4,6 +4,7 @@ import { HrmDispatch, useAppSelector } from '../../store';
 import { fetchgetAdminToken } from '../../store/feature/adminSlice';
 import { IAdminList } from '../../models/IAdminList';
 import './usercard/permit.css'
+import { setToken } from '../../store/feature/authSlice';
 
 
 
@@ -11,17 +12,25 @@ import './usercard/permit.css'
 function AdminCard() {
 
 
-    const dispatch = useDispatch<HrmDispatch>();
-    const token = useAppSelector(state => state.auth.token)
-   const admin =useAppSelector(state=>state.admin.admin)
+  const dispatch = useDispatch<HrmDispatch>();
+    
+  const admin =useAppSelector(state=>state.admin.admin)
 
-    console.log('aaaaaaaaaaaaaa  '+token)
-    console.log('aaaaaaaaaaaaaaa  '+ admin)
-    useEffect(() => {
-        dispatch(fetchgetAdminToken(token));
+  const token = useAppSelector(state => state.auth.token);
 
-    }, [])
-             
+  useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+          dispatch(setToken(token));
+      }
+  }, [dispatch]);
+
+  useEffect(() => {
+      if (token) {
+          dispatch(fetchgetAdminToken(token));
+      }
+  }, [dispatch, token]);
+  
 
 
 
