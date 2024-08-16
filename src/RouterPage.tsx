@@ -26,6 +26,7 @@ import UpdateEmployee from "./pages/UpdateEmployee";
 import IzinYonetimi from "./pages/IzinYonetimi";
 import IzinTalepSayfası from "./pages/IzinTalepSayfası";
 import PendingLeave from "./pages/PendingLeave";
+import ManagerList from "./pages/ManagerList";
 
 
 function RouterPage() {
@@ -61,6 +62,7 @@ function RouterPage() {
                 <Route path="/izinyonetimi" element={<IzinYonetimi />} />
                 <Route path="/izintalepsayfası" element={<IzinTalepSayfası />} />
                 <Route path="/pendingleave" element={<PendingLeave />} />
+                <Route path="/manager-list" element={<ManagerList />} />
 
 
 

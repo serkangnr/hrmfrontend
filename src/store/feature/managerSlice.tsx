@@ -5,6 +5,24 @@ import { IUpdateManager } from "../../models/IUpdateManager";
 import Rest from '../../config/RestApis';
 
 
+export interface CompanyResponseDto {
+    name: string;
+    logo: string;
+    registrationEndDate: string;
+    
+}
+export interface ManagerResponseDto {
+    name: string;
+    surname: string;
+    avatar: string;
+    birthDate: string;
+    phone: string;
+    email: string;
+    address: string;
+    companyName: string;
+    gender: string; 
+    registrationEndDate: string;
+}
 export interface IManagerIdentity {
     id?: string;
     authId?: number;
@@ -18,9 +36,12 @@ export interface IManagerIdentity {
 }
 interface IManagerState {
     manager: IUpdateManager| null;
-    isLoading: boolean;
+    
     managerList : IManagerIdentity[];
     registrationEndDate: boolean ;
+    upcomingCompanyDates: CompanyResponseDto[];
+    managerListDto: ManagerResponseDto[];
+    isLoading: boolean;
 }
 
 const initialManagerState: IManagerState = {
@@ -28,6 +49,9 @@ const initialManagerState: IManagerState = {
     isLoading: false,
     managerList : [] ,
     registrationEndDate:  false,
+    upcomingCompanyDates: [],
+    managerListDto: [],
+    
    
 
 };
@@ -130,6 +154,34 @@ export const fetchRegistrationEndDate = createAsyncThunk(
         }
     }
 );
+export const fetchUpcomingCompanyDates = createAsyncThunk(
+    'manager/fetchUpcomingCompanyDates',
+    async () => {
+        const response = await fetch(Rest.manager + '/upcoming-company-dates', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await response.json();
+        return data;
+    }
+);
+export const fetchManagerListDto = createAsyncThunk(
+    'manager/fetchManagerListDto',
+    async () => {
+        const response = await fetch(Rest.manager + '/get-manager-list-dto', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data: IResponse = await response.json();
+        console.log('API Response:', data);
+        return data;
+    }
+);
 
 
 
@@ -160,6 +212,30 @@ const managerSlice = createSlice({
             state.isLoading = false;
             
         })
+        .addCase(fetchUpcomingCompanyDates.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(fetchUpcomingCompanyDates.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.isLoading = false;
+            if (action.payload.code === 200) {
+                state.upcomingCompanyDates = action.payload.data;
+            }
+        })
+        .addCase(fetchUpcomingCompanyDates.rejected, (state) => {
+            state.isLoading = false;
+        });
+        build.addCase(fetchManagerListDto.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(fetchManagerListDto.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            if (action.payload.code === 200) {
+                state.managerListDto = action.payload.data;
+            }
+            state.isLoading = false;
+        })
+        .addCase(fetchManagerListDto.rejected, (state) => {
+            state.isLoading = false;
+        });
        
         
     }

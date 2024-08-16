@@ -56,12 +56,8 @@ function Dashboard() {
                 <div className="row">
                  <AdminCard/>
                 </div>
-                <div className="row">
-                 
-                    <LeaveInfo
-                      totalDays={leaveData.totalDays} forwardDays={leaveData.forwardDays} usedDays={leaveData.usedDays} leaves={leaveData.leaves}
-                    />
-                  
+                <div className="row  " >
+                  <PermitCard />
                 </div>
               </div>
               <div className="col-4 p-4">
@@ -79,9 +75,7 @@ function Dashboard() {
 
                 </div>
 
-                <div className="row  " style={{width:'100%'}}>
-                  <PermitCard />
-                </div>
+               
 
               </div>
               <div className="col-4 p-4">
