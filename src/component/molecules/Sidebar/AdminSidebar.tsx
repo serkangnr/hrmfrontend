@@ -30,6 +30,9 @@ function Sidebar() {
     const goToEditPage = () => {
         navigate('/edit-admin');
     }
+    const goToManagerList = () => {
+        navigate('/manager-list');
+    }
     useEffect(() => {
         dispatch(fetchNotificationCount() as any);
     }, [dispatch]);
@@ -75,31 +78,10 @@ function Sidebar() {
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                        <a className="nav-link collapsed"onClick={goToManagerList} data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                             <i className="bi bi-journal-text"></i><span><i className="fa-solid fa-user-group"></i>Şirket Yöneticileri</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
-                        <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            <li>
-                                <a href="forms-elements.html">
-                                    <i className="bi bi-circle"></i><span>Form Elements</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-layouts.html">
-                                    <i className="bi bi-circle"></i><span>Form Layouts</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-editors.html">
-                                    <i className="bi bi-circle"></i><span>Form Editors</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="forms-validation.html">
-                                    <i className="bi bi-circle"></i><span>Form Validation</span>
-                                </a>
-                            </li>
-                        </ul>
+                       
                     </li>
 
                     <li className="nav-item">

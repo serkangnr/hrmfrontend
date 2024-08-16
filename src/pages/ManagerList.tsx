@@ -4,20 +4,20 @@ import AdminSidebar from '../component/molecules/Sidebar/AdminSidebar'
 import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
 
-
-
+import { fetchAdminList } from '../store/feature/adminSlice';
+import AdminListTablo from '../component/atoms/AdminListTablo';
 import ContactCard from '../component/molecules/ContactCard';
-import { fetchCompanyList } from '../store/feature/companySlice';
-import CompanyList from '../component/atoms/CompanyList';
+import { fetchManagerListDto } from '../store/feature/managerSlice';
+import ManagerListTablo from '../component/atoms/ManagerListToblo';
 
-function CompanyListPage() {
+function ManagerList() {
 
 
-    const companyList = useAppSelector(state => state.company.companyList);
+    const managerList = useAppSelector(state => state.manager.managerListDto);
     const dispatch = useDispatch<HrmDispatch>();
 
     useEffect(() => {
-        dispatch(fetchCompanyList());
+        dispatch(fetchManagerListDto());
 
     }, [])
 
@@ -43,7 +43,7 @@ function CompanyListPage() {
                             <table className="table table-dark table-striped mt-5">
                                 <thead>
                                     <tr>
-                                    <th colSpan={8} className="table-active  "><h1 className='text-center' >Sirket Listesi</h1></th>
+                                    <th colSpan={10} className="table-active  "><h1 className='text-center' >Şirket Yönetici Listesi</h1></th>
                                     </tr>
 
                                     
@@ -52,37 +52,25 @@ function CompanyListPage() {
                                 </thead>
                                 <thead>
                                     <tr>
-                                       
-                                        <th scope="col">Logo</th>
-                                        <th scope="col">Sirket Adi</th>
+                                        <th scope="col">Avatar</th>
+                                        <th scope="col">İsim</th>
+                                        <th scope="col">Soyisim</th>
+                                        <th scope="col">Doğum günü</th>
+                                        <th scope="col">Telefon</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Adres</th>
-                                        <th scope="col">Telefon</th>
-                                        <th scope="col">Sektor</th>
-                                        <th scope="col">Web Site</th>
-                                      
+                                        <th scope="col">Şirket ismi</th>
+                                        <th scope="col">Cinsiyet</th>                              
+                                        <th scope="col">Üyelik bitiş tarihi</th>
                                         
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
                                     {
-                                        companyList.map((company, index) => (
-                                          
-                                            <CompanyList
-                                                key={index}
-                                                id={company.id}
-                                                logo={company.logo}
-                                                name={company.name}
-                                                email={company.email}
-                                                address={company.address}
-                                                phone={company.phone}
-                                                sector={company.sector}
-                                                website={company.website}
-                                            />
-
-                                        ))
+                                        <ManagerListTablo managers={managerList} />
                                     }
+                                  
 
 
                                 </tbody>
@@ -110,4 +98,4 @@ function CompanyListPage() {
     )
 }
 
-export default CompanyListPage
+export default ManagerList

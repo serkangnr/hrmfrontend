@@ -56,10 +56,15 @@ function Dashboard() {
                 <div className="row">
                  <AdminCard/>
                 </div>
+<<<<<<< HEAD
+                <div className="row  " >
+                  <PermitCard />
+=======
                 <div className="row">
                  
                     
                   
+>>>>>>> master
                 </div>
               </div>
               <div className="col-4 p-4">
@@ -77,9 +82,7 @@ function Dashboard() {
 
                 </div>
 
-                <div className="row  " style={{width:'100%'}}>
-                  <PermitCard />
-                </div>
+               
 
               </div>
               <div className="col-4 p-4">
