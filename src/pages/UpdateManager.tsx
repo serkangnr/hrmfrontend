@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { fetchDeleteManager, fetchgetManager, fetchUpdateManager } from '../store/feature/managerSlice';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import ContactCard from '../component/molecules/ContactCard';
+import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar';
 
 
 
@@ -56,7 +58,7 @@ function UpdateManager() {
                 
                 name: editManager ? editManager.name : '',
                 surname: editManager ? editManager.surname : '',
-                email: '',
+                email: editManager ? editManager.email : '',
                 phone: editManager ? editManager.phone : '',
                 address: editManager ? editManager.address : '',
                 avatar: editManager ? editManager.avatar : '',
@@ -75,8 +77,17 @@ function UpdateManager() {
 
     return (
         <>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#EEEEEE' }}>
-          <form className="p-4" style={{ maxWidth: '600px', width: '100%', backgroundColor: '#EEEEEE', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
+       <div className="contaniner " style={{ backgroundColor: '#EEEEEE' }}>
+        <div className="row shadow" style={{ height: '50px', backgroundColor: '#EEEEEE' }}>
+        <ContactCard companyPhone="5555555555" companyEmail="assim@gmail.com" />
+        </div>
+       <div className="row">
+        <div className="col-2">
+          <ManagerSidebar />
+        </div>
+        <div className="col-9">
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',  }}>
+          <form className="p-4" style={{ maxWidth: '600px', width: '100%', borderRadius: '10px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
       
             <div className="mb-3 input-group">
               <label htmlFor="name" className="input-group-text">Ad</label>
@@ -141,7 +152,10 @@ function UpdateManager() {
                   setEditManager({ ...editManager, birthdate: evt.target.value })
               }} />
             </div>
-            <a href=""onClick={goToChangePassword}>Şifre değiştir</a>
+            <div className="mb-3 input-group">
+            <a style={{ color: 'red' }} href=""onClick={goToChangePassword}>Şifremi Değiştir</a>
+            </div>
+           
       
             <button onClick={updateManager} type="button" className="btn btn-secondary w-100">Hesabımı Güncelle</button>
            <br />
@@ -151,6 +165,13 @@ function UpdateManager() {
          
           </form>
         </div>
+        </div>
+       </div>
+          
+
+       
+        </div>
+        
       </>
       
     )

@@ -26,6 +26,7 @@ export interface IEmployeeIdentity {
     driverLicense?: string;
     avatar: string;
     shiftId: string;
+    yearsLeaveCount: number;
 }
 
 export interface IEditEmployee{
@@ -69,6 +70,19 @@ export const fetchEmployeeList = createAsyncThunk(
         });
         const data = await response.json();
         console.log('API Response:', data);
+        return data;
+    }
+);
+export const fetchYearsLeaveCount = createAsyncThunk(
+    'employee/fetchYearsLeaveCount',
+    async (id: string) => {
+        const response = await fetch(Rest.employee+`/years-leave-count/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
         return data;
     }
 );
@@ -155,7 +169,7 @@ export const fetchgetEmployee = createAsyncThunk(
                 .then(data => data.json());
             return result;
     
-    
+            
         })
 
 export const fetchDeleteEmployee = createAsyncThunk(
@@ -236,6 +250,7 @@ const employeeSlice = createSlice({
         build.addCase(fetchgetEmployeeByToken.fulfilled, (state, action: PayloadAction<IResponse>) => {
             if (action.payload.code === 200) {
                 state.editEmployee = action.payload.data;
+                state.employee = action.payload.data;
             } else {
 
             }
@@ -249,6 +264,11 @@ const employeeSlice = createSlice({
          
                 state.employee = action.payload.data;
            
+        });
+        build.addCase(fetchYearsLeaveCount.fulfilled, (state, action: PayloadAction<number>) => {
+            if (state.employee) {
+                state.employee.yearsLeaveCount = action.payload;
+            }
         });
     }
 })

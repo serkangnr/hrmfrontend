@@ -19,9 +19,6 @@
   margin-bottom: 10px; /* Kart başlığı ile içerik arasında boşluk */
 }
 
-.progress-bar {
-  margin-bottom: 10px; /* Progress bar ile diğer öğeler arasında boşluk */
-}
 
 .list-group-item {
   display: flex;

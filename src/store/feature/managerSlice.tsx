@@ -21,6 +21,8 @@ interface IManagerState {
     isLoading: boolean;
     managerList : IManagerIdentity[];
     registrationEndDate: boolean ;
+    
+
 }
 
 const initialManagerState: IManagerState = {
