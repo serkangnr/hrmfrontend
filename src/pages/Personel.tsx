@@ -1,8 +1,15 @@
 import React from 'react'
 import Navbar from '../component/molecules/Navbar'
 import Footer from '../component/molecules/Footer'
+import { useNavigate } from 'react-router-dom'
 
 function Personel() {
+    const navigate = useNavigate()
+
+    const goToRegister = () => {
+        navigate('/register');
+      }
+      
     return (
         <>
             <Navbar />
@@ -36,6 +43,7 @@ function Personel() {
                         <div className="col-lg-6 col-xxl-4 my-5 mx-auto">
                             <div className="d-grid gap-2">
                                 <button
+                                    onClick={goToRegister}
                                     style={{ borderRadius: '50px' }}
                                     className="btn btn-primary"
                                     type="button"
@@ -152,6 +160,7 @@ function Personel() {
 
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
                                         <button
+                                             onClick={goToRegister}
                                             style={{ borderRadius: '50px' }}
                                             type="button"
                                             className="btn btn-outline-primary btn-lg px-4"
@@ -229,6 +238,7 @@ function Personel() {
 
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
                                         <button
+                                            onClick={goToRegister}
                                             style={{ borderRadius: '50px' }}
                                             type="button"
                                             className="btn btn-outline-primary btn-lg px-4"
@@ -322,6 +332,7 @@ function Personel() {
 
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
                                         <button
+                                            onClick={goToRegister}
                                             style={{ borderRadius: '50px' }}
                                             type="button"
                                             className="btn btn-outline-primary btn-lg px-4 "
@@ -395,6 +406,7 @@ function Personel() {
 
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
                                     <button
+                                        onClick={goToRegister}
                                         style={{ borderRadius: '50px' }}
                                         type="button"
                                         className="btn btn-outline-primary btn-lg px-4"
@@ -472,6 +484,7 @@ function Personel() {
                                 <div className="d-flex gap-3 justify-content-center lead fw-normal">
                                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
                                         <button
+                                            onClick={goToRegister}
                                             style={{ borderRadius: '50px' }}
                                             type="button"
                                             className="btn btn-primary btn-lg px-4"

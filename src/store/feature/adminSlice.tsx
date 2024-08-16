@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IResponse } from "../../models/IResponse";
 import { IAdminList } from "../../models/IAdminList";
+import Rest from '../../config/RestApis';
 
 export interface IAdminIdentity {
     id:string
@@ -39,7 +40,7 @@ export const fetchgetAdmin = createAsyncThunk(
     'admin/fetchgetAdmin',
     async (payload: string) => {
        
-        const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-by-id?id=${payload}`)
+        const result = await fetch(Rest.admin+`/get-admin-by-id?id=${payload}`)
             .then(data => data.json());
         return result;
 
@@ -49,7 +50,7 @@ export const fetchgetAdmin = createAsyncThunk(
         'admin/fetchgetAdminToken',
         async (payload: string) => {
            
-            const result = await fetch(`http://localhost:9091/api/v1/admin/get-admin-by-token?token=${payload}`)
+            const result = await fetch(Rest.admin+`/get-admin-by-token?token=${payload}`)
                 .then(data => data.json());
             return result;
     
@@ -69,7 +70,7 @@ interface IFetchUpdateAdmin {
 export const fetchUpdateAdmin = createAsyncThunk(
     'admin/fetchUpdateAdmin',
     async (payload: IFetchUpdateAdmin) => {
-        const res = await fetch('http://localhost:9091/api/v1/admin/update-admin', {
+        const res = await fetch(Rest.admin+'/update-admin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -97,7 +98,7 @@ export const fetchUpdateAdmin = createAsyncThunk(
 export const fetchAdminList = createAsyncThunk(
     'admin/fetchAdminList',
     async () => {
-        const response = await fetch('http://localhost:9091/api/v1/admin/admin-list', {
+        const response = await fetch(Rest.admin+'/admin-list', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -111,7 +112,7 @@ export const fetchAdminList = createAsyncThunk(
 export const fetchDeleteAdmin = createAsyncThunk(
     'admin/fetchDeleteAdmin',
     async (id: string) => {
-        const response = await fetch(`http://localhost:9091/api/v1/admin/delete-admin/${id}`, {
+        const response = await fetch(Rest.admin+`/delete-admin/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

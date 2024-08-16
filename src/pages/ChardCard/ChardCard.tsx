@@ -3,8 +3,16 @@ import React from 'react'
 import './ChardCard.css'
 import Navbar from '../../component/molecules/Navbar'
 import Footer from '../../component/molecules/Footer'
+import { useNavigate } from 'react-router-dom'
 
 function ChardCard() {
+
+    const navigate = useNavigate()
+
+    const goToRegister = () => {
+        navigate('/register');
+      }
+      
     return (
 
         <>
@@ -27,7 +35,7 @@ function ChardCard() {
                                 <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Ücret değerlendirme süreçlerini dijitalleştirin</h1>
                                 <p className="lead">Çalışanlarınızın maaş değerlendirme ve güncelleme operasyonlarını son yönetici onayına kadar yönetin ve raporlayın.</p>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                                    <button className="btn btn-primary btn-lg px-4 me-md-2" type="button">ÜCRETSİZ DEMO TALEP EDİN</button>
+                                    <button className="btn btn-primary btn-lg px-4 me-md-2" onClick={goToRegister} type="button">ÜCRETSİZ DEMO TALEP EDİN</button>
                                 </div>
                             </div>
                         </div>

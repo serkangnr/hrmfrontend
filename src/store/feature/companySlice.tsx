@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IResponse } from "../../models/IResponse";
 import { IAdminList } from "../../models/IAdminList";
 import { ICompanyList } from "../../models/ICompanyList";
+import Rest from '../../config/RestApis';
+
 
 
 
@@ -21,7 +23,7 @@ const initialCompanyState={
 export const fetchCompanyList = createAsyncThunk(
     'admin/fetchCompanyList',
     async () => {
-        const response = await fetch('http://localhost:9093/api/v1/company/get-all-company', {
+        const response = await fetch(Rest.company+'/get-all-company', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

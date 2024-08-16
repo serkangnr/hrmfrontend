@@ -1,8 +1,16 @@
 import React from 'react'
 import Navbar from '../component/molecules/Navbar'
 import Footer from '../component/molecules/Footer'
+import { useNavigate } from 'react-router-dom'
 
 function ShiftCard() {
+
+    const navigate = useNavigate()
+
+    const goToRegister = () => {
+        navigate('/register');
+      }
+      
     return (
         <>
             <Navbar />
@@ -30,7 +38,7 @@ function ShiftCard() {
                                 <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Tek tıkla tüm vardiyayı düzene sokun</h1>
                                 <p className="lead">Çalışanlar internete bağlı herhangi bir cihazdan uygun oldukları saatleri vardiya planına eklesin, siz de kendi biriminize ait vardiya planı ve tek tıkla raporlama yapın.</p>
                                 <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                                    <button type="button" className="btn btn-primary btn-lg-custom">ÜCRETSİZ DEMO TALEP EDİN</button>
+                                    <button type="button" onClick={goToRegister} className="btn btn-primary btn-lg-custom">ÜCRETSİZ DEMO TALEP EDİN</button>
                                 </div>
                             </div>
                         </div>

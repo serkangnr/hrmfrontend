@@ -13,10 +13,7 @@ import Footer from '../../component/molecules/Footer';
 import ContactCardHome from '../../component/molecules/ContactCardHome';
 
 const Home: React.FC = () => {
-    //asdaaaaaaaaaaaaaaaaaaaaaaaa
-    //aaaaaaaaaaaaaaa
-    //aaaaaaaaaaaaaaaaaaa
-    //bbbbbbbbbbbbbbbbbbb
+    
     return (
         <>
         

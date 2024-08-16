@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IResponse } from "../../models/IResponse";
 import { IUpdateEmployee } from "../../models/IUpdateEmployee";
+import Rest from '../../config/RestApis';
 
 export interface IEmployeeIdentity {
     managerToken: string;
@@ -60,7 +61,7 @@ const initialEmployeeState:IEmployeeState={
 export const fetchEmployeeList = createAsyncThunk(
     'employee/fetchEmployeeList',
     async (managerToken:string) => {
-        const response = await fetch(`http://localhost:9094/api/v1/employee/employee-list?managerToken=${managerToken}`, {
+        const response = await fetch(Rest.employee+`/employee-list?managerToken=${managerToken}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -74,7 +75,7 @@ export const fetchEmployeeList = createAsyncThunk(
 export const fetchUpdateEmployee = createAsyncThunk(
     'employee/fetchUpdateEmployee',
     async (payload: IUpdateEmployee) => {
-        const res = await fetch('http://localhost:9094/api/v1/employee/update-employee', {
+        const res = await fetch(Rest.employee+'/update-employee', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -112,7 +113,7 @@ export const fetchUpdateEmployee = createAsyncThunk(
 export const fetchEditEmployee = createAsyncThunk(
     'employee/fetchEditEmployee',
     async (payload: IEditEmployee ) => {
-        const res = await fetch('http://localhost:9094/api/v1/employee/edit-employee', {
+        const res = await fetch(Rest.employee+'/edit-employee', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -140,7 +141,7 @@ export const fetchEditEmployee = createAsyncThunk(
 export const fetchgetEmployee = createAsyncThunk(
     'employee/fetchgetEmployee',
     async (id: string) => {
-        const result = await fetch('http://localhost:9094/api/v1/employee/get-employee-by-id?id=' + id)
+        const result = await fetch(Rest.employee+'/get-employee-by-id?id=' + id)
             .then(data => data.json());
         return result;
 
@@ -150,7 +151,7 @@ export const fetchgetEmployee = createAsyncThunk(
     export const fetchgetEmployeeByToken = createAsyncThunk(
         'employee/fetchgetEmployeeByToken',
         async (token: string) => {
-            const result = await fetch('http://localhost:9094/api/v1/employee/get-employee-by-token?token=' + token)
+            const result = await fetch(Rest.employee+'/get-employee-by-token?token=' + token)
                 .then(data => data.json());
             return result;
     
@@ -160,7 +161,7 @@ export const fetchgetEmployee = createAsyncThunk(
 export const fetchDeleteEmployee = createAsyncThunk(
     'employee/fetchDeleteEmployee',
     async (id: string) => {
-        const response = await fetch(`http://localhost:9094/api/v1/employee/delete-employee/${id}`, {
+        const response = await fetch(Rest.employee+`/delete-employee/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
