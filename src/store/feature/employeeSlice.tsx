@@ -176,6 +176,44 @@ export const fetchDeleteEmployee = createAsyncThunk(
     }
 )
 
+export const fetchActivateEmployee = createAsyncThunk(
+    'employee/fetchActivateEmployee',
+    async (id: string) => {
+        const response = await fetch(`http://localhost:9094/api/v1/employee/activate-employee/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                
+
+            },
+            body: JSON.stringify({
+                'id': id,
+               
+
+            })
+        }).then(data => data.json())
+        return response;
+    }
+)
+export const fetchPassivateEmployee = createAsyncThunk(
+    'employee/fetchPassivateEmployee',
+    async (id: string) => {
+        const response = await fetch(`http://localhost:9094/api/v1/employee/passivate-employee/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                
+
+            },
+            body: JSON.stringify({
+                'id': id,
+                
+
+            })
+        }).then(data => data.json())
+        return response;
+    }
+)
 const employeeSlice = createSlice({
     name: 'employee',
     initialState: initialEmployeeState,
@@ -201,6 +239,16 @@ const employeeSlice = createSlice({
 
             }
         })
+        build.addCase(fetchActivateEmployee.fulfilled, (state, action: PayloadAction<IResponse>) => {
+           
+                state.employee = action.payload.data;
+           
+        });
+        build.addCase(fetchPassivateEmployee.fulfilled, (state, action: PayloadAction<IResponse>) => {
+         
+                state.employee = action.payload.data;
+           
+        });
     }
 })
 
