@@ -3,6 +3,12 @@ import { IResponse } from "../../models/IResponse";
 import Swal from "sweetalert2";
 import Rest from '../../config/RestApis';
 
+
+export interface ILeaveListResponseDto {
+    startDate: string;
+    endDate: string;
+    leaveType: ELeaveType;
+}
 export enum ELeaveType {
     YILLIK_IZIN = "Yıllık İzin",
     MAZERET_IZNI = "Mazeret İzni",
@@ -55,6 +61,7 @@ export interface ILeaveIdentity{
 interface ILeaveState{
 leave:  ILeaveIdentity | null,
 leaveList: ILeaveIdentity[],
+leaveListDto: ILeaveListResponseDto[],
 isLoading: boolean
 count: number
 }
@@ -64,7 +71,23 @@ const initialLeaveState:ILeaveState= {
     leaveList: [],
     isLoading: false,
     count:0,
+    leaveListDto:[]
 }
+
+export const fetchAllMyLeave = createAsyncThunk(
+    'leave/fetchAllMyLeave',
+    async (token: string) => {
+        const response = await fetch(Rest.leave + '/get-my-leave?token=' + token, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log('API Response:', data);
+        return data;
+    }
+);
 
 export const fetchSaveLeave = createAsyncThunk(
     'leave/fetchSaveLeave',
@@ -229,6 +252,10 @@ const leaveSlice =createSlice({
             state.isLoading = false;
             Swal.fire('Hata!', action.error.message || 'Bilinmeyen hata', 'error');
         })
+
+        build.addCase(fetchAllMyLeave.fulfilled, (state, action: PayloadAction<IResponse>) => {
+            state.leaveListDto = action.payload.data || [];
+        });
     }
 })
 

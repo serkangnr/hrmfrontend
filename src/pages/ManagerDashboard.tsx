@@ -12,6 +12,8 @@ import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
 import LineChart from '../component/molecules/LineChart'
 import SubscriptionChart from '../component/molecules/SubscriptionChart'
 import ContactCard from '../component/molecules/ContactCard'
+import ManagerCard from '../component/molecules/ManagerCard'
+import TrafficChartDepartman from '../component/molecules/TrafficChartDepartman'
 
 function ManagerDashboard() {
   //yenilendi
@@ -43,14 +45,10 @@ function ManagerDashboard() {
             <div className="row">
               <div className="col-4 p-4">
                 <div className="row  ">
-                  <UserCard name="Ayşe " imageUrl="https://i.dunya.com/storage/files/images/2022/12/04/iskadini-cEKn_cover.jpg" birthDate="01.01.2000"
-                    startDate="01.01.2023" position="Yonetici" cardLink1="https://picsum.photos/200/300"
-                    cardLink2="https://picsum.photos/200/300" />
+                  <ManagerCard  />
                 </div>
                 <div className="row">
-                  <LeaveInfo
-                    totalDays={leaveData.totalDays} forwardDays={leaveData.forwardDays} usedDays={leaveData.usedDays} leaves={leaveData.leaves}
-                  />
+                  
                 </div>
               </div>
               <div className="col-4 p-4">
@@ -76,11 +74,11 @@ function ManagerDashboard() {
                     <div className="card-body pb-0">
                       <h6 className="card-title">
 
-                        <i className = 'bx bxs-user-account bx-tada bx-rotate-180' ></i> <label style={{fontSize: '20px' }} className='me-2 '>Çalışan Dağılımı</label>  <span>|<label style={{fontSize: '15px' }} className='me-2 '>Bugün</label></span>
+                        <i className = 'bx bxs-user-account bx-tada bx-rotate-180' ></i> <label style={{fontSize: '20px' }} className='me-2 '>Departman Dağılımı</label>  <span>|<label style={{fontSize: '15px' }} className='me-2 '>Bugün</label></span>
                       </h6>
-                      <div id="trafficChart" style={{ minHeight: 200 }} className="echart" />
-
-                      <TrafficChart />
+                      {/* <div id="trafficChart" style={{ minHeight: 200 }} className="echart" /> */}
+                            <br />
+                      <TrafficChartDepartman />
 
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Dashboard from "./pages/EmployeeDashboard";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ChardCard from "./pages/ChardCard/ChardCard";
@@ -37,7 +37,7 @@ function RouterPage() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/dashboard" element={<Dashboard />} />
+             
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/ucretlendirme" element={<ChardCard />} />

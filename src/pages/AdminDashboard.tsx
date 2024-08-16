@@ -58,9 +58,7 @@ function Dashboard() {
                 </div>
                 <div className="row">
                  
-                    <LeaveInfo
-                      totalDays={leaveData.totalDays} forwardDays={leaveData.forwardDays} usedDays={leaveData.usedDays} leaves={leaveData.leaves}
-                    />
+                    
                   
                 </div>
               </div>
