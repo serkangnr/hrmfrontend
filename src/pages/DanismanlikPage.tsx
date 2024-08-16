@@ -1,9 +1,16 @@
 import React from 'react'
 import Navbar from '../component/molecules/Navbar'
 import Footer from '../component/molecules/Footer'
+import { useNavigate } from 'react-router-dom'
 
 function DanismanlikPage() {
-    //düzenlendi
+    const navigate = useNavigate()
+
+    const goToRegister = () => {
+        navigate('/register');
+      }
+      
+    
     return (
 
         <>
@@ -36,7 +43,7 @@ function DanismanlikPage() {
                                     </ul>
                                 </div>
                                 <div style={{ marginLeft: '30px', marginTop: '30px' }}>
-                                    <button type="button" className="btn btn-primary fs-5" style={{ borderRadius: '50px' }} >ÜCRETSİZ RANDEVU TALEP EDİN</button>
+                                    <button type="button" onClick={goToRegister} className="btn btn-primary fs-5" style={{ borderRadius: '50px' }} >ÜCRETSİZ RANDEVU TALEP EDİN</button>
                                 </div>
 
                             </div>

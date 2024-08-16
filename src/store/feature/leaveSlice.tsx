@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IResponse } from "../../models/IResponse";
 import Swal from "sweetalert2";
+import Rest from '../../config/RestApis';
 
 export enum ELeaveType {
     YILLIK_IZIN = "Yıllık İzin",
@@ -68,7 +69,7 @@ const initialLeaveState:ILeaveState= {
 export const fetchSaveLeave = createAsyncThunk(
     'leave/fetchSaveLeave',
     async(payload: IFetchSaveLeave)=>{
-        const response =  await fetch('http://localhost:9098/api/v1/leave/save',{
+        const response =  await fetch(Rest.leave+'/save',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,7 +92,7 @@ export const fetchSaveLeave = createAsyncThunk(
 export const fetchRequestLeave = createAsyncThunk(
     'leave/fetchRequestLeave',
     async(payload: IFetchRequestLeave)=>{
-        const response =  await fetch('http://localhost:9098/api/v1/leave/leave-request',{
+        const response =  await fetch(Rest.leave+'/leave-request',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -112,7 +113,7 @@ export const fetchRequestLeave = createAsyncThunk(
 export const fetchGetPendingLeave = createAsyncThunk(
     'leave/fetchGetPendingLeave',
     async (token:string) => {
-        const response = await fetch(`http://localhost:9098/api/v1/leave/get-pending-leave?token=${token}`, {
+        const response = await fetch(Rest.leave+`/get-pending-leave?token=${token}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -126,7 +127,7 @@ export const fetchGetPendingLeave = createAsyncThunk(
 export const fetchGetPendingLeaveCount = createAsyncThunk(
     'leave/fetchGetPendingLeaveCount',
     async (token: string) => {
-        const response = await fetch(`http://localhost:9098/api/v1/leave/pending-leave-count?token=${token}`);
+        const response = await fetch(Rest.leave+`/pending-leave-count?token=${token}`);
         const result = await response.json();
         console.log('API Result:', result); // API yanıtını konsola yazdırın
         return result;
@@ -136,7 +137,7 @@ export const fetchApproveLeave = createAsyncThunk(
     'leave/fetchApproveLeave',
     async (id: number) => {
         
-            const response = await fetch(`http://localhost:9098/api/v1/leave/approve-leave/${id}`, {
+            const response = await fetch(Rest.leave+`/approve-leave/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -158,7 +159,7 @@ export const fetchDisapproveLeave = createAsyncThunk(
     'leave/fetchDisapproveLeave',
     async (id: number) => {
         
-            const response = await fetch(`http://localhost:9098/api/v1/leave/disapprove-leave/${id}`, {
+            const response = await fetch(Rest.leave+`/disapprove-leave/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

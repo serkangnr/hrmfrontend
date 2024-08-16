@@ -8,6 +8,7 @@ import { IVerifyEmail } from "../../models/IVerifyEmail";
 import { IVerifyList } from "../../models/IVerifyList";
 import { IRegisterEmployee } from "../../models/IRegisterEmployee";
 import { IChangePassword } from "../../models/IChangePassword";
+import Rest from '../../config/RestApis';
 
 
 
@@ -35,7 +36,7 @@ const initialAuthState={
 export const fetchRegisterManager = createAsyncThunk(
     'auth/fetchRegisterManager',
     async(payload: IRegisterManager)=>{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/register-manager',{
+        const response =  await fetch(Rest.auth+'/register-manager',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -57,7 +58,7 @@ export const fetchRegisterManager = createAsyncThunk(
 export const fetchRegisterAdmin = createAsyncThunk(
     'auth/fetchRegisterAdmin',
     async(payload: IRegisterAdmin)=>{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/register-admin',{
+        const response =  await fetch(Rest.auth+'/register-admin',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +77,7 @@ export const fetchRegisterAdmin = createAsyncThunk(
 export const fetchRegisterEmployee = createAsyncThunk(
     'auth/fetchRegisterEmployee',
     async(payload: IRegisterEmployee)=>{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/register-employee',{
+        const response =  await fetch(Rest.auth+'/register-employee',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -106,7 +107,7 @@ export const fetchLogin = createAsyncThunk(
     'auth/fetchLogin',
     async(payload: ILogin)=>{
         try{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/login',{
+        const response =  await fetch(Rest.auth+'/login',{
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -128,7 +129,7 @@ export const fetchLogin = createAsyncThunk(
 export const fetchVerifyEmail = createAsyncThunk(
     'auth/fetchVerifyEmail',
     async(payload: IVerifyEmail)=>{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/verifyEmail',{
+        const response =  await fetch(Rest.auth+'/verifyEmail',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -144,7 +145,7 @@ export const fetchVerifyEmail = createAsyncThunk(
 export const fetchChangePassword = createAsyncThunk(
     'auth/fetchChangePassword',
     async(payload: IChangePassword)=>{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/change-password',{
+        const response =  await fetch(Rest.auth+'/change-password',{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -163,7 +164,7 @@ export const fetchChangePassword = createAsyncThunk(
 export const fetchNotificationCount = createAsyncThunk(
     'auth/fetchNotificationCount',
     async()=>{
-        const response =  await fetch('http://localhost:9090/api/v1/auth/pendingNotificationCount',{
+        const response =  await fetch(Rest.auth+'/pendingNotificationCount',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -179,7 +180,7 @@ export const fetchNotificationCount = createAsyncThunk(
 export const fetchPendingManagers = createAsyncThunk(
     'auth/fetchPendingManagers',
     async () => {
-        const response = await fetch('http://localhost:9090/api/v1/auth/pendingManagers', {
+        const response = await fetch(Rest.auth+'/pendingManagers', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -194,7 +195,7 @@ export const fetchPendingManagers = createAsyncThunk(
 export const fetchConfirmManager = createAsyncThunk(
     'auth/fetchConfirmManager',
     async(id:number)=>{
-        const response =  await fetch(`http://localhost:9090/api/v1/auth/confirmManager/${id}`,{
+        const response =  await fetch(Rest.auth+`/confirmManager/${id}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -211,7 +212,7 @@ export const fetchConfirmManager = createAsyncThunk(
 export const fetchDisConfirmManager = createAsyncThunk(
     'auth/fetchDisConfirmManager',
     async (id: number) => {
-        const response = await fetch(`http://localhost:9090/api/v1/auth/disconfirmManager/${id}` , {
+        const response = await fetch(Rest.auth+`/disconfirmManager/${id}` , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

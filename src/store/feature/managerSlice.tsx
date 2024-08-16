@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { IResponse } from "../../models/IResponse";
 import { IUpdateManager } from "../../models/IUpdateManager";
+import Rest from '../../config/RestApis';
+
 
 export interface IManagerIdentity {
     id?: string;
@@ -35,7 +37,7 @@ const initialManagerState: IManagerState = {
 export const fetchManagerList = createAsyncThunk(
     'manager/fetchManagerList',
     async () => {
-        const response = await fetch('http://localhost:9092/api/v1/manager/manager-list', {
+        const response = await fetch(Rest.manager+'/manager-list', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +52,7 @@ export const fetchManagerList = createAsyncThunk(
 export const fetchDeleteManager = createAsyncThunk(
     'manager/fetchDeleteManager',
     async(id:string)=>{
-        const response =  await fetch(`http://localhost:9092/api/v1/manager/delete-manager/${id}`,{
+        const response =  await fetch(Rest.manager+`/delete-manager/${id}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +71,7 @@ export const fetchDeleteManager = createAsyncThunk(
 export const fetchgetManager = createAsyncThunk(
     'manager/fetchgetManager',
     async(payload: string)=>{
-        const result = await fetch('http://localhost:9092/api/v1/manager/get-manager?token='+payload)
+        const result = await fetch(Rest.manager+'/get-manager?token='+payload)
         .then(data=>data.json());
         return result;
     }
@@ -78,7 +80,7 @@ export const fetchgetManager = createAsyncThunk(
 export const fetchUpdateManager = createAsyncThunk(
     'manager/fetchUpdateManager',
     async(payload: IUpdateManager)=>{
-        const response =  await fetch('http://localhost:9092/api/v1/manager/edit-manager',{
+        const response =  await fetch(Rest.manager+'/edit-manager',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,7 +112,7 @@ export const fetchRegistrationEndDate = createAsyncThunk(
     'manager/fetchRegistrationEndDate',
     async ({ days, mail }: { days: number; mail: string }, { rejectWithValue }) => {
         try {
-            const response = await fetch(`http://localhost:9092/api/v1/manager/get-registration-end-date?days=${days}&mail=${mail}`, {
+            const response = await fetch(Rest.manager+`/get-registration-end-date?days=${days}&mail=${mail}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
