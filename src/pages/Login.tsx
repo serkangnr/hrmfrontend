@@ -32,7 +32,7 @@ function Login() {
                     console.log(data);
                 }
                 else if (data.payload.data.role === 'EMPLOYEE') {
-                    navigate('/dashboard');
+                    navigate('/edashboard');
                     console.log(data);
                 }
                 

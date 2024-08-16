@@ -12,6 +12,9 @@ function Sidebar() {
     const goToIzınTalepSayfası = () => {
         navigate('/izinTalepSayfası')
     }
+    const goToAnasayfa = () => {
+        navigate('/edashboard')
+    }
 
 
 
@@ -22,7 +25,7 @@ function Sidebar() {
                 <ul className="sidebar-nav" id="sidebar-nav">
 
                     <li className="nav-item">
-                        <a className="nav-link " href="#" >
+                        <a className="nav-link " href="#" onClick={goToAnasayfa}>
                             <i className="bi bi-grid"></i>
                             <span><i className="fa-solid fa-house"></i>Anasayfa</span>
                         </a>

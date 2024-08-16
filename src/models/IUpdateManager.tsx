@@ -11,5 +11,6 @@ export interface IUpdateManager {
     birthdate:string,
     
     
+    
 }
     

@@ -37,9 +37,10 @@ const goToCalisanList = () => {
 const goToIzinYonetimi = () => {
     navigate('/izinyonetimi');
 }
-const goToIzinListesi = () => {
-    navigate('/pendingleave');
-}
+const goToIzinListesi = () => {navigate('/pendingleave');}
+const goToCalisanDurum = () => {navigate('/calisandurum');}
+
+
    useEffect(() => {
         
             dispatch(fetchGetPendingLeaveCount(token));
@@ -77,7 +78,7 @@ const goToIzinListesi = () => {
                             
                             
                             
-                                <a href="components-buttons.html">
+                                <a href="#" onClick={goToCalisanDurum}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Durum Yönetimi</button></span>
                                 </a> 
                             

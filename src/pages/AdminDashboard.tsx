@@ -56,8 +56,15 @@ function Dashboard() {
                 <div className="row">
                  <AdminCard/>
                 </div>
+<<<<<<< HEAD
                 <div className="row  " >
                   <PermitCard />
+=======
+                <div className="row">
+                 
+                    
+                  
+>>>>>>> master
                 </div>
               </div>
               <div className="col-4 p-4">

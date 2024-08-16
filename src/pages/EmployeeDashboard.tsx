@@ -11,21 +11,12 @@ import LineChart from '../component/molecules/LineChart'
 import SubscriptionChart from '../component/molecules/SubscriptionChart'
 import ContactCard from '../component/molecules/ContactCard'
 import EmployeeSidebar from '../component/molecules/Sidebar/EmployeeSidebar'
+import EmployeeCard from '../component/molecules/EmployeeCard'
+import TrafficChartDepartman from '../component/molecules/TrafficChartDepartman'
 
 function EmployeeDashboard() {
   //yenilendi
-  const leaveData = {
-    totalDays: 15,
-    forwardDays: 3,
-    usedDays: 12,
-    leaves: [
-      { type: 'Doğum Sonrası', days: '28g', date: '29 Haz 2023', approved: true },
-      { type: 'Hastalık İzni', days: '1g', date: '24 Mar 2023', approved: true },
-      { type: 'Yıllık İzin', days: '4g', date: '4 Şub 2023', approved: false },
-      { type: 'Doğum Sonrası İzni', days: '1g', date: '1 Şub 2023', approved: true }
-    ]
-
-  };
+  
   return (
     <>
 
@@ -42,13 +33,11 @@ function EmployeeDashboard() {
             <div className="row">
               <div className="col-4 p-4">
                 <div className="row  ">
-                  <UserCard name="Ayşe " imageUrl="https://i.dunya.com/storage/files/images/2022/12/04/iskadini-cEKn_cover.jpg" birthDate="01.01.2000"
-                    startDate="01.01.2023" position="Yonetici" cardLink1="https://picsum.photos/200/300"
-                    cardLink2="https://picsum.photos/200/300" />
+                  <EmployeeCard  />
                 </div>
                 <div className="row">
                   <LeaveInfo
-                    totalDays={leaveData.totalDays} forwardDays={leaveData.forwardDays} usedDays={leaveData.usedDays} leaves={leaveData.leaves}
+              
                   />
                 </div>
               </div>
@@ -59,11 +48,7 @@ function EmployeeDashboard() {
 
                 </div>
 
-                <div className="card">
-
-                  <SubscriptionChart />
-
-                </div>
+                
                 <div className="row">
                   <Holiday />
                 </div>
@@ -75,11 +60,11 @@ function EmployeeDashboard() {
                     <div className="card-body pb-0">
                       <h6 className="card-title">
 
-                        <i className = 'bx bxs-user-account bx-tada bx-rotate-180' ></i> <label style={{fontSize: '20px' }} className='me-2 '>Çalışan Dağılımı</label>  <span>|<label style={{fontSize: '15px' }} className='me-2 '>Bugün</label></span>
+                        <i className = 'bx bxs-user-account bx-tada bx-rotate-180' ></i> <label style={{fontSize: '20px' }} className='me-2 '>Departman Dağılımı</label>  <span>|<label style={{fontSize: '15px' }} className='me-2 '>Bugün</label></span>
                       </h6>
                       <div id="trafficChart" style={{ minHeight: 200 }} className="echart" />
 
-                      <TrafficChart />
+                      <TrafficChartDepartman />
 
                     </div>
                   </div>
