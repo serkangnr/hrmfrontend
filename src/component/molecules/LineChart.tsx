@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { useAppSelector } from '../../store';
 
 // Chart.js bileşenlerini kaydet
 ChartJS.register(
@@ -23,12 +24,13 @@ ChartJS.register(
 const GenderDistributionChart: React.FC = () => {
   const [femaleCount, setFemaleCount] = useState<number | null>(null);
   const [maleCount, setMaleCount] = useState<number | null>(null);
+  const managerId = useAppSelector((state) => state.manager.manager?.id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const femaleResponse = await fetch('http://localhost:9094/api/v1/employee/get-female-employee-count');
-        const maleResponse = await fetch('http://localhost:9094/api/v1/employee/get-male-employee-count');
+        const femaleResponse = await fetch('http://localhost:9094/api/v1/employee/get-female-employee-count?managerId='+managerId);
+        const maleResponse = await fetch('http://localhost:9094/api/v1/employee/get-male-employee-count?managerId='+managerId);
 
         if (femaleResponse.ok && maleResponse.ok) {
           const femaleData = await femaleResponse.json();

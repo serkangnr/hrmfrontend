@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import ReactECharts from 'echarts-for-react';
+import { useAppSelector } from "../../store";
 
 interface DepartmanResponseDto {
     departmanName: string;
@@ -11,11 +12,12 @@ interface DepartmanResponseDto {
 
 const TrafficChartDepartman: React.FC = () => {
   const [data, setData] = useState<DepartmanResponseDto[]>([]);
+  const managerId = useAppSelector((state) => state.manager.manager?.id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:9094/api/v1/employee/departments');
+        const response = await fetch('http://localhost:9094/api/v1/employee/departments?managerId='+managerId);
         const result: DepartmanResponseDto[] = await response.json();
         setData(result);
       } catch (error) {
