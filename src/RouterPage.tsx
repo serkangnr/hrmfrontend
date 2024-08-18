@@ -68,7 +68,7 @@ function RouterPage() {
                 <Route path="/pendingleave" element={<PendingLeave />} />
 
                 <Route path="/manager-list" element={<ManagerList />} />
-=======
+
                 <Route path="/calisandurum" element={<CalisanListDurum />} />
 
 
