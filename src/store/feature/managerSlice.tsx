@@ -39,14 +39,11 @@ interface IManagerState {
     
     managerList : IManagerIdentity[];
     registrationEndDate: boolean ;
-<<<<<<< HEAD
+
     upcomingCompanyDates: CompanyResponseDto[];
     managerListDto: ManagerResponseDto[];
     isLoading: boolean;
-=======
-    
 
->>>>>>> master
 }
 
 const initialManagerState: IManagerState = {
