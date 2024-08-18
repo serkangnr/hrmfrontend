@@ -42,11 +42,7 @@ function EmployeeDashboard() {
                 </div>
               </div>
               <div className="col-4 p-4">
-                <div className="row ">
-
-                  <PermitCard />
-
-                </div>
+                
 
                 
                 <div className="row">
@@ -55,19 +51,7 @@ function EmployeeDashboard() {
               </div>
               <div className="col-4 p-4">
                 <div className="row">
-                  <div className="card shadow" >
-
-                    <div className="card-body pb-0">
-                      <h6 className="card-title">
-
-                        <i className = 'bx bxs-user-account bx-tada bx-rotate-180' ></i> <label style={{fontSize: '20px' }} className='me-2 '>Departman Dağılımı</label>  <span>|<label style={{fontSize: '15px' }} className='me-2 '>Bugün</label></span>
-                      </h6>
-                      <div id="trafficChart" style={{ minHeight: 200 }} className="echart" />
-
-                      <TrafficChartDepartman />
-
-                    </div>
-                  </div>
+                  
 
                 </div>
                 
@@ -76,11 +60,7 @@ function EmployeeDashboard() {
 
 
                 </div>
-                <div className="card ">
-
-                  <LineChart />
-
-                </div>
+                
 
 
 

@@ -44,6 +44,10 @@ interface IManagerState {
     managerListDto: ManagerResponseDto[];
     isLoading: boolean;
 
+    
+
+
+
 }
 
 const initialManagerState: IManagerState = {

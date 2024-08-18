@@ -58,8 +58,10 @@ function Dashboard() {
                 </div>
                 <div className="row">
                  
-                   
-                 
+
+                    
+                  
+
                 </div>
               </div>
               <div className="col-4 p-4">
@@ -76,11 +78,13 @@ function Dashboard() {
                   </div>
  
                 </div>
- 
+
+
                 <div className="row  " style={{width:'100%'}}>
                   <PermitCard />
                 </div>
- 
+
+
               </div>
               <div className="col-4 p-4">
                 <div className="row ">

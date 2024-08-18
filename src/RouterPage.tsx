@@ -12,6 +12,7 @@ import { useAppSelector } from "./store";
 import ManagerDashboard from "./pages/ManagerDashboard";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import AdminDashboard from "./pages/AdminDashboard";
+
 import OnayBekleyenler from "./pages/OnayBekleyenler";
 import AdminList from "./pages/AdminList";
 import AdminEkle from "./pages/AdminEkle";
@@ -30,7 +31,6 @@ import PendingLeave from "./pages/PendingLeave";
 import ManagerList from "./pages/ManagerList";
 
 import CalisanListDurum from "./pages/CalisanListDurum";
-
 
 
 function RouterPage() {
