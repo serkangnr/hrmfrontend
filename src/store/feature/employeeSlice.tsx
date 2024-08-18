@@ -43,12 +43,19 @@ export interface IEditEmployee{
     avatar: string;
   
 }
+export interface EmployeeBirthdayResponseDto {
+    name: string;
+    surname: string;
+    birthDate: string;
+    avatar: string;
+}
 
 interface IEmployeeState {
     employee: IEmployeeIdentity | null;
     isLoading: boolean;
     employeeList: IEmployeeIdentity[];
     editEmployee: IEditEmployee | null;
+    birthdayEmployeeList: EmployeeBirthdayResponseDto[];
 }
 
 
@@ -56,7 +63,8 @@ const initialEmployeeState:IEmployeeState={
     employee: null,
     isLoading: false,
     employeeList : [] ,
-    editEmployee: null
+    editEmployee: null,
+    birthdayEmployeeList: []
 }
 
 export const fetchEmployeeList = createAsyncThunk(
@@ -229,6 +237,34 @@ export const fetchPassivateEmployee = createAsyncThunk(
         return response;
     }
 )
+
+export const fetchBirthdayEmployee = createAsyncThunk(
+    'employee/fetchBirthdayEmployee',
+    async (token: string) => {
+        const response = await fetch(Rest.employee+`/get-birthday?token=${token}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data: EmployeeBirthdayResponseDto[] = await response.json();
+        return data;
+    }
+);
+export const fetchBirthdayEmployee2 = createAsyncThunk(
+    'employee/fetchBirthdayEmployee2',
+    async (token: string) => {
+        const response = await fetch(Rest.employee+`/get-birthday2?token=${token}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data: EmployeeBirthdayResponseDto[] = await response.json();
+        return data;
+    }
+);
+
 const employeeSlice = createSlice({
     name: 'employee',
     initialState: initialEmployeeState,
@@ -269,6 +305,12 @@ const employeeSlice = createSlice({
             if (state.employee) {
                 state.employee.yearsLeaveCount = action.payload;
             }
+        });
+        build.addCase(fetchBirthdayEmployee.fulfilled, (state, action: PayloadAction<EmployeeBirthdayResponseDto[]>) => {
+            state.birthdayEmployeeList = action.payload;
+        });
+        build.addCase(fetchBirthdayEmployee2.fulfilled, (state, action: PayloadAction<EmployeeBirthdayResponseDto[]>) => {
+            state.birthdayEmployeeList = action.payload;
         });
     }
 })

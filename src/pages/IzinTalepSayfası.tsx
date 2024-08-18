@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ContactCard from '../component/molecules/ContactCard'
-import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
+
 import { useDispatch } from 'react-redux'
 import { HrmDispatch, useAppSelector } from '../store'
-import { fetchRegisterEmployee } from '../store/feature/authSlice'
+
 import Swal from 'sweetalert2'
 import { ELeaveType, fetchRequestLeave } from '../store/feature/leaveSlice'
+import EmployeeSidebar from '../component/molecules/Sidebar/EmployeeSidebar'
+import { setToken } from '../store/feature/authSlice'
 
 function IzinTalepSayfası() {
   const dispatch = useDispatch<HrmDispatch>();
 
   const token = useAppSelector(state => state.auth.token);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        dispatch(setToken(token));
+    }
+}, [dispatch]);
 
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -54,7 +62,7 @@ function IzinTalepSayfası() {
         <div className="row">
           <div className="col-2">
 
-            <ManagerSidebar /> </div>
+            <EmployeeSidebar /> </div>
           <div className="col-9">
 
 

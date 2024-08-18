@@ -19,10 +19,10 @@ function PendingLeave() {
     const token = useAppSelector(state => state.auth.token);
 
     useEffect(() => {
-        dispatch(fetchGetPendingLeave(token));
-
-    }, [])
-
+        if (token) {
+            dispatch(fetchGetPendingLeave(token));
+        }
+    }, [dispatch, token]);
 
 
 

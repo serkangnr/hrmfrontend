@@ -3,16 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './permit.css';
 import { useDispatch } from 'react-redux';
 import { HrmDispatch, useAppSelector } from '../../../store';
-import { fetchBirthdayEmployee } from '../../../store/feature/employeeSlice';
+import { fetchBirthdayEmployee2 } from '../../../store/feature/employeeSlice';
 
-function BirthdayCard() {
+function BirthdayCard2() {
   const dispatch = useDispatch<HrmDispatch>();
   const token = useAppSelector(state => state.auth.token);
   const employeeList = useAppSelector(state => state.employee.birthdayEmployeeList);
 
   useEffect(() => {
     if (token) {
-      dispatch(fetchBirthdayEmployee(token));
+      dispatch(fetchBirthdayEmployee2(token));
     } else {
       console.warn('Token is null or undefined');
     }
@@ -40,4 +40,4 @@ function BirthdayCard() {
   );
 }
 
-export default BirthdayCard;
+export default BirthdayCard2;

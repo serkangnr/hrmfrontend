@@ -9,7 +9,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useAppSelector } from '../../store';
+import { HrmDispatch, useAppSelector } from '../../store';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../store/feature/authSlice';
 
 // Chart.js bileşenlerini kaydet
 ChartJS.register(
@@ -24,31 +26,42 @@ ChartJS.register(
 const GenderDistributionChart: React.FC = () => {
   const [femaleCount, setFemaleCount] = useState<number | null>(null);
   const [maleCount, setMaleCount] = useState<number | null>(null);
-  const managerId = useAppSelector((state) => state.manager.manager?.id);
+  const dispatch: HrmDispatch = useDispatch();
+  const token = useAppSelector((state) => state.auth.token);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const femaleResponse = await fetch('http://localhost:9094/api/v1/employee/get-female-employee-count?managerId='+managerId);
-        const maleResponse = await fetch('http://localhost:9094/api/v1/employee/get-male-employee-count?managerId='+managerId);
-
-        if (femaleResponse.ok && maleResponse.ok) {
-          const femaleData = await femaleResponse.json();
-          const maleData = await maleResponse.json();
-
-          setFemaleCount(femaleData);
-          setMaleCount(maleData);
-        } else {
-          // Handle errors if the responses are not OK
-          console.error('Error fetching employee counts');
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
         }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
+    }, [dispatch]);
 
-    fetchData();
-  }, []);
+  
+
+    useEffect(() => {
+      const fetchData = async () => {
+        if (!token) return; // Eğer token yoksa veri çekme işlemini yapma
+  
+        try {
+          const femaleResponse = await fetch(`http://localhost:9094/api/v1/employee/get-female-employee-count?token=${token}`);
+          const maleResponse = await fetch(`http://localhost:9094/api/v1/employee/get-male-employee-count?token=${token}`);
+  
+          if (femaleResponse.ok && maleResponse.ok) {
+            const femaleData = await femaleResponse.json();
+            const maleData = await maleResponse.json();
+  
+            setFemaleCount(femaleData); // Burada JSON yapısına göre ayarlama yapmanız gerekebilir
+            setMaleCount(maleData); // Burada JSON yapısına göre ayarlama yapmanız gerekebilir
+          } else {
+            console.error('Error fetching employee counts');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+  
+      fetchData();
+    }, [token]);
 
   const totalCount = (femaleCount ?? 0) + (maleCount ?? 0);
 

@@ -6,9 +6,10 @@ import { HrmDispatch, useAppSelector } from '../../../store';
 import { useDispatch } from 'react-redux';
 import {  fetchGetPendingLeaveCount } from '../../../store/feature/leaveSlice';
 import { setToken } from '../../../store/feature/authSlice';
+import TakvimSidebar from '../../atoms/TakvimSidebar';
 
 
-function Sidebar() {
+function ManagerSidebar() {
 
     const dispatch: HrmDispatch = useDispatch();
     const token = useAppSelector(state => state.auth.token)
@@ -41,11 +42,11 @@ const goToIzinListesi = () => {navigate('/pendingleave');}
 const goToCalisanDurum = () => {navigate('/calisandurum');}
 
 
-   useEffect(() => {
-        
-            dispatch(fetchGetPendingLeaveCount(token));
-       
-    }, [])
+useEffect(() => {
+    if (token) {
+        dispatch(fetchGetPendingLeaveCount(token));
+    }
+}, [token, dispatch]);
     return (
         <>
             <aside id="sidebar" className="sidebar">
@@ -201,12 +202,17 @@ const goToCalisanDurum = () => {navigate('/calisandurum');}
                         </ul>
                     </li>
 
-                    
+                    <li className="nav-item">
+                        <div style={{ marginLeft: '15px' }}>
+                            <TakvimSidebar />
+                        </div>
+
+                    </li>
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="#" onClick={goToUpdateManager}>
                             <i className="bi bi-person"></i>
-                            <span><i className="fa-solid fa-gear"></i>Ayarlar</span>
+                            <span><i className="fa-solid fa-gear"></i>Profil Ayarları</span>
                         </a>
                     </li>
 
@@ -219,4 +225,4 @@ const goToCalisanDurum = () => {navigate('/calisandurum');}
     )
 }
 
-export default Sidebar
+export default ManagerSidebar

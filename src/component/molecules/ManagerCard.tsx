@@ -20,11 +20,11 @@ function ManagerCard() {
   const token = useAppSelector(state => state.auth.token);
 
   useEffect(() => {
-      const token = localStorage.getItem('token');
-      if (token) {
-          dispatch(setToken(token));
-      }
-  }, [dispatch]);
+    const token = localStorage.getItem('token');
+    if (token) {
+        dispatch(setToken(token));
+    }
+}, [dispatch]);
 
   useEffect(() => {
       if (token) {

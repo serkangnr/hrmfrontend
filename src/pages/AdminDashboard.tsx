@@ -17,25 +17,12 @@ import AdminCard from '../component/molecules/AdminCard'
 import Takvim from '../component/atoms/Takvim'
  
 function Dashboard() {
-  const dispatch = useDispatch<HrmDispatch>();
-  const token = useAppSelector(state => state.auth.token)
-  const admin: IAdminIdentity | null = useAppSelector(state => state.admin.admin)
+  
  
  
  
  
-  const leaveData = {
-    totalDays: 15,
-    forwardDays: 3,
-    usedDays: 12,
-    leaves: [
-      { type: 'Doğum Sonrası', days: '28g', date: '29 Haz 2023', approved: true },
-      { type: 'Hastalık İzni', days: '1g', date: '24 Mar 2023', approved: true },
-      { type: 'Yıllık İzin', days: '4g', date: '4 Şub 2023', approved: false },
-      { type: 'Doğum Sonrası İzni', days: '1g', date: '1 Şub 2023', approved: true }
-    ]
  
-  };
  
  
   return (
