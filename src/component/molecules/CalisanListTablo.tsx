@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IEmployeeList } from '../../models/IEmployeeList'
 import { useDispatch } from 'react-redux';
 import { HrmDispatch, useAppSelector } from '../../store';
 import { fetchDeleteEmployee, fetchEmployeeList, fetchgetEmployee, fetchUpdateEmployee } from '../../store/feature/employeeSlice';
 import Swal from 'sweetalert2';
+import { setToken } from '../../store/feature/authSlice';
 
 function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
     const dispatch = useDispatch<HrmDispatch>();
@@ -11,6 +12,8 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
     const [selectedEmployeeId, setSelectedEmployeeId] = useState<string | null>(null);
 
     const token=useAppSelector(state=>state.auth.token)
+    
+  
 
     const deleteEmployee = (id: string) => {
         dispatch(fetchDeleteEmployee(id))
@@ -190,8 +193,9 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
                             />
                         </div>
                         <div className="mb-3">
-                            <h5 style={{ color: 'black' }}>DOĞUM TARİHİ</h5>
+                            <h5 style={{ color: 'black' }}>DOĞUM TARİHİ <label style={{color:'gray'}}>(yyyy-MM-dd)</label></h5>
                             <input
+                            
                                 value={editEmployee.birthDate}
                                 onChange={evt => setEditEmployee({ ...editEmployee, birthDate: evt.target.value })}
                                 type="text"

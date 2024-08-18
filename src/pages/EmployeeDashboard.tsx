@@ -4,7 +4,7 @@ import Sidebar from '../component/molecules/Sidebar/Sidebar'
 import UserCard from '../component/molecules/usercard/UserCard'
 import TrafficChart from '../component/molecules/trafficCharts/TrafficChart'
 import LeaveInfo from '../component/molecules/LeaveInfo/LeaveInfo'
-import BirtdayCard from '../component/molecules/birthdayCard/BirtdayCard'
+
 import PermitCard from '../component/molecules/PermitCard/PermitCard'
 import Holiday from '../component/molecules/HolidayCards/Holiday'
 import LineChart from '../component/molecules/LineChart'
@@ -13,6 +13,8 @@ import ContactCard from '../component/molecules/ContactCard'
 import EmployeeSidebar from '../component/molecules/Sidebar/EmployeeSidebar'
 import EmployeeCard from '../component/molecules/EmployeeCard'
 import TrafficChartDepartman from '../component/molecules/TrafficChartDepartman'
+import Takvim from '../component/atoms/Takvim'
+import BirthdayCard2 from '../component/molecules/birthdayCard/BirtdayCard2'
 
 function EmployeeDashboard() {
   //yenilendi
@@ -32,7 +34,7 @@ function EmployeeDashboard() {
 
             <div className="row">
               <div className="col-4 p-4">
-                <div className="row  ">
+                <div className="row mt-2 ">
                   <EmployeeCard  />
                 </div>
                 <div className="row">
@@ -56,10 +58,13 @@ function EmployeeDashboard() {
                 </div>
                 
                 <div className="row ">
-                  <BirtdayCard />
+                  <BirthdayCard2 />
 
 
                 </div>
+                <div className="row">
+              <Takvim title="Takvim" />
+              </div>
                 
 
 

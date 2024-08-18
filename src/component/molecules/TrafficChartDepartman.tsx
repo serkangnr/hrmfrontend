@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import ReactECharts from 'echarts-for-react';
-import { useAppSelector } from "../../store";
+import { HrmDispatch, useAppSelector } from "../../store";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../store/feature/authSlice";
 
 interface DepartmanResponseDto {
     departmanName: string;
@@ -12,21 +14,31 @@ interface DepartmanResponseDto {
 
 const TrafficChartDepartman: React.FC = () => {
   const [data, setData] = useState<DepartmanResponseDto[]>([]);
-  const managerId = useAppSelector((state) => state.manager.manager?.id);
+  const token = useAppSelector((state) => state.auth.token);
+  const dispatch: HrmDispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:9094/api/v1/employee/departments?managerId='+managerId);
-        const result: DepartmanResponseDto[] = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Veri çekilirken bir hata oluştu:", error);
-      }
-    };
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
+        }
+    }, [dispatch]);
 
-    fetchData();
-  }, []);
+    useEffect(() => {
+      const fetchData = async () => {
+        if (!token) return; 
+  
+        try {
+          const response = await fetch(`http://localhost:9094/api/v1/employee/departments?token=${token}`);
+          const result: DepartmanResponseDto[] = await response.json();
+          setData(result);
+        } catch (error) {
+          console.error("Veri çekilirken bir hata oluştu:", error);
+        }
+      };
+  
+      fetchData();
+    }, [token]); 
 
   const getOption = () => {
     return {

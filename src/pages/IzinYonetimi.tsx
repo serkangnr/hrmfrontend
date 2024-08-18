@@ -13,10 +13,11 @@ function IzinYonetimi() {
     const dispatch = useDispatch<HrmDispatch>();
     const token = useAppSelector(state => state.auth.token);
 
-    useEffect(() => {
-        dispatch(fetchEmployeeList(token));
-
-    }, [])
+   useEffect(() => {
+    if (token) {
+      dispatch(fetchEmployeeList(token));
+    }
+  }, [token, dispatch]); 
 
 
   return (

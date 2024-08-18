@@ -2,8 +2,9 @@ import React from 'react'
 import './Sidebar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import TakvimSidebar from '../../atoms/TakvimSidebar';
 
-function Sidebar() {
+function EmployeeSidebar() {
     const navigate = useNavigate();
 
     const goToUpdateEmployee = () => {
@@ -44,17 +45,6 @@ function Sidebar() {
                             
                             
                             
-                                <a href="#" >
-                                <i className="bi bi-circle"></i> <span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Listesi</button></span>
-                                </a> 
-                            
-                            
-                            
-                                <a href="components-buttons.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Çalışan Durum Yönetimi</button></span>
-                                </a> 
-                            
-                            
                     
                             
                             
@@ -92,7 +82,12 @@ function Sidebar() {
                     
 
                    
+                    <li className="nav-item">
+                        <div style={{ marginLeft: '15px' }}>
+                            <TakvimSidebar />
+                        </div>
 
+                    </li>
                     
 
                     <li className="nav-item">
@@ -111,4 +106,4 @@ function Sidebar() {
     )
 }
 
-export default Sidebar
+export default EmployeeSidebar

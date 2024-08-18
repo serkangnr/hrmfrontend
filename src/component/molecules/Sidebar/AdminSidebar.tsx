@@ -7,7 +7,7 @@ import { fetchNotificationCount } from '../../../store/feature/authSlice';
 import { useNavigate } from 'react-router-dom';
 import TakvimSidebar from '../../atoms/TakvimSidebar';
 
-function Sidebar() {
+function AdminSidebar() {
 
     const dispatch: HrmDispatch = useDispatch();
     const notificationCount = useAppSelector(state => state.auth.notificationCount);
@@ -161,4 +161,4 @@ function Sidebar() {
     )
 }
 
-export default Sidebar
+export default AdminSidebar

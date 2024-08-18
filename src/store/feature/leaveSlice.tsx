@@ -152,7 +152,7 @@ export const fetchGetPendingLeaveCount = createAsyncThunk(
     async (token: string) => {
         const response = await fetch(Rest.leave+`/pending-leave-count?token=${token}`);
         const result = await response.json();
-        console.log('API Result:', result); // API yanıtını konsola yazdırın
+        console.log('API Result:', result); 
         return result;
     }
 );

@@ -9,7 +9,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useAppSelector } from '../../store';
+import { HrmDispatch, useAppSelector } from '../../store';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../store/feature/authSlice';
 
 // Chart.js bileşenlerini kaydet
 ChartJS.register(
@@ -26,6 +28,9 @@ ChartJS.register(
 const SubscriptionChart: React.FC = () => {
   const [remainingDays, setRemainingDays] = useState<number | null>(null);
   const token =useAppSelector((state) => state.auth.token);
+  const dispatch: HrmDispatch = useDispatch();
+
+
 
   useEffect(() => {
   
