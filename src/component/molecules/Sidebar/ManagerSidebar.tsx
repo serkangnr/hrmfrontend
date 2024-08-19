@@ -40,6 +40,7 @@ const goToIzinYonetimi = () => {
 }
 const goToIzinListesi = () => {navigate('/pendingleave');}
 const goToCalisanDurum = () => {navigate('/calisandurum');}
+const goToVardiyaYonetimi = () => {navigate('/vardiyayonetimi');}
 
 
 useEffect(() => {
@@ -159,7 +160,7 @@ useEffect(() => {
                         </a>
                         <ul id="icons-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             
-                                <a href="#">
+                                <a href="#" onClick={goToVardiyaYonetimi}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start" style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>Vardiya Oluştur</button></span>
                                 </a>    
                             

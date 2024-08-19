@@ -16,13 +16,13 @@ function CompanyList(props: ICompanyList) {
 
             <tr>
                 
-            <td><img src={props.logo} style={{width:'75px',height:'75px',borderRadius:'20px'}} /></td>
-                <td>{props.name}</td>
-                <td>{props.email}</td>
-                <td>{props.address}</td>
-                <td>{props.phone}</td>
-                <td>{props.sector}</td>
-                <td>{props.website}</td>
+            <td style={{whiteSpace: 'nowrap'}}><img src={props.logo} style={{width:'75px',height:'75px',borderRadius:'20px'}} /></td>
+                <td style={{whiteSpace: 'nowrap'}}>{props.name}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{props.email}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{props.address}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{props.phone}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{props.sector}</td>
+                <td style={{whiteSpace: 'nowrap'}}>{props.website}</td>
 
                 
              

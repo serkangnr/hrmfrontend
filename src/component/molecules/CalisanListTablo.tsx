@@ -68,21 +68,21 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
     
                         <tr key={employee.id} >
                             
-                            <td>{employee.name}</td>
-                            <td>{employee.surname}</td>
-                            <td>{employee.email}</td>
-                            <td>{employee.address}</td>
-                            <td>{employee.phoneNumber}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.name}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.surname}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.email}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.address}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.phoneNumber}</td>
                           
-                            <td>{employee.identityNumber}</td>
-                            <td>{employee.birthDate}</td>
-                            <td>{employee.jobStartDate}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.identityNumber}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.birthDate}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.jobStartDate}</td>
                            
-                            <td>{employee.position}</td>
-                            <td>{employee.salary}</td>
-                            <td>{employee.department}</td>
-                            <td>{employee.occupation}</td>
-                            <td>{employee.gender}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.position}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.salary}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.department}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.occupation}</td>
+                            <td style={{whiteSpace: 'nowrap'}}>{employee.gender}</td>
                             <td style={{width:'300px'}}>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button type="button" className="btn btn-danger" onClick={() => deleteEmployee(employee.id)}>Sil</button>

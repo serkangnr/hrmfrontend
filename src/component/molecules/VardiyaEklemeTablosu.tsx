@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IEmployeeList } from '../../models/IEmployeeList'
 import { useDispatch } from 'react-redux';
 import { HrmDispatch, useAppSelector } from '../../store';
 import { fetchDeleteEmployee, fetchEmployeeList, fetchgetEmployee, fetchUpdateEmployee } from '../../store/feature/employeeSlice';
 import Swal from 'sweetalert2';
 import { ELeaveType, fetchSaveLeave } from '../../store/feature/leaveSlice';
+import { EShiftType, fetchCreateShift, fetchDeleteShift, fetchShiftByEmployeeId,} from '../../store/feature/shiftSlice';
+import ShiftCard from '../../pages/ShiftCard';
+import ShiftRow from '../atoms/ShiftRow';
 
-function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
+function VardiyaEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
+    
     const dispatch = useDispatch<HrmDispatch>();
     const [selectedEmployeeId, setSelectedEmployeeId] = useState<string | null>(null);
+    
 
     const token = useAppSelector(state => state.auth.token);
 
@@ -18,72 +23,97 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
 
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
-    const [leaveType, setLeaveType] = useState<ELeaveType>(ELeaveType.YILLIK_IZIN);
-    const [numberOfDays, setNumberOfDays] = useState(0);
-    const [description, setDescription] = useState('');
+    const [shiftType, setShiftType] = useState<EShiftType>(EShiftType.SABAH_ALTI_ONIKI);
+   
+
+    
+    
+    
     const handleLeaveTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setLeaveType(event.target.value as ELeaveType);
-    };
-    const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setDescription(event.target.value);
+        setShiftType(event.target.value as EShiftType);
     };
 
-    const addLeave = (id: string) => {
+    
+   
+
+    const addShift = (id: string) => {
         setSelectedEmployeeId(id);
         dispatch(fetchgetEmployee(id)).then((response) => {
             const data = response.payload.data;
             setId(data.id);
             setName(data.name || '');
             setSurname(data.surname || '');
-        });
+        })
     };
 
-    const createLeave = () => {
-        dispatch(fetchSaveLeave({
+    const deleteShift = (id: string) => {
+        dispatch(fetchDeleteShift(id))
+        
+            .then((response) => {
+                if (response.payload.code === 200) {
+                    Swal.fire('Başarı!', 'Vardiya silindi', 'success');
+                    dispatch(fetchShiftByEmployeeId(id));
+                    console.log('delete için id............',id);
+                } else {
+                    Swal.fire('Hata!', response.payload.message, 'error');
+                    throw new Error(response.payload.message);
+                }
+            })
+            .catch((error) => {
+                console.error("Hata oluştu:", error);
+            });
+    };
+
+    const createShift = () => {
+        dispatch(fetchCreateShift({
+            token: token,
             employeeId: id,
             name: name,
             surname: surname,
+            shiftType: shiftType,
             startDate: startDate,
             endDate: endDate,
-            leaveType: leaveType,
-            description: description,
-            token: token
+            
+            
         })).then(data => {
             if (data.payload.code === 200) {
-                Swal.fire("Başarılı!", "İzin kayıt edilmiştir!", "success");
+                Swal.fire("Başarılı!", "Vardiya eklenmiştir!", "success");
+                dispatch(fetchShiftByEmployeeId(id));
+                console.log('create için id............',id);
+                
             } else {
-                Swal.fire("Hata!", "İzin kayıt edilemedi!", "error");
+                Swal.fire("Hata!", "Vardiya eklenemedi!", "error");
             }
         });
     };
+    
+   
 
-
+ 
 
 
     return (
+        
         <>
 
             {employees.map((employee) => (
-
+            console.log(employee.id),
 
                 <tr key={employee.id} >
 
                     <td style={{whiteSpace: 'nowrap'}}>{employee.name}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.surname}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.email}</td>
-                    <td style={{whiteSpace: 'nowrap'}}>{employee.address}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.phoneNumber}</td>
-
-                    <td style={{whiteSpace: 'nowrap'}}>{employee.identityNumber}</td>
-                    <td style={{whiteSpace: 'nowrap'}}>{employee.birthDate}</td>
-                    <td style={{whiteSpace: 'nowrap'}}>{employee.jobStartDate}</td>
-
                     <td style={{whiteSpace: 'nowrap'}}>{employee.position}</td>
-                    <td style={{whiteSpace: 'nowrap'}}>{employee.salary}</td>
+
                     <td style={{whiteSpace: 'nowrap'}}>{employee.department}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.occupation}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.gender}</td>
-                    <td style={{ width: '300px' }}>
+                    
+                    <ShiftRow id={employee.id} />
+                   
+                    <td >
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                         <button
@@ -91,10 +121,23 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                             className="btn btn-primary"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
-                            onClick={() => addLeave(employee.id)}
+                            onClick={() => addShift(employee.id)}
                         >
-                            İzin Ekle
+                            Vardiya Ekle
                         </button>
+                        
+                    </td>
+                    <td >
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <button
+                            type="button"
+                            className="btn btn-danger"
+                            onClick={() => deleteShift(employee.id)}
+                        >
+                            Vardiya Sil
+                        </button>
+                        
                     </td>
                 </tr>
             ))}
@@ -104,7 +147,7 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">İzin Oluştur</h1>
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Vardiya Oluştur</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
@@ -132,7 +175,7 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                                 />
                             </div>
                             <div className="mb-3">
-                                <h5 style={{ color: 'black' }}>İZİN BAŞLAMA TARİHİ</h5>
+                                <h5 style={{ color: 'black' }}>VARDİYA BAŞLAMA TARİHİ</h5>
                                 <input
                                     type="date"
                                     value={startDate}
@@ -142,7 +185,7 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                                 />
                             </div>
                             <div className="mb-3">
-                                <h5 style={{ color: 'black' }}>İZİN BİTİŞ TARİHİ</h5>
+                                <h5 style={{ color: 'black' }}>VARDİYA BİTİŞ TARİHİ</h5>
                                 <input
                                     type="date"
                                     value={endDate}
@@ -153,33 +196,23 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                             </div>
 
                             <div>
-                                <h5 style={{ color: 'black' }}>İZİN TÜRÜ</h5>
+                                <h5 style={{ color: 'black' }}>VARDİYA TÜRÜ</h5>
                                 <select
 
-                                    value={leaveType}
+                                    value={shiftType}
                                     onChange={handleLeaveTypeChange}
                                     className="form-control"
                                     id="leaveType"
                                 >
-                                    {Object.values(ELeaveType).map((leave) => (
-                                        <option key={leave} value={leave}>
-                                            {leave.replace('_', ' ').toUpperCase()}
+                                    {Object.values(EShiftType).map((shift) => (
+                                        <option key={shift} value={shift}>
+                                            {shift.replace('_', ' ').toUpperCase()}
                                         </option>
                                     ))}
                                 </select>
                             </div>
 
-                            <div>
-                                <h5 style={{ color: 'black' }}>AÇIKLAMA</h5>
-                                <textarea
-                                    value={description}
-                                    onChange={handleDescriptionChange}
-                                    className="form-control"
-                                    id="description"
-                                    rows={5} // Textarea'nın yüksekliğini ayarlamak için 'rows' kullanabilirsiniz
-                                    placeholder="İzinle ilgili açıklamaları buraya yazın..."
-                                />
-                            </div>
+                           
 
 
 
@@ -189,7 +222,7 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
 
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={createLeave}>Kaydet</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={createShift}>Kaydet</button>
                         </div>
                     </div>
                 </div>
@@ -200,4 +233,4 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
     )
 }
 
-export default IzinEklemeTablosu;
+export default VardiyaEklemeTablosu;

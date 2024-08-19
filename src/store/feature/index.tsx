@@ -6,6 +6,7 @@ import companySlice from "./companySlice";
 import employeeSlice from "./employeeSlice";
 import mailSlice from "./mailSlice";
 import leaveSlice from "./leaveSlice";
+import shiftSlice from "./shiftSlice";
 
 export{
   authSlice,
@@ -14,6 +15,7 @@ export{
   companySlice,
   employeeSlice,
   mailSlice,
-  leaveSlice
+  leaveSlice,
+  shiftSlice
   
 }

@@ -8,6 +8,7 @@ const server_local_mail = 'http://localhost:9097/api/v1/mail';
 const server_local_manager = 'http://localhost:9092/api/v1/manager';
 
 
+
 const apis = {
    admin : server_local_admin,
    auth : server_local_auth,
@@ -16,6 +17,7 @@ const apis = {
    leave : server_local_necessity+'/leave',
    mail : server_local_mail,
    manager : server_local_manager,
+   shift : server_local_necessity+'/shift',
 }
 
 export default apis;
