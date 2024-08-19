@@ -32,6 +32,7 @@ import ManagerList from "./pages/ManagerList";
 
 import CalisanListDurum from "./pages/CalisanListDurum";
 import VardiyaYonetimi from "./pages/VardiyaYonetimi";
+import VerifyEmailPageEmployee from "./pages/VerifyEmailPageEmployee";
 
 
 function RouterPage() {
@@ -72,6 +73,8 @@ function RouterPage() {
 
                 <Route path="/calisandurum" element={<CalisanListDurum />} />
                 <Route path="/vardiyayonetimi" element={<VardiyaYonetimi />} />
+                <Route path="/api/v1/auth/verifyEmailEmployee" element={<VerifyEmailPageEmployee />} />
+
 
 
 
