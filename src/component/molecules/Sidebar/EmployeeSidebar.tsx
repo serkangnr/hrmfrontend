@@ -3,6 +3,7 @@ import './Sidebar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import TakvimSidebar from '../../atoms/TakvimSidebar';
+import EmployeeShiftPopUp from '../EmployeeShiftPopUp';
 
 function EmployeeSidebar() {
     const navigate = useNavigate();
@@ -37,31 +38,48 @@ function EmployeeSidebar() {
                             <i className="bi bi-menu-button-wide"></i><span><i className="fa-solid fa-users"></i>İzin Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="components-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            
-                            
-                                <a  href="#" onClick={goToIzınTalepSayfası} >
-                                <i className="bi bi-circle"></i><span>< button   type="button" className="btn btn-secondary text-start"  style={{width: '90%',marginBottom: '5px', marginTop: '5px'}}>İzin Oluştur</button></span>
-                                </a>
-                            
-                            
-                            
-                    
-                            
-                            
+
+
+                            <a href="#" onClick={goToIzınTalepSayfası} >
+                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>İzin Oluştur</button></span>
+                            </a>
+
+
+
+
+
+
                         </ul>
                     </li>
+                    
+                    <li className="nav-item">
+                    <button
+                                    type="button"
+                                    className="btn "
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                    style={{color:'white',marginLeft:'15px'}}
+                                >
+                                   <i className="fa-solid fa-clipboard"></i>  &nbsp;&nbsp; Vardiya
+                                </button>
+
+                    </li>
+
+                   
+                    
+
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                             <i className="bi bi-journal-text"></i><span><i className="fa-solid fa-plane"></i>Zimmet Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            
-                                <a href="forms-elements.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px',marginTop: '5px'}}>İzinleri Düzenle</button></span>
-                                </a>  
-                             
-                           
+
+                            <a href="forms-elements.html">
+                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>İzinleri Düzenle</button></span>
+                            </a>
+
+
                         </ul>
                     </li>
 
@@ -70,25 +88,25 @@ function EmployeeSidebar() {
                             <i className="bi bi-layout-text-window-reverse"></i><span><i className="fa-solid fa-book"></i>Harcama Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
-                            
-                                <a href="tables-general.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px' ,marginTop: '5px'}}>Harcamaları Düzenle</button></span>
-                                </a> 
-                            
-                           
+
+                            <a href="tables-general.html">
+                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Harcamaları Düzenle</button></span>
+                            </a>
+
+
                         </ul>
                     </li>
 
-                    
 
-                   
+
+
                     <li className="nav-item">
                         <div style={{ marginLeft: '15px' }}>
                             <TakvimSidebar />
                         </div>
 
                     </li>
-                    
+
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" href="#" onClick={goToUpdateEmployee} >
@@ -101,8 +119,12 @@ function EmployeeSidebar() {
 
                 </ul>
 
+                
+
             </aside>
+            <EmployeeShiftPopUp />
         </>
+        
     )
 }
 

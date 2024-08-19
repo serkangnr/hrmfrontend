@@ -31,6 +31,7 @@ import PendingLeave from "./pages/PendingLeave";
 import ManagerList from "./pages/ManagerList";
 
 import CalisanListDurum from "./pages/CalisanListDurum";
+import VardiyaYonetimi from "./pages/VardiyaYonetimi";
 
 
 function RouterPage() {
@@ -70,6 +71,7 @@ function RouterPage() {
                 <Route path="/manager-list" element={<ManagerList />} />
 
                 <Route path="/calisandurum" element={<CalisanListDurum />} />
+                <Route path="/vardiyayonetimi" element={<VardiyaYonetimi />} />
 
 
 
