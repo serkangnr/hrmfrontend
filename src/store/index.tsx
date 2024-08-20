@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import React from 'react'
 
 import { useSelector } from 'react-redux';
-import { adminSlice,authSlice,managerSlice,companySlice,mailSlice, shiftSlice } from './feature';
+import { adminSlice,authSlice,managerSlice,companySlice,mailSlice, shiftSlice, equipmentSlice } from './feature';
 import employeeSlice from './feature/employeeSlice';
 import leaveSlice from './feature/leaveSlice';
 import commentSlice from './feature/commentSlice';
@@ -19,7 +19,11 @@ const store = configureStore({
     employee:employeeSlice,
     leave:leaveSlice,
     shift:shiftSlice,
+
     comment:commentSlice
+
+    equipment:equipmentSlice
+
   }
 });
 
