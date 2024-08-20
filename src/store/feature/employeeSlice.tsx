@@ -3,6 +3,56 @@ import { IResponse } from "../../models/IResponse";
 import { IUpdateEmployee } from "../../models/IUpdateEmployee";
 import Rest from '../../config/RestApis';
 
+export enum EShiftType {
+    SABAH_ALTI_ONIKI = `Sabah Vardiyası: 06:00 - 12:00
+Kahvaltı Molası: 08:00 - 08:15
+Çay Molası: 10:00 - 10:15`,
+
+    OGLEDENSONRA_ONIKI_ALTI = `Öğleden Sonra Vardiyası: 12:00 - 18:00
+Öğle Yemeği Molası: 14:00 - 14:30
+Çay Molası: 16:00 - 16:15`,
+
+    AKSAM_ALTI_ONIKI = `Akşam Vardiyası: 18:00 - 00:00
+Akşam Yemeği Molası: 20:00 - 20:30
+Çay Molası: 22:00 - 22:15`,
+
+    GECE_ONIKI_ALTI = `Gece Vardiyası: 00:00 - 06:00
+Gece Kahve Molası: 02:00 - 02:15
+Çay Molası: 04:00 - 04:15`,
+
+    TAM_GUN_DOKUZ_ALTI = `Tam Gün Vardiyası: 09:00 - 18:00
+Öğle Yemeği Molası: 12:00 - 12:30
+Çay Molası: 15:00 - 15:15`,
+
+    TAM_GUN_SEKIZ_BES = `Tam Gün Vardiyası: 08:00 - 17:00
+Öğle Yemeği Molası: 12:00 - 12:30
+Çay Molası: 14:30 - 14:45`,
+
+    HAFTASONU_DOKUZ_BIR = `Hafta Sonu Vardiyası: 09:00 - 13:00
+Çay Molası: 11:00 - 11:15`,
+
+    HAFTASONU_SEKIZ_ONIKI = `Hafta Sonu Sabah Vardiyası: 08:00 - 12:00
+Çay Molası: 10:00 - 10:15`,
+
+    HAFTASONU_OGLEDENSONRA = `Hafta Sonu Öğleden Sonra Vardiyası: 13:00 - 18:00
+Çay Molası: 15:00 - 15:15
+Kısa Molası: 17:00 - 17:05`
+
+}
+export interface VardiyaResponseDto {
+    id: string;
+    name: string;
+    surname: string;
+    email: string;
+    phoneNumber: string;
+    position: string;
+    department: string;
+    occupation: string;
+    gender: string;
+    shiftType: EShiftType 
+    startDate: string;
+    endDate: string;
+}
 export interface IEmployeeIdentity {
     managerToken: string;
     id: string;
@@ -51,6 +101,7 @@ export interface EmployeeBirthdayResponseDto {
 }
 
 interface IEmployeeState {
+    vardiyaList: VardiyaResponseDto[];
     employee: IEmployeeIdentity | null;
     isLoading: boolean;
     employeeList: IEmployeeIdentity[];
@@ -60,12 +111,26 @@ interface IEmployeeState {
 
 
 const initialEmployeeState:IEmployeeState={
+    vardiyaList: [],
     employee: null,
     isLoading: false,
     employeeList : [] ,
     editEmployee: null,
     birthdayEmployeeList: []
 }
+export const fetchVardiyaList = createAsyncThunk(
+    'vardiya/fetchVardiyaList',
+    async (managerToken: string) => {
+        const response = await fetch(Rest.employee + `/get-vardiya-list?managerToken=${managerToken}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        return data.data as VardiyaResponseDto[];
+    }
+);
 
 export const fetchEmployeeList = createAsyncThunk(
     'employee/fetchEmployeeList',
@@ -311,6 +376,16 @@ const employeeSlice = createSlice({
         });
         build.addCase(fetchBirthdayEmployee2.fulfilled, (state, action: PayloadAction<EmployeeBirthdayResponseDto[]>) => {
             state.birthdayEmployeeList = action.payload;
+        });
+        build.addCase(fetchVardiyaList.pending, (state) => {
+            state.isLoading = true;
+        });
+        build.addCase(fetchVardiyaList.fulfilled, (state, action: PayloadAction<VardiyaResponseDto[]>) => {
+            state.vardiyaList = action.payload;
+            state.isLoading = false;
+        });
+        build.addCase(fetchVardiyaList.rejected, (state) => {
+            state.isLoading = false;
         });
     }
 })

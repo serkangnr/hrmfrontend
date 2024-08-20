@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { IEmployeeList } from '../../models/IEmployeeList'
+import React, {  useState } from 'react'
+
 import { useDispatch } from 'react-redux';
 import { HrmDispatch, useAppSelector } from '../../store';
-import { fetchDeleteEmployee, fetchEmployeeList, fetchgetEmployee, fetchUpdateEmployee } from '../../store/feature/employeeSlice';
+import {  fetchgetEmployee, fetchVardiyaList, VardiyaResponseDto } from '../../store/feature/employeeSlice';
 import Swal from 'sweetalert2';
-import { ELeaveType, fetchSaveLeave } from '../../store/feature/leaveSlice';
-import { EShiftType, fetchCreateShift, fetchDeleteShift, fetchShiftByEmployeeId,} from '../../store/feature/shiftSlice';
-import ShiftCard from '../../pages/ShiftCard';
-import ShiftRow from '../atoms/ShiftRow';
 
-function VardiyaEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
+import { EShiftType, fetchCreateShift, fetchDeleteShift} from '../../store/feature/shiftSlice';
+
+
+
+function VardiyaEklemeTablosu({ employees }: { employees: VardiyaResponseDto[] }) {
     
     const dispatch = useDispatch<HrmDispatch>();
     const [selectedEmployeeId, setSelectedEmployeeId] = useState<string | null>(null);
@@ -52,7 +52,7 @@ function VardiyaEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
             .then((response) => {
                 if (response.payload.code === 200) {
                     Swal.fire('Başarı!', 'Vardiya silindi', 'success');
-                    dispatch(fetchShiftByEmployeeId(id));
+                    dispatch(fetchVardiyaList(token));
                     console.log('delete için id............',id);
                 } else {
                     Swal.fire('Hata!', response.payload.message, 'error');
@@ -78,7 +78,7 @@ function VardiyaEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
         })).then(data => {
             if (data.payload.code === 200) {
                 Swal.fire("Başarılı!", "Vardiya eklenmiştir!", "success");
-                dispatch(fetchShiftByEmployeeId(id));
+                dispatch(fetchVardiyaList(token));
                 console.log('create için id............',id);
                 
             } else {
@@ -110,8 +110,12 @@ function VardiyaEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                     <td style={{whiteSpace: 'nowrap'}}>{employee.department}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.occupation}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.gender}</td>
+                    <td >{employee.shiftType}</td>
+                    <td style={{whiteSpace: 'nowrap'}}>{employee.startDate}</td>
+                    <td style={{whiteSpace: 'nowrap'}}>{employee.endDate}</td>
                     
-                    <ShiftRow id={employee.id} />
+                    
+                    
                    
                     <td >
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
