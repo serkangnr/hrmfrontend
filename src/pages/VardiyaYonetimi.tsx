@@ -4,18 +4,18 @@ import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
 import CalisanListTablo from '../component/molecules/CalisanListTablo'
 import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
-import { fetchEmployeeList } from '../store/feature/employeeSlice';
+import { fetchEmployeeList, fetchVardiyaList } from '../store/feature/employeeSlice';
 import VardiyaEklemeTablosu from '../component/molecules/VardiyaEklemeTablosu';
 
 function VardiyaYonetimi() {
 
-    const employeeList = useAppSelector(state => state.employee.employeeList);
+    const vardiyaList = useAppSelector(state => state.employee.vardiyaList);
     const dispatch = useDispatch<HrmDispatch>();
     const token = useAppSelector(state => state.auth.token);
 
    useEffect(() => {
     if (token) {
-      dispatch(fetchEmployeeList(token));
+      dispatch(fetchVardiyaList(token));
     }
   }, [token, dispatch]); 
 
@@ -67,7 +67,7 @@ function VardiyaYonetimi() {
                                 
                                 <tbody>
                                     {
-                                        <VardiyaEklemeTablosu employees={employeeList} />
+                                        <VardiyaEklemeTablosu employees={vardiyaList} />
                                     }
                                   
 
