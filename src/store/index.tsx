@@ -20,7 +20,7 @@ const store = configureStore({
     leave:leaveSlice,
     shift:shiftSlice,
 
-    comment:commentSlice
+    comment:commentSlice,
 
     equipment:equipmentSlice
 

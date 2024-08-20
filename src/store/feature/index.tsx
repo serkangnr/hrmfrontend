@@ -23,7 +23,7 @@ export{
   leaveSlice,
   shiftSlice,
 
-  commentSlice
+  commentSlice,
 
   equipmentSlice
 

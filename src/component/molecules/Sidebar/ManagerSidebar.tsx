@@ -93,21 +93,11 @@ function ManagerSidebar() {
 
     const [comment, setComment] = useState('');
 
-const goToHome = () => {
-    navigate('/mdashboard');
-}
-const goToCalisanEkle = () => {
-    navigate('/calisanekle');
-}
-const goToCalisanList = () => {
-    navigate('/calisanlist');
-}
-const goToIzinYonetimi = () => {
-    navigate('/izinyonetimi');
-}
-const goToIzinListesi = () => {navigate('/pendingleave');}
-const goToCalisanDurum = () => {navigate('/calisandurum');}
-const goToVardiyaYonetimi = () => {navigate('/vardiyayonetimi');}
+
+
+
+
+
 const goToZimmetYonetimi = () => {navigate('/zimmetyonetimi');}
 const gotToZimmetTablosu = () => {navigate('/equipmenttable');}
 const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
