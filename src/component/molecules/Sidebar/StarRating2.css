@@ -1,0 +1,15 @@
+.star2 {
+    font-size: 50px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star2.selected2 {
+    color: #f39c12;
+}
+
+#rating-value2 {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
