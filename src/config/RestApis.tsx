@@ -18,6 +18,7 @@ const apis = {
    mail : server_local_mail,
    manager : server_local_manager,
    shift : server_local_necessity+'/shift',
+   equipment : server_local_necessity+'/equipment',
 }
 
 export default apis;

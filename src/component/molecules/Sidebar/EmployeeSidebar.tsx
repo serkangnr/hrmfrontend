@@ -1,12 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Sidebar.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import TakvimSidebar from '../../atoms/TakvimSidebar';
 import EmployeeShiftPopUp from '../EmployeeShiftPopUp';
+import { HrmDispatch, useAppSelector } from '../../../store';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../../store/feature/authSlice';
+import { fetchGetPendingEquipmentCount } from '../../../store/feature/equipmentSlice';
 
 function EmployeeSidebar() {
+
+
+
+    const dispatch: HrmDispatch = useDispatch();
+    const token = useAppSelector(state => state.auth.token)
+    const PendingEquipmentCount = useAppSelector(state => state.equipment.count);
     const navigate = useNavigate();
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (token) {
+            dispatch(fetchGetPendingEquipmentCount(token));
+        }
+    }, [token, dispatch]);
 
     const goToUpdateEmployee = () => {
         navigate('/updateemployee')
@@ -16,6 +38,13 @@ function EmployeeSidebar() {
     }
     const goToAnasayfa = () => {
         navigate('/edashboard')
+    }
+    const goToZimmetListesi = () => {
+        navigate('/employeeequipmenttable')
+    }
+
+    const goToZimmetOnay = () => {
+        navigate('/pendingequipmenttable')
     }
 
 
@@ -75,8 +104,23 @@ function EmployeeSidebar() {
                         </a>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                            <a href="forms-elements.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>İzinleri Düzenle</button></span>
+                            <a href="#" onClick={goToZimmetListesi}>
+                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Zimmetlerim</button></span>
+                            </a>
+                            <a href="#" onClick={goToZimmetOnay}>
+                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>
+                                Onay Bekleyenler
+                                {PendingEquipmentCount > 0 && (
+                                        <span className=" ms-2 badge text-bg-danger">
+                                            {PendingEquipmentCount}
+                                        </span>
+                                    )}
+                                
+                                
+                                
+                                </button></span>
+                           
+                           
                             </a>
 
 

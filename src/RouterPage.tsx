@@ -33,6 +33,12 @@ import ManagerList from "./pages/ManagerList";
 import CalisanListDurum from "./pages/CalisanListDurum";
 import VardiyaYonetimi from "./pages/VardiyaYonetimi";
 import VerifyEmailPageEmployee from "./pages/VerifyEmailPageEmployee";
+import ZimmetYonetimi from "./pages/ZimmetYonetimi";
+import EquipmentTable from "./component/molecules/EquipmentTable";
+import EquipmentTablePage from "./pages/EquipmentTablePage";
+import EmployeeEquipmentTablePage from "./pages/EmployeeEquipmentTablePage";
+import PendingEquipmentTablePage from "./pages/PendingEquipmentTablePage";
+import RejectedEquipmentTablePage from "./pages/RejectedEquipmentTablePage";
 
 
 function RouterPage() {
@@ -74,6 +80,16 @@ function RouterPage() {
                 <Route path="/calisandurum" element={<CalisanListDurum />} />
                 <Route path="/vardiyayonetimi" element={<VardiyaYonetimi />} />
                 <Route path="/api/v1/auth/verifyEmailEmployee" element={<VerifyEmailPageEmployee />} />
+                <Route path="/zimmetyonetimi" element={<ZimmetYonetimi />} />
+                <Route path="/equipmenttable" element={<EquipmentTablePage />} />
+                <Route path="/employeeequipmenttable" element={<EmployeeEquipmentTablePage />} />
+                <Route path="/pendingequipmenttable" element={<PendingEquipmentTablePage />} />
+                <Route path="/rejectedequipmenttable" element={<RejectedEquipmentTablePage />} />
+
+
+
+
+
 
 
 
