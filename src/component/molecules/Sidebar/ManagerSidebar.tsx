@@ -41,6 +41,9 @@ const goToIzinYonetimi = () => {
 const goToIzinListesi = () => {navigate('/pendingleave');}
 const goToCalisanDurum = () => {navigate('/calisandurum');}
 const goToVardiyaYonetimi = () => {navigate('/vardiyayonetimi');}
+const goToZimmetYonetimi = () => {navigate('/zimmetyonetimi');}
+const gotToZimmetTablosu = () => {navigate('/equipmenttable');}
+const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
 
 useEffect(() => {
@@ -137,18 +140,18 @@ useEffect(() => {
                         </a>
                         <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
                             
-                                <a href="charts-chartjs.html">
+                                <a href="#" onClick={goToZimmetYonetimi}>
                                 <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px' ,marginTop: '5px'}}>Zimmet Ekle</button></span>
                                 </a>
                             
                             
-                                <a href="charts-apexcharts.html">
-                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Zimmet güncelle</button></span>
+                                <a href="#" onClick={gotToZimmetTablosu}>
+                                <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Zimmetleri Görüntüle</button></span>
                                 </a> 
                             
                             
-                                <a href="charts-echarts.html">
-                                    <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Zimmet Sil</button></span>
+                                <a href="#" onClick={goToRejectedEquipmentTable}>
+                                    <i className="bi bi-circle"></i><span>< button  type="button" className="btn btn-secondary text-start  " style={{width: '90%',marginBottom: '5px'}}>Reddedilen Zimmetler</button></span>
                                 </a>  
                             
                         </ul>
