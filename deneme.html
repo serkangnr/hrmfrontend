@@ -3,22 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabit Sayı Güncelleme</title>
-    <script>
-        let sabitSayi = 0;
-
-        function setSabitSayi(value) {
-            sabitSayi = value;
-            document.getElementById('sonuc').innerText = `Sabit sayı: ${sabitSayi}`;
+    <title>Yıldız Derecelendirme</title>
+    <style>
+        .star {
+            font-size: 50px;
+            cursor: pointer;
+            color: #ccc;
         }
-    </script>
+        .star.selected {
+            color: #f39c12;
+        }
+        #rating-value {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sabit Sayı Güncelleme</h1>
-    <button onclick="setSabitSayi(5)">Sabit Sayıyı 5 Yap</button>
-    <button onclick="setSabitSayi(10)">Sabit Sayıyı 10 Yap</button>
-    <button onclick="setSabitSayi(0)">Sabit Sayıyı 0 Yap</button>
-    
-    <p id="sonuc">Sabit sayı: 0</p>
+
+    <div id="star-container">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+    </div>
+
+    <div id="rating-value"></div> <!-- Değeri göstermek için div -->
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('rating-value');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                
+                stars.forEach(s => {
+                    if(s.getAttribute('data-value') <= value) {
+                        s.classList.add('selected');
+                    } else {
+                        s.classList.remove('selected');
+                    }
+                });
+
+                ratingValue.textContent = `Seçilen Değer: ${value}`; // Seçilen değeri ekrana yansıtma
+            });
+        });
+    </script>
 </body>
 </html>
