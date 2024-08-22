@@ -9,10 +9,15 @@ import Swal from 'sweetalert2';
 
 function Login() {
     const dispatch: HrmDispatch = useDispatch();
-    const navigate = useNavigate();
+   
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+  const backToHome = () => {
+    navigate('/');
+  }
 
 
     const login = () => {
@@ -65,7 +70,7 @@ function Login() {
                             <div className="row justify-content-center">
                                 <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                                     <div className="d-flex justify-content-center py-4">
-                                        <img src="./image/logo.png" style={{ width: "200px", height: "200px" }} />
+                                        <img onClick={backToHome} src="./image/logo.png" style={{ width: "200px", height: "200px",cursor: 'pointer' }} />
                                     </div>
                                     {/* End Logo */}
                                     <div className="card mb-3" style={{ backgroundColor: 'rgba(255, 255, 255,0.3)' }}>

@@ -12,25 +12,47 @@ function ExpensesPopup() {
     const [expenseType, setExpenseType] = useState<EExpenseType>(EExpenseType.YEMEK);
     const [description, setDescription] = useState<string>('');
     const [expensesDate, setExpensesDate] = useState<string>('');
-    const [document, setDocument] = useState<string>('');   
+    const [document, setDocument] = useState<string>('https://picsum.photos/500/500'); 
+    let inputFileRef = React.useRef<HTMLInputElement | null>(null); 
+    const emptyFile: File = new File([], 'empty-file.txt');
+    const [selectedFile, setSelectedFile] = useState<File>(emptyFile);
+   
 
-    const AddExpenses = () => {
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            setSelectedFile(event.target.files[0]);
+        }
+    };
+
+    const AddExpenses = async () => {
+        let formData = new FormData();
+        if (selectedFile) {
+            formData.append('file', selectedFile);
+        }
+
+        const response = await fetch('http://localhost:9098/api/v1/media/add-img', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+
         dispatch(fetchCreateExpense({
             token: token,
             amount: amount,
             expenseType: expenseType,
             description: description,
             expensesDate: expensesDate,
-            document: document,
+            document: result.data,
         })).then(data => {
-            console.log(data)
             if (data.payload === true) {
                 Swal.fire("Başarılı!", "Harcama kaydedildi!", "success");
             } else {
                 Swal.fire("Hata!", "Harcama kaydedilemedi!", "error");
             }
-        })
-    }
+        });
+    };
+
+   
 
     return (
         <div className="modal fade" id="exampleModal4" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,11 +113,13 @@ function ExpensesPopup() {
                                 <div className="list-group-item">
                                     <label>Belge</label>
                                     <input
-                                        type="text"
+                                        type="file"
                                         className="form-control"
-                                        value={document}
-                                        onChange={(e) => setDocument(e.target.value)}
+                                        ref={inputFileRef}
+                                        onChange={handleFileChange}
+
                                     />
+                                    
                                 </div>
                             </div>
                             <div className="card-footer text-end">

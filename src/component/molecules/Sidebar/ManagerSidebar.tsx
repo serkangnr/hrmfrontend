@@ -19,15 +19,16 @@ function ManagerSidebar() {
     const token = useAppSelector(state => state.auth.token)
     const PendingLeaveCount = useAppSelector(state => state.leave.count);
     const commentData = useAppSelector(state => state.comment.commentData);
-    const [editComment, setEditComment] = useState(commentData);
+    const [comment, setComment] = useState('');
+    const [rate, setRate] = useState<number>(commentData?.rate ?? 5);
 
     const updateComment = async () => {
         
         dispatch(fetchUpdateComment({
 
             token: token,
-            comment: editComment ? editComment.comment : '',
-            rate: rate2 ,
+            comment: comment ,
+            rate: rate ,
 
 
         })).then(() => {
@@ -47,7 +48,9 @@ function ManagerSidebar() {
         if (token) {
             dispatch(fetchGetComment(token));
         }
-    }, [dispatch, token]);
+    }, []);
+
+
     const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -76,21 +79,16 @@ function ManagerSidebar() {
     const goToHarcamaTalepleri = () => {
         navigate('/harcama-talepleri');
     }
-    const goToIzinListesi = () => { navigate('/pendingleave'); }
-    const goToCalisanDurum = () => { navigate('/calisandurum'); }
-    const goToVardiyaYonetimi = () => { navigate('/vardiyayonetimi'); }
+   
 
-    const [rate, setRate] = useState<number>(0);
+   
 
     const handleClick = (value: number) => {
         setRate(value);
     };
-    const [rate2, setRate2] = useState<number>(commentData?.rate ?? 0);
 
-    const handleClick2 = (value: number) => {
-        setRate2(value);
-    };
 
+ 
 
     useEffect(() => {
         if (token) {
@@ -98,16 +96,18 @@ function ManagerSidebar() {
         }
     }, [token, dispatch]);
 
-    const [comment, setComment] = useState('');
+   
 
 
 
-
-
+    const goToIzinListesi = () => { navigate('/pendingleave'); }
+    const goToCalisanDurum = () => { navigate('/calisandurum'); }
+    const goToVardiyaYonetimi = () => { navigate('/vardiyayonetimi'); }
 
 const goToZimmetYonetimi = () => {navigate('/zimmetyonetimi');}
 const gotToZimmetTablosu = () => {navigate('/equipmenttable');}
 const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
+const goToUpdateCompany = () => {navigate('/updatecompany');}
 
 
 
@@ -122,7 +122,7 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
             } else {
                 Swal.fire("Hata!", "Sadece 1 Yorum Yapabilirsiniz!", "error").then(()=>{
-                    Swal.fire("Öneri!", "Yorumunuzu yorum düzenleden silebilir veya değiştirebilirsiniz!", "success")
+                    Swal.fire("Öneri!", "Yorumunuzu  düzenleyebilir veya silebilirsiniz!", "success")
                 })
                 
             }
@@ -162,6 +162,22 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
                             <i className="bi bi-grid"></i>
                             <span><i className="fa-solid fa-house"></i>Anasayfa</span>
                         </a>
+                    </li>
+
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#company-nav" data-bs-toggle="collapse" href="#">
+                            <i className="bi bi-menu-button-wide"></i><span><i className="fa-solid fa-building"></i> Şirket</span><i className="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="company-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+
+                            <a href="#" onClick={goToUpdateCompany}>
+                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Şirket Düzenle</button></span>
+                            </a>
+
+
+
+                        </ul>
                     </li>
 
                     <li className="nav-item">
@@ -323,7 +339,7 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
                             <button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }} data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@getbootstrap">Yorum Yap</button>
 
-                            <button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }} data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@getbootstrap" onClick={getComment}>Yorum Düzenle</button>
+                        
 
 
 
@@ -359,7 +375,7 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
                                 <div className="mb-3">
                                     <label className="col-form-label">Yorum:</label>
-                                    <textarea onChange={(e) => setComment(e.target.value)} className="form-control" id="message-text"></textarea>
+                                    <textarea defaultValue={commentData?.comment} onChange={(e) => setComment(e.target.value)} className="form-control" id="message-text"></textarea>
                                 </div>
                                 <div>
                                     <div id="star-container">
@@ -380,8 +396,9 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
                             </form>
                         </div>
                         <div className="modal-footer">
-
-                            <button type="button" onClick={yorumEkle} className="btn btn-primary">Kaydet</button>
+                        <button type="button" onClick={deleteComment}  className="btn btn-danger">Sil</button>
+                        <button type="button" onClick={updateComment} className="btn btn-primary">Düzenle</button>
+                            <button type="button" onClick={yorumEkle} className="btn btn-success">Kaydet</button>
                         </div>
                     </div>
                 </div>
@@ -389,64 +406,19 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-            <div className="modal fade" id="exampleModal2" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5 text-center">Yorum Yaz</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <form>
-                                <div className="mb-3">
-                                    <label className="col-form-label">Yorum:</label>
-                                    <textarea
-                                        defaultValue={commentData?.comment}
-
-                                        onChange={evt => {
-                                            if (editComment)
-                                                setEditComment({ ...editComment, comment: evt.target.value })
-                                        }}
-                                        className="form-control"
-                                        id="message-text"
-                                    ></textarea>
-                                </div>
-                                <div>
-                                    <div id="star-container">
-                                        {[1, 2, 3, 4, 5].map((value) => (
-                                            <span
-
-                                                key={value}
-                                                className={`star ${rate2 && rate2 >= value ? 'selected' : ''}`}
-                                                onClick={() => handleClick2(value)}
-                                            >
-                                                &#9733;
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="modal-footer">
-                             <button type="button" onClick={deleteComment} className="btn btn-primary">Sil</button>
-                            <button type="button" onClick={updateComment} className="btn btn-primary">Düzenle</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </>
     )
 }
 
 export default ManagerSidebar
+
+
+
+
+
+
+
+
+
+
+ 

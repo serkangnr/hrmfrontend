@@ -8,6 +8,11 @@ import swal from 'sweetalert2';
 function Register() {
   const dispatch: HrmDispatch = useDispatch();
   const navigate = useNavigate();
+  
+
+  const backToHome = () => {
+    navigate('/');
+  }
  
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
@@ -45,7 +50,7 @@ function Register() {
             <div className="row justify-content-center">
               <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                 <div className="d-flex justify-content-center py-4">
-                  <img src="./image/logo.png" style={{ width: "200px", height: "200px" }} />
+                  <img onClick={backToHome} src="./image/logo.png" style={{ width: "200px", height: "200px",cursor: 'pointer' }} />
 
 
                 </div>

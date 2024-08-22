@@ -36,6 +36,7 @@ import {  EStatus, Expenses, } from '../../store/feature/expensesSlice';
                 <td>{props.document}</td>
                 <td>{props.expensesDate}</td>
                 <td>{getStatusText(props.status)}</td>
+                
             </tr>
         );
     }

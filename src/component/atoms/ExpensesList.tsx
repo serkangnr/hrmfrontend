@@ -63,22 +63,31 @@ function ExpensesList(props: ExpensesResponseDto) {
   
     return (
         <>
-
-            <tr>
-                
-                <td>{props.employeeName}</td>
-                <td>{props.employeeSurname}</td>
-                <td>{props.expenseType}</td>
-                <td>{props.amount}</td>
-                <td>{props.description}</td>
-                <td>{props.document}</td>
-                <td>{props.expensesDate}</td>
-                <td> <a onClick={confirm} href="#" className="btn btn-outline-info btn-sm mb-3">
-                <i className="fa-solid fa-check" style={{ color: "green" }}></i></a> </td> 
-                <td> <a onClick={disconfirm} href="#" className="btn btn-outline-info btn-sm mb-3">
-                <i className="fa-solid fa-xmark" style={{ color: "red" }}></i> </a> </td>
-            </tr>
-            
+<tr>
+    <td>{props.employeeName}</td>
+    <td>{props.employeeSurname}</td>
+    <td>{props.expenseType}</td>
+    <td>{props.amount}</td>
+    <td>{props.description}</td>
+    <td>
+        <img
+            style={{ width: '75px', height: '75px', borderRadius: '20px' }}
+            src='http://localhost:9098/images/marka.png'
+          
+        />
+    </td>
+    <td>{props.expensesDate}</td>
+    <td>
+        <a onClick={confirm} href="#" className="btn btn-outline-info btn-sm mb-3">
+            <i className="fa-solid fa-check" style={{ color: "green" }}></i>
+        </a>
+    </td> 
+    <td>
+        <a onClick={disconfirm} href="#" className="btn btn-outline-info btn-sm mb-3">
+            <i className="fa-solid fa-xmark" style={{ color: "red" }}></i>
+        </a>
+    </td>
+</tr>
         </>
     )
 }
