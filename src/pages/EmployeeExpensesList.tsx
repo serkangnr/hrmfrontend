@@ -10,6 +10,7 @@ import {  fetchMyExpenses } from '../store/feature/expensesSlice';
 
 import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar';
 import ExpensesEmployeeList from '../component/atoms/ExpensesEmployeeList';
+import EmployeeSidebar from '../component/molecules/Sidebar/EmployeeSidebar';
 
 function EmployeeExpensesList() {
 
@@ -38,7 +39,7 @@ function EmployeeExpensesList() {
                 <div className="row">
                     <div className="col-2">
 
-                        <ManagerSidebar /> </div>
+                        <EmployeeSidebar /> </div>
                     <div className="col-9 ">
 
 
