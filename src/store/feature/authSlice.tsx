@@ -33,6 +33,11 @@ const initialAuthState={
 
 }
 
+export interface IForgetPasswordRequest{
+    email: string
+    password: string
+}
+
 export const fetchRegisterManager = createAsyncThunk(
     'auth/fetchRegisterManager',
     async(payload: IRegisterManager)=>{
@@ -142,6 +147,53 @@ export const fetchVerifyEmail = createAsyncThunk(
         return response;
     }
 )
+
+export const fetchForgetPassword = createAsyncThunk(
+    'auth/fetchForgetPassword',
+    async (email: string) => {
+        const response = await fetch(Rest.auth + `/forget-password/${email}` , {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+     
+        const data = await response.json();
+
+        console.log('API Response:', data);
+
+        return data;
+    }
+);
+
+export const fetchForgetChangePassword = createAsyncThunk(
+    'auth/fetchForgetChangePassword',
+    async (payload: IForgetPasswordRequest) => {
+        const response = await fetch(Rest.auth + '/forget-change-password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'email': payload.email,
+                'password': payload.password,
+                
+              
+            })
+        });
+
+     
+        const data = await response.json();
+
+        console.log('API Response:', data);
+
+        return data;
+    }
+);
+
+
 export const fetchChangePassword = createAsyncThunk(
     'auth/fetchChangePassword',
     async(payload: IChangePassword)=>{
@@ -321,6 +373,18 @@ const authSlice = createSlice({
         })
         .addCase(fetchChangePassword.fulfilled, (state, action: PayloadAction<IResponse>) => {
            
+           
+        })
+        build.addCase(fetchForgetPassword.fulfilled,(state,action : PayloadAction<IResponse>)=>{
+            
+            state.email = action.payload.data;
+            state.password = action.payload.data
+            
+        })
+        build.addCase(fetchForgetChangePassword.fulfilled,(state,action : PayloadAction<IResponse>)=>{
+           
+            state.email = action.payload.data;
+            state.password = action.payload.data
            
         })
        

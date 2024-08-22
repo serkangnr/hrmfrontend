@@ -108,6 +108,7 @@ function ManagerSidebar() {
 const goToZimmetYonetimi = () => {navigate('/zimmetyonetimi');}
 const gotToZimmetTablosu = () => {navigate('/equipmenttable');}
 const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
+const goToUpdateCompany = () => {navigate('/updatecompany');}
 
 
 
@@ -162,6 +163,22 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
                             <i className="bi bi-grid"></i>
                             <span><i className="fa-solid fa-house"></i>Anasayfa</span>
                         </a>
+                    </li>
+
+                    <li className="nav-item">
+                        <a className="nav-link collapsed" data-bs-target="#company-nav" data-bs-toggle="collapse" href="#">
+                            <i className="bi bi-menu-button-wide"></i><span><i className="fa-solid fa-building"></i> Şirket</span><i className="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="company-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+
+                            <a href="#" onClick={goToUpdateCompany}>
+                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Şirket Düzenle</button></span>
+                            </a>
+
+
+
+                        </ul>
                     </li>
 
                     <li className="nav-item">
