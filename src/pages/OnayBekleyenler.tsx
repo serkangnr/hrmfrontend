@@ -19,16 +19,7 @@ function OnayBekleyenler() {
 
     }, [])
 
-    // const dispatch = useDispatch<HrmDispatch>(); 
-    // const verifyManagerList = useAppSelector((state) => state.auth.verifyManagerList) as IVerifyList[]; 
-    // const [isPending, setIsPending] = useState(true); 
-    // useEffect(() => { dispatch(fetchPendingManagers()); 
-    //     setIsPending(false); }, [dispatch]); 
-    //     const handleApprove = (id: number) => {
-    //     dispatch(fetchConfirmManager(id)).unwrap() 
-    //     .then(() => { 
-    //         dispatch(fetchPendingManagers()); }) .catch((error) => { 
-    //             console.error('Onay işlemi sırasında hata:', error); }); };
+  
 
 
 

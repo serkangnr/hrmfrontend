@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { setToken } from '../../../store/feature/authSlice';
 import { fetchGetPendingEquipmentCount } from '../../../store/feature/equipmentSlice';
 
+import ExpensesPopup from '../ExpensesPopup';
+
 function EmployeeSidebar() {
 
 
@@ -46,6 +48,10 @@ function EmployeeSidebar() {
     const goToZimmetOnay = () => {
         navigate('/pendingequipmenttable')
     }
+    const goToHarcamalarım = () => {
+        navigate('/expenses-employee-list')
+    }
+   
 
 
 
@@ -100,7 +106,7 @@ function EmployeeSidebar() {
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-journal-text"></i><span><i className="fa-solid fa-plane"></i>Zimmet Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
+                            <i className="bi bi-journal-text"></i><span><i className="fa-solid fa-boxes-packing"></i>Zimmet Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="forms-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
@@ -133,9 +139,34 @@ function EmployeeSidebar() {
                         </a>
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                            <a href="tables-general.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Harcamaları Düzenle</button></span>
+                            <a href="#">
+                        
+                    <button
+                                    type="button"
+                                    className="btn btn-secondary text-start"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal4"
+                                    style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}
+                                >
+                                   Harcama Ekle
+                                </button>
+
+                    
                             </a>
+
+                            <a href="#">
+                        
+                        <button
+                                        type="button"
+                                        className="btn btn-secondary text-start"
+                                        onClick={goToHarcamalarım}
+                                        style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}
+                                    >
+                                       Harcamalarım
+                                    </button>
+    
+                        
+                                </a>
 
 
                         </ul>
@@ -167,6 +198,7 @@ function EmployeeSidebar() {
 
             </aside>
             <EmployeeShiftPopUp />
+            <ExpensesPopup/>
         </>
         
     )

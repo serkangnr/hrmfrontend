@@ -39,6 +39,11 @@ import EquipmentTablePage from "./pages/EquipmentTablePage";
 import EmployeeEquipmentTablePage from "./pages/EmployeeEquipmentTablePage";
 import PendingEquipmentTablePage from "./pages/PendingEquipmentTablePage";
 import RejectedEquipmentTablePage from "./pages/RejectedEquipmentTablePage";
+import HarcamaTalepleri from "./pages/HarcamTalepleri";
+import EmployeeExpensesList from "./pages/EmployeeExpensesList";
+
+
+
 
 
 function RouterPage() {
@@ -85,6 +90,8 @@ function RouterPage() {
                 <Route path="/employeeequipmenttable" element={<EmployeeEquipmentTablePage />} />
                 <Route path="/pendingequipmenttable" element={<PendingEquipmentTablePage />} />
                 <Route path="/rejectedequipmenttable" element={<RejectedEquipmentTablePage />} />
+                <Route path="/harcama-talepleri" element={<HarcamaTalepleri />} />
+                <Route path="/expenses-employee-list" element={<EmployeeExpensesList />} />
 
 
 

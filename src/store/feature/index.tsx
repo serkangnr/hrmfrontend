@@ -11,6 +11,7 @@ import shiftSlice from "./shiftSlice";
 import commentSlice from "./commentSlice";
 
 import equipmentSlice from "./equipmentSlice";
+import expensesSlice from "./expensesSlice";
 
 
 export{
@@ -25,7 +26,8 @@ export{
 
   commentSlice,
 
-  equipmentSlice
+  equipmentSlice,
+  expensesSlice
 
   
 }
