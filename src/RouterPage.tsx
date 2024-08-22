@@ -41,6 +41,8 @@ import PendingEquipmentTablePage from "./pages/PendingEquipmentTablePage";
 import RejectedEquipmentTablePage from "./pages/RejectedEquipmentTablePage";
 import HarcamaTalepleri from "./pages/HarcamTalepleri";
 import EmployeeExpensesList from "./pages/EmployeeExpensesList";
+import UpdateCompany from "./pages/UpdateCompany";
+import ChangeForgetPassword from "./pages/ChangeForgetPassword";
 
 
 
@@ -92,6 +94,9 @@ function RouterPage() {
                 <Route path="/rejectedequipmenttable" element={<RejectedEquipmentTablePage />} />
                 <Route path="/harcama-talepleri" element={<HarcamaTalepleri />} />
                 <Route path="/expenses-employee-list" element={<EmployeeExpensesList />} />
+                <Route path="/updatecompany" element={<UpdateCompany />} />
+                <Route path="/api/v1/auth/forget-change-password" element={<ChangeForgetPassword />} />
+
 
 
 

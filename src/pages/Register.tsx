@@ -8,12 +8,16 @@ import swal from 'sweetalert2';
 function Register() {
   const dispatch: HrmDispatch = useDispatch();
   const navigate = useNavigate();
+
   
 
   const backToHome = () => {
     navigate('/');
   }
  
+
+
+
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -28,7 +32,7 @@ function Register() {
     })).then(data => {
       if (data.payload.code === 200) {
         swal.fire("Başarılı!", "Kullanıcı kayıt edilmiştir!", "success")
-          
+
       }
     })
   }
@@ -43,8 +47,8 @@ function Register() {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       height: '100%'
-  }}>
-     <div className="container">
+    }}>
+      <div className="container">
         <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
           <div className="container">
             <div className="row justify-content-center">
@@ -55,7 +59,7 @@ function Register() {
 
                 </div>
                 {/* End Logo */}
-                <div className="card mb-3" style={{backgroundColor: 'rgba(255, 255, 255,0.3)'}}>
+                <div className="card mb-3" style={{ backgroundColor: 'rgba(255, 255, 255,0.3)' }}>
                   <div className="card-body">
                     <div className="pt-4 pb-2">
                       <h5 className="card-title text-center pb-0 fs-4">Hesap Oluştur</h5>
@@ -98,6 +102,7 @@ function Register() {
                           <div className="invalid-feedback">You must agree before submitting.</div>
                         </div>
                       </div>
+                      
                       <div className="col-12">
                         <button onClick={register} className="btn btn-primary w-100" type="submit">Hesap Oluştur</button>
                       </div>
@@ -114,8 +119,8 @@ function Register() {
         </section>
       </div>
     </div>
-     
-    
+
+
   );
 }
 

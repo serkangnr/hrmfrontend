@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HrmDispatch } from '../store';
-import { fetchLogin } from '../store/feature/authSlice';
+import { fetchForgetPassword, fetchLogin } from '../store/feature/authSlice';
 import Swal from 'sweetalert2';
 
 
@@ -25,7 +25,7 @@ function Login() {
             if (data.payload.code === 200) {
 
                 if (data.payload.data.role === 'MANAGER') {
-                    navigate('/mdashboard'); 
+                    navigate('/mdashboard');
                     console.log(data);
                 }
                 else if (data.payload.data.role === 'ADMIN') {
@@ -40,9 +40,9 @@ function Login() {
                     navigate('/edashboard');
                     console.log(data);
                 }
-                
-            }else{
-                Swal.fire('Hata!',data.payload.message,'error');
+
+            } else {
+                Swal.fire('Hata!', data.payload.message, 'error');
             }
 
         })
@@ -52,6 +52,33 @@ function Login() {
         navigate('/register');
     }
 
+    const changePasswordByEmail = (email: string) => {
+        dispatch(fetchForgetPassword(email)).then(data => {
+            if (data.payload.code === 200) {
+                Swal.fire('Başarılı', 'Şifre değiştirme linkiniz e-posta adresinize gönderilmiştir', 'success');
+            } else {
+                Swal.fire('Hata', data.payload.message, 'error');
+            }
+        }).catch(error => {
+            Swal.fire('Hata!', 'Bir hata oluştu.', 'error');
+        });
+    }
+    
+        const [showModal, setShowModal] = useState(false);
+      
+    
+        const forgetPassword = (e:any) => {
+            e.preventDefault();
+            setShowModal(true);
+        };
+    
+        const handleSubmit = () => {
+            console.log('E-posta:', email);
+            changePasswordByEmail(email)
+            setShowModal(false) // İşlemden sonra modalı kapat
+        };
+
+    
 
 
 
@@ -114,6 +141,36 @@ function Login() {
                                                         Lütfen şifrenizi giriniz'!
                                                     </div>
                                                 </div>
+                                                <div className="col-12">
+            <a style={{ color: 'red' }} href="#" onClick={forgetPassword}>Şifremi Unuttum</a>
+
+            {showModal && (
+                <div className="modal show d-block" tabIndex={-1}>
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Şifre Sıfırlama</h5>
+                                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+                            </div>
+                            <div className="modal-body">
+                                <p>Lütfen e-posta adresinizi girin:</p>
+                                <input 
+                                    type="email" 
+                                    className="form-control" 
+                                    placeholder="E-posta adresiniz" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Kapat</button>
+                                <button type="button" className="btn btn-primary" onClick={handleSubmit}>Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
                                                 <div className="col-12">
                                                     <div className="form-check">
                                                         <input
