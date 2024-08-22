@@ -6,6 +6,7 @@ import { adminSlice,authSlice,managerSlice,companySlice,mailSlice, shiftSlice, e
 import employeeSlice from './feature/employeeSlice';
 import leaveSlice from './feature/leaveSlice';
 import commentSlice from './feature/commentSlice';
+import  expensesSlice from './feature/expensesSlice';
 
 
 
@@ -22,7 +23,8 @@ const store = configureStore({
 
     comment:commentSlice,
 
-    equipment:equipmentSlice
+    equipment:equipmentSlice,
+    expenses:expensesSlice
 
   }
 });

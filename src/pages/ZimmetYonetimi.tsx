@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
 import ContactCard from '../component/molecules/ContactCard'
 import ManagerSidebar from '../component/molecules/Sidebar/ManagerSidebar'
-import CalisanListTablo from '../component/molecules/CalisanListTablo'
+
 import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
 import { fetchEmployeeList } from '../store/feature/employeeSlice';
-import IzinEklemeTablosu from '../component/molecules/IzinEklemeTablosu';
+
 import ZimmetEklemeTablosu from '../component/molecules/ZimmetEklemeTablosu';
 
 function ZimmetYonetimi() {
 
-    const employeeList = useAppSelector(state => state.employee.employeeList);
+    
     const dispatch = useDispatch<HrmDispatch>();
     const token = useAppSelector(state => state.auth.token);
+    const employeeList = useAppSelector(state => state.employee.employeeList);
 
    useEffect(() => {
     if (token) {

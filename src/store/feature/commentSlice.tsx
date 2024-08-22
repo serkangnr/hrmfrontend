@@ -6,6 +6,15 @@ interface ICommentRequestDto {
   comment: string;
   rate: number;
 }
+export interface CommentManagerResponseDto {
+  comment: string;
+  managerName: string;
+  managerSurname: string;
+  managerAvatar: string;
+  companyName: string;
+  companyLogo: string;
+  sector: string;
+}
 
 interface CommentUpdateRequestDto {
   id?: string;
@@ -27,6 +36,7 @@ interface CommentState {
   success: boolean;
   error: string | null;
   commentData: CommentResponseDto | null;
+  commentList: CommentManagerResponseDto[] | null;
   updateSuccess: boolean;
 }
 
@@ -36,8 +46,23 @@ const initialState: CommentState = {
   error: null,
   commentData: null,
   updateSuccess: false,
+  commentList: null,
 };
 
+export const fetchCommentList = createAsyncThunk(
+  'comment/fetchCommentList',
+  async () => {
+      const response = await fetch('http://localhost:9095/api/v1/comment/commnet-list', {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      const data = await response.json();
+      console.log('API Response:', data);
+      return data;
+  }
+);
 
 
 export const fetchGetComment = createAsyncThunk(
@@ -160,6 +185,9 @@ const commentSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       });
+      builder.addCase(fetchCommentList.fulfilled, (state, action: PayloadAction<IResponse>) => {
+        state.commentList = action.payload.data;
+    })
       
 
    

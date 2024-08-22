@@ -22,7 +22,7 @@ function ManagerSidebar() {
     const [editComment, setEditComment] = useState(commentData);
 
     const updateComment = async () => {
-
+        
         dispatch(fetchUpdateComment({
 
             token: token,
@@ -36,6 +36,9 @@ function ManagerSidebar() {
             });
         })
 
+    }
+    const getComment =()=>{
+        dispatch(fetchGetComment(token));
     }
 
 
@@ -68,6 +71,10 @@ function ManagerSidebar() {
     }
     const goToIzinYonetimi = () => {
         navigate('/izinyonetimi');
+    }
+
+    const goToHarcamaTalepleri = () => {
+        navigate('/harcama-talepleri');
     }
     const goToIzinListesi = () => { navigate('/pendingleave'); }
     const goToCalisanDurum = () => { navigate('/calisandurum'); }
@@ -126,7 +133,8 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
             dispatch(fetchDeleteComment(token))
                 .then((response) => {
                     if (response.payload.code === 200) {
-                        Swal.fire('Başarı!', 'Comment silindi', 'success');
+                        Swal.fire('Başarı!', 'Comment silindi', 'success').then(() => {
+                            dispatch(fetchGetComment(token));});
                     } else {
                         Swal.fire('Hata!', response.payload.message, 'error');
                         throw new Error(response.payload.message);
@@ -218,8 +226,8 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
                         </a>
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                            <a href="tables-general.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Harcamaları Düzenle</button></span>
+                            <a href="#">
+                                <i className="bi bi-circle"></i><span>< button type="button" onClick={goToHarcamaTalepleri} className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Harcama Talepleri</button></span>
                             </a>
 
 
@@ -228,7 +236,7 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-bar-chart"></i><span><i className="fa-regular fa-calendar-days"></i>Zimmet</span><i className="bi bi-chevron-down ms-auto"></i>
+                            <i className="bi bi-bar-chart"></i><span><i className="fa-solid fa-boxes-packing"></i>Zimmet</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="charts-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
@@ -253,7 +261,7 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-gem"></i><span><i className="fa-solid fa-ellipsis"></i>Vardiya Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
+                            <i className="bi bi-gem"></i><span><i className="fa-solid fa-clipboard"></i>Vardiya Yönetimi</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="icons-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
@@ -309,13 +317,13 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
 
                     <li className="nav-item">
                         <a className="nav-link collapsed" data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
-                            <i className="bi bi-bar-chart"></i><span><i className="fa-regular fa-calendar-days"></i>Yorum</span><i className="bi bi-chevron-down ms-auto"></i>
+                            <i className="bi bi-bar-chart"></i><span><i className="fa-solid fa-comments"></i>Yorum</span><i className="bi bi-chevron-down ms-auto"></i>
                         </a>
                         <ul id="comment-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                            <button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }} data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Yorum Yap</button>
+                            <button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }} data-bs-toggle="modal" data-bs-target="#exampleModal3" data-bs-whatever="@getbootstrap">Yorum Yap</button>
 
-                            <button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }} data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@getbootstrap">Yorum Düzenle</button>
+                            <button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }} data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@getbootstrap" onClick={getComment}>Yorum Düzenle</button>
 
 
 
@@ -339,7 +347,7 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
                 </ul>
 
             </aside>
-            <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal3" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -378,6 +386,20 @@ const goToRejectedEquipmentTable = () => {navigate('/rejectedequipmenttable');}
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div className="modal fade" id="exampleModal2" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
