@@ -39,7 +39,7 @@ function VerifyEmailPageEmployee() {
             <div className="row justify-content-center align-items-center" style={{ height: '30vh' }}>
                 <div className="col-12">
                     <h2 style={{ textAlign: 'center', color: 'blue', fontFamily: 'cursive' }}>
-                        Mail adresiniz doğrulandı.Lütfen paket seçiniz. Admin onayından sonra sisteme giriş yapabilirsiniz.
+                        Mail adresiniz doğrulandı.
                     </h2>
                 </div>
             </div>

@@ -37,11 +37,7 @@ function EmployeeDashboard() {
                 <div className="row mt-2 ">
                   <EmployeeCard  />
                 </div>
-                <div className="row">
-                  <LeaveInfo
-              
-                  />
-                </div>
+                
               </div>
               <div className="col-4 p-4">
                 
@@ -49,6 +45,11 @@ function EmployeeDashboard() {
                 
                 <div className="row">
                   <Holiday />
+                </div>
+                <div className="row">
+                  <LeaveInfo
+              
+                  />
                 </div>
               </div>
               <div className="col-4 p-4">

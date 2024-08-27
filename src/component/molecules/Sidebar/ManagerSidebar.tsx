@@ -11,6 +11,7 @@ import './StarRating.css';
 import './StarRating2.css';
 import { fetchDeleteComment, fetchGetComment, fetchSaveComment, fetchUpdateComment } from '../../../store/feature/commentSlice';
 import Swal from 'sweetalert2';
+import { fetchPendingExpensesCount } from '../../../store/feature/expensesSlice';
 
 
 function ManagerSidebar() {
@@ -18,9 +19,16 @@ function ManagerSidebar() {
     const dispatch: HrmDispatch = useDispatch();
     const token = useAppSelector(state => state.auth.token)
     const PendingLeaveCount = useAppSelector(state => state.leave.count);
+    const PendingExpensesCount = useAppSelector(state => state.expenses.pendingExpensesCount);
     const commentData = useAppSelector(state => state.comment.commentData);
     const [comment, setComment] = useState('');
     const [rate, setRate] = useState<number>(commentData?.rate ?? 5);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
+        }
+    }, [dispatch]);
 
     const updateComment = async () => {
         
@@ -93,6 +101,11 @@ function ManagerSidebar() {
     useEffect(() => {
         if (token) {
             dispatch(fetchGetPendingLeaveCount(token));
+        }
+    }, [token, dispatch]);
+    useEffect(() => {
+        if (token) {
+            dispatch(fetchPendingExpensesCount(token));
         }
     }, [token, dispatch]);
 
@@ -243,7 +256,13 @@ const goToUpdateCompany = () => {navigate('/updatecompany');}
                         <ul id="tables-nav" className="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                             <a href="#">
-                                <i className="bi bi-circle"></i><span>< button type="button" onClick={goToHarcamaTalepleri} className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Harcama Talepleri</button></span>
+                                <i className="bi bi-circle"></i><span>< button type="button" onClick={goToHarcamaTalepleri} className="btn btn-secondary text-start  " style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Harcama Talepleri
+                                {PendingExpensesCount > 0 && (
+                                        <span className="badge text-bg-danger">
+                                            {PendingExpensesCount}
+                                        </span>
+                                    )}
+                                    </button></span>
                             </a>
 
 
@@ -283,42 +302,6 @@ const goToUpdateCompany = () => {navigate('/updatecompany');}
 
                             <a href="#" onClick={goToVardiyaYonetimi}>
                                 <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px', marginTop: '5px' }}>Vardiya Oluştur</button></span>
-                            </a>
-
-
-                            <a href="icons-remix.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}> Çalışana Vardiya Ekle</button></span>
-                            </a>
-
-
-                            <a href="icons-remix.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}> Çalışan Vardiya Güncelle</button></span>
-                            </a>
-
-
-                            <a href="icons-boxicons.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}> Çalışan Vardiya Sil</button></span>
-                            </a>
-
-
-
-                            <a href="icons-boxicons.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}>Mola Oluştur</button></span>
-                            </a>
-
-
-                            <a href="icons-boxicons.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}>Çalışana Mola Ekle</button></span>
-                            </a>
-
-
-                            <a href="icons-boxicons.html">
-                                <i className="bi bi-circle"></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}>Çalışana Mola Güncelle</button></span>
-                            </a>
-
-
-                            <a href="icons-boxicons.html">
-                                <i className="bi bi-circle "></i><span>< button type="button" className="btn btn-secondary text-start" style={{ width: '90%', marginBottom: '5px' }}>Çalışana Mola Sil</button></span>
                             </a>
 
                         </ul>

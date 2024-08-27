@@ -70,10 +70,13 @@ function CalisanListDurumTablo({employees}:{employees:IEmployeeList[]}) {
                             <td>{employee.occupation}</td>
                             <td>{employee.gender}</td>
                             <td style={{width:'300px'}}>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               
                                 <button type="button" className="btn btn-primary" onClick={() => activateEmployee(employee.id)} >Aktif Et</button>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" className="btn btn-danger" onClick={() => passivateEmployee(employee.id)} >Pasif Et</button>
+                               
+                                
+                            </td>
+                            <td style={{width:'300px'}}>
+                            <button type="button" className="btn btn-danger" onClick={() => passivateEmployee(employee.id)} >Pasif Et</button>
                             </td>
                         </tr>
                     ))}

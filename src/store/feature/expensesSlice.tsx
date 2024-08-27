@@ -57,6 +57,7 @@ interface IExpensesState {
     error: string | null;
     myExpensesList: Expenses[] | null;
     expensesList: ExpensesResponseDto[] | null;
+    pendingExpensesCount: number ; 
 }
 
 const initialExpensesState: IExpensesState = {
@@ -65,6 +66,7 @@ const initialExpensesState: IExpensesState = {
     error: null,
     myExpensesList: null,
     expensesList: null,
+    pendingExpensesCount: 0,
 };
 export const fetchListExpenses = createAsyncThunk(
     'expenses/fetchListExpenses',
@@ -171,6 +173,26 @@ export const fetchRejectExpense = createAsyncThunk(
         }
     }
 );
+export const fetchPendingExpensesCount = createAsyncThunk(
+    'expenses/fetchPendingExpensesCount',
+    async (token: string) => {
+        try {
+            const response = await fetch(`http://localhost:9098/api/v1/expenses/get-pending-expenses-count?token=${token}`, {
+                method: 'GET',
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.data; // Assuming data.data is the count of pending expenses
+
+        } catch (error) {
+            throw new Error('Fetch failed');
+        }
+    }
+);
 
 const expensesSlice = createSlice({
     name: 'expenses',
@@ -257,7 +279,26 @@ const expensesSlice = createSlice({
                 state.expensesList = null;
                 state.error = action.error.message || 'Failed to fetch expenses';
             });
-    },
+    
+    builder
+    .addCase(fetchPendingExpensesCount.pending, (state) => {
+        state.isLoading = true;
+        state.success = false;
+        state.error = null;
+    })
+    .addCase(fetchPendingExpensesCount.fulfilled, (state, action: PayloadAction<number>) => {
+        state.isLoading = false;
+        state.success = true;
+        state.pendingExpensesCount = action.payload; // Yeni state güncelleme
+        state.error = null;
+    })
+    .addCase(fetchPendingExpensesCount.rejected, (state, action) => {
+        state.isLoading = false;
+        state.success = false;
+        state.pendingExpensesCount = 0; // Yeni state güncelleme
+        state.error = action.error.message || 'Failed to fetch pending expenses count';
+    });
+},
 });
 
 export default expensesSlice.reducer;
