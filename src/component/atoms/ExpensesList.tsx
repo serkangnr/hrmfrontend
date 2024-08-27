@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 
 
 import Swal from 'sweetalert2';
-import {  ExpensesResponseDto, fetchConfirmExpense, fetchListExpenses, fetchRejectExpense } from '../../store/feature/expensesSlice';
+import {  ExpensesResponseDto, fetchConfirmExpense, fetchListExpenses, fetchPendingExpensesCount, fetchRejectExpense } from '../../store/feature/expensesSlice';
+import { setToken } from '../../store/feature/authSlice';
 
 function ExpensesList(props: ExpensesResponseDto) {
     const dispatch = useDispatch<HrmDispatch>();
     const token =useAppSelector(state=>state.auth.token)
+   
    
     const confirm = () => {
         dispatch(fetchConfirmExpense(props.id))
@@ -25,11 +27,11 @@ function ExpensesList(props: ExpensesResponseDto) {
                 dispatch(fetchListExpenses(token))
             }
         )
-        // .then(
-        //     ()=>{
-        //         dispatch(fetchNotificationCount())
-        //     }
-        // )
+        .then(
+            ()=>{
+                dispatch(fetchPendingExpensesCount(token))
+            }
+        )
         
     }
     const disconfirm = () => {
@@ -46,11 +48,11 @@ function ExpensesList(props: ExpensesResponseDto) {
                 dispatch(fetchListExpenses(token))
             }
         )
-        // .then(
-        //     ()=>{
-        //         dispatch(fetchNotificationCount())
-        //     }
-        // )
+        .then(
+            ()=>{
+               dispatch(fetchPendingExpensesCount(token))
+            }
+        )
         
     }
    

@@ -3,7 +3,7 @@ import AdminSidebar from '../component/molecules/Sidebar/AdminSidebar'
 import VerifyList from '../component/atoms/VerifyList'
 import { HrmDispatch, useAppSelector } from '../store';
 import { useDispatch } from 'react-redux';
-import { fetchPendingManagers } from '../store/feature/authSlice';
+import { fetchPendingManagers, setToken } from '../store/feature/authSlice';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ContactCard from '../component/molecules/ContactCard';
@@ -17,6 +17,12 @@ function HarcamaTalepleri() {
     const expensesList = useAppSelector(state => state.expenses.expensesList);
     const dispatch = useDispatch<HrmDispatch>();
     const token = useAppSelector(state => state.auth.token);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            dispatch(setToken(token));
+        }
+    }, [dispatch]);
 
     useEffect(() => {
         dispatch(fetchListExpenses(token));

@@ -15,11 +15,21 @@ export interface IAdminIdentity {
 
 
 }
+export interface AdminProfile {
+    token:string
+    name: string;
+    surname: string;
+    address: string;
+    phone: string;
+    avatar: string;
+    
+}
 
 interface IAdminState {
     admin: IAdminIdentity | null,
     isLoadingLogin: boolean,
     adminList: IAdminList[],
+    adminProfile:AdminProfile | null,
 
 }
 
@@ -30,7 +40,7 @@ const initialAdminState: IAdminState = {
     admin: null,
     adminList: [],
     isLoadingLogin: false,
-
+    adminProfile:null,
 
 }
 
@@ -89,6 +99,29 @@ export const fetchUpdateAdmin = createAsyncThunk(
         return res;
     }
 )
+export const fetchUpdateAdminProfile = createAsyncThunk(
+    'admin/fetchUpdateAdminProfile',
+    async (payload: AdminProfile) => {
+        const res = await fetch(Rest.admin+'/update-admin-profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token:payload.token,
+                name: payload.name,
+                surname: payload.surname,
+                
+                address: payload.address,
+                phone: payload.phone,
+                avatar: payload.avatar,
+                
+            })
+        }).then(data => data.json());
+        return res;
+    }
+)
+
 
 
 
@@ -145,6 +178,7 @@ const adminSlice = createSlice({
         build.addCase(fetchgetAdmin.fulfilled, (state, action: PayloadAction<IResponse>) => {
             if (action.payload.code === 200) {
                 state.admin = action.payload.data;
+                state.adminProfile = action.payload.data;
             } else {
 
             }

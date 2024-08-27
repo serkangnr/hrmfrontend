@@ -71,7 +71,7 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
                             <td style={{whiteSpace: 'nowrap'}}>{employee.name}</td>
                             <td style={{whiteSpace: 'nowrap'}}>{employee.surname}</td>
                             <td style={{whiteSpace: 'nowrap'}}>{employee.email}</td>
-                            <td style={{whiteSpace: 'nowrap'}}>{employee.address}</td>
+                            <td >{employee.address}</td>
                             <td style={{whiteSpace: 'nowrap'}}>{employee.phoneNumber}</td>
                           
                             <td style={{whiteSpace: 'nowrap'}}>{employee.identityNumber}</td>
@@ -84,10 +84,13 @@ function CalisanListTablo({employees}:{employees:IEmployeeList[]}) {
                             <td style={{whiteSpace: 'nowrap'}}>{employee.occupation}</td>
                             <td style={{whiteSpace: 'nowrap'}}>{employee.gender}</td>
                             <td style={{width:'300px'}}>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                
                                 <button type="button" className="btn btn-danger" onClick={() => deleteEmployee(employee.id)}>Sil</button>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button
+                                
+                               
+                            </td>
+                            <td>
+                            <button
                                     type="button"
                                     className="btn btn-primary"
                                     data-bs-toggle="modal"

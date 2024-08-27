@@ -71,7 +71,7 @@ function IzinEklemeTablosu({ employees }: { employees: IEmployeeList[] }) {
                     <td style={{whiteSpace: 'nowrap'}}>{employee.name}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.surname}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.email}</td>
-                    <td style={{whiteSpace: 'nowrap'}}>{employee.address}</td>
+                    <td >{employee.address}</td>
                     <td style={{whiteSpace: 'nowrap'}}>{employee.phoneNumber}</td>
 
                     <td style={{whiteSpace: 'nowrap'}}>{employee.identityNumber}</td>

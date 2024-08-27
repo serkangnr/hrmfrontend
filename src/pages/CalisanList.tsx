@@ -43,7 +43,7 @@ function CalisanList() {
                             <table className="table table-dark table-striped mt-5">
                                 <thead>
                                     <tr>
-                                    <th colSpan={14} className="table-active  "><h1 className='text-center' >Çalışan Listesi</h1></th>
+                                    <th colSpan={15} className="table-active  "><h1 className='text-center' >Çalışan Listesi</h1></th>
                                     </tr>
 
                                     
@@ -68,6 +68,7 @@ function CalisanList() {
                                         <th scope="col">Departman</th>
                                         <th scope="col">Meslek</th>
                                         <th scope="col">Cinsiyet</th>
+                                        <th scope="col"></th>
                                         <th scope="col"></th>
                                         
                                     </tr>
